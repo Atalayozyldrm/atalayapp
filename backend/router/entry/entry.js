@@ -1,9 +1,15 @@
 import express from "express";
 import Entry from "../../model/entry.js";
 import { v4 as uuidv4 } from 'uuid';
-import joi from "joi"
 const router = express.Router();
 
+
+
+
+router.get("/entry", async (req, res, next) => {
+    const popi = await Entry.find({}).limit(5).sort({ $natural: -1 })
+    return res.status(200).json({ data: popi })
+})
 
 
 router.post("/add", async (req, res, next) => {
@@ -11,13 +17,7 @@ router.post("/add", async (req, res, next) => {
     const post = new Entry(entry)
     const uid = uuidv4();
 
-    // const titleS = entry.title
-    // const entryS = entry.entry
-    // const authorS = entry.author
-
-
     if (!entry.title || !entry.entry) return res.status(400).json({ message: "Hata Boş içerik gönderilemez !" })
-    // if (authorvalidation || titleValidation || entryValidation){ return res.status(400).json({ message: "Adam akılı entry gir sikerim belanı" })}
 
     console.log(entry);
     post.id = uid
@@ -26,5 +26,15 @@ router.post("/add", async (req, res, next) => {
 
 
 });
+router.delete("/delete/:id", async (req, res) => {
+    const id = req.params.id
+    const post = Entry.findOne({ id: id })
+
+    const postDelte = await Entry.updateMany({}, { $unset: { "id": id } })
+        .then((data) => {
+            return res.status(200).json({ message: "Succsess Deleted" })
+        })
+        .catch(err => console.log(err))
+})
 
 export default router;

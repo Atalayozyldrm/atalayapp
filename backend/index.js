@@ -27,7 +27,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
-// app.use(csrf({ cookie: true }));
+app.use(csrf({ cookie: true }));
 app.use("/api", router);
 
 app.listen(5500, () => console.log("Started run server. 5500 port 🚀🚀🚀🚀🚀"));

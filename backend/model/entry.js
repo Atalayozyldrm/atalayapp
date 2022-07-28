@@ -4,10 +4,17 @@ import mongoose from "mongoose";
 const entry = new mongoose.Schema({
     title: {
         type: String,
+        required: true,
     },
-    // date: {
-    //     type: Date.now()
-    // },
+    date: {
+        type: Date,
+        default: Date.now
+    },
+
+    popular: {
+        type: String,
+        value: 1
+    },
     entry: {
         type: String,
         required: true,
@@ -17,6 +24,10 @@ const entry = new mongoose.Schema({
         type: Number,
     },
     id: { type: String, },
+    author: {
+        type: String,
+        required: true
+    },
     token: { type: String },
 });
 
