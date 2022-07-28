@@ -1,13 +1,14 @@
 node_modules
 package-lock.json
-/src/firebase/firebase.js
+
 
 /node_modules
 /.pnp
 .pnp.js
 /config
-# testing
+
 /coverage
+/backend/node_modules
 /backend/env
 /backend/config
 # production

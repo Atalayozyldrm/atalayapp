@@ -1,10 +1,8 @@
 import axios from "axios";
-const URI = "http://localhost:5500/api/csrf/";
 
 const getCsrf = async () => {
-  const res = await axios.get(URI);
-  const token = res.data.csrf;
-  console.log(token);
-  localStorage.setItem("X-CSRF-TOKEN", token);
+  const response = await axios.get('/api/csrf');
+  axios.defaults.headers.common['X-CSRF-Token'] = response.data.csrf;
+
 };
 export default getCsrf;

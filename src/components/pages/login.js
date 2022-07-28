@@ -1,6 +1,6 @@
 import React from "react";
-import Forms from "./Forms";
-import Content from "./Content";
+import Forms from "../input/Forms";
+import Content from "../layout/Content";
 
 export default function LoginAuth() {
   return (

@@ -1,53 +1,50 @@
-// import React, { useLayoutEffect, useState, useEffect } from "react";
-// import {
-//   GoogleAuthProvider,
-//   signInWithRedirect,
-//   signOut,
-//   onAuthStateChanged,
-// } from "firebase/auth";
-// import useDeepCompareEffect from "use-deep-compare-effect";
-// import { app, auth } from "../firebase/firebase";
-// const AuthContext = React.createContext();
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router";
+import Cookies from 'universal-cookie';
+import axios from "axios";
+const AuthContext = React.createContext();
 
-// export const AuthContextProvider = ({ children }) => {
-//   const [user, setUser] = useState({});
-//   const [token, setToken] = useState();
+export const AuthContextProvider = ({ children }) => {
+    const [user, setUser] = useState({});
+    const [authStatusChange, setAuthStatusChange] = useState()
+    const cookie = new Cookies()
+    const navigate = useNavigate()
 
-//   const googleLogin = () => {
-//     const provider = new GoogleAuthProvider();
-//     signInWithRedirect(auth, provider)
-//       .then((res) => {
-//         setUser(user);
-//       })
-//       .catch((err) => console.log(err));
-//   };
+    const authLogin = (email, password) => {
+        axios("/api/auth/login", {
+            method: "POST",
+            mode: "cors",
+            redirect: "follow",
+            header: {
+                "accept ": "application/json",
+            },
+            data: {
+                user: {
+                    email: email,
+                    password: password
+                },
+                withCredentials: true,
+            }
+        }).then((res) => {
+            axios.defaults.headers.common['Authorization'] = res.data.user.token;
+            cookie.set("Acsess_token", res.data.user.token)
+            setAuthStatusChange(true)
+            navigate("/home")
+        })
+            .catch(err => console.log(err))
+    }
+    useEffect(() => {
+        if (user) {
+            setUser(user)
+        }
+    }, [user])
+    return (
+        <AuthContext.Provider value={{ authLogin, authStatusChange }}>
+            {children}
+        </AuthContext.Provider>
+    );
+};
 
-//   const logOut = () => {
-//     signOut(auth);
-//   };
-
-//   useEffect(() => {
-//     const dls = onAuthStateChanged(auth, (currentUser) => {
-//       if (currentUser) {
-//         setUser(currentUser);
-//         console.log(currentUser);
-//         currentUser.getIdToken().then((resq) => {
-//           setToken(resq);
-//         });
-//       }
-//     });
-//     return () => {
-//       dls();
-//     };
-//   }, []);
-
-//   return (
-//     <AuthContext.Provider value={{ googleLogin, logOut, user, token }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// export const userAuth = () => {
-//   return React.useContext(AuthContext);
-// };
+export const userAuth = () => {
+    return React.useContext(AuthContext);
+};

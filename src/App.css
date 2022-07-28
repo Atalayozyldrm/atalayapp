@@ -1,20 +1,26 @@
 .App {
   text-align: center;
 }
+
 .ctnt {
   margin-top: 45vh;
 }
+
 .nvbr-btns {
   background-color: #202225;
   overflow: auto;
   cursor: pointer;
 }
+
+
+
 .txt {
   position: relative;
   top: -30px;
   font-size: bold;
   cursor: pointer;
 }
+
 .popup {
   background-color: #36393f;
   margin: auto;
@@ -28,20 +34,30 @@
   border-radius: 9px;
   cursor: pointer;
 }
+
 .exit {
   cursor: pointer;
 }
+
+.txt {
+  position: relative;
+  top: 8rem;
+  left: 35vh
+}
+
 .add-inpt {
   border-radius: 4px;
   background-color: #36393f;
   overflow: auto;
 }
+
 .bg-home {
   background-color: #202225;
   color: white;
   height: 100vh;
   overflow: auto;
 }
+
 .nvbr {
   background-color: #36393f;
   color: white;
@@ -49,10 +65,12 @@
   overflow: auto;
   border-radius: 4px;
 }
+
 .byt {
   width: 100%;
   height: 100vh;
 }
+
 .z-10 {
   width: 100%;
   height: 100%;
@@ -63,33 +81,45 @@
 }
 
 .btn2 {
-  background-color: #8c7abd;
+  border: solid 2px black;
   color: black;
-  text-align: center;
+  background-color: transparent;
 }
+
+.btn2:hover {
+  background-color: black;
+  color: white
+}
+
 .wdth {
   width: 100%;
   height: auto;
   border-radius: 4px;
   padding: 10px;
 }
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+
 .btn {
   text-align: center !important;
   border-color: black;
 }
+
 .inp {
   border-color: black;
-  background-color: #282c34;
+  background-color: white;
+  border: 2px solid black;
   padding: 10px;
-  color: white;
+  color: black;
 }
+
 span {
   cursor: pointer;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -115,6 +145,7 @@ span {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

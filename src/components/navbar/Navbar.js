@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import NavbarButton from "./button";
+import NavbarButton from "../button/button";
 import { LogoutIcon } from "@heroicons/react/solid";
-import { userAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { io } from "socket.io-client";
-import AddClupPopup from "./addClup";
+import AddClupPopup from "../input/addClup";
 export default function Navbar() {
-  const { logOut } = userAuth();
   const [show, setShow] = useState(null);
   const navigate = useNavigate();
 
@@ -18,7 +15,6 @@ export default function Navbar() {
     }
   };
   const handleLogout = () => {
-    logOut();
     navigate("/");
   };
 
