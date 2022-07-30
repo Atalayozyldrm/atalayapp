@@ -3,5 +3,5 @@
 ## App start
 npm run start
 ## server start
-npm run start 
--[] 
+cd backend npm run start 
+-
