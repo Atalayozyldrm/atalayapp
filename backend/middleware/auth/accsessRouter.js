@@ -1,10 +1,14 @@
-const acsess = (req, res, next) => {
-    if (req.isAuthenticated()) {
-        next()
-    }
-    console.log(req.isAuthenticated())
+import jwt from "jsonwebtoken"
 
-    res.json({
+const acsess = (req, res, next) => {
+    const authReq = req.get("Authorization")
+
+    const token = jwt.verify(authReq, "secret")
+    if (token) {
+       return  next()
+    }
+   
+    res.status(403).json({
         message: "Giriş yap 😊!"
     })
 }

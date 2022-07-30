@@ -37,13 +37,18 @@ export default function AddClupPopup(props) {
             />
           </svg>
         </div>
-        <span className="text-center txt">Külübünü oluşturalım 🚀</span>
-        <div className="w-80 ">
+        {/* <span className="text-center  txt">Külübünü oluşturalım 🚀</span> */}
+        <div className="w-80 mt-3 clp-main">
           <input
             onChange={addClupValue}
             type="text"
+            className="bg-gray-50 mt-3 border clpV border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="#hasthag  😎 ?"
+          />
+          <textarea
+            type="text"
             className="bg-gray-50 border clpV border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Kulübünüzün adı ?"
+            placeholder="Entry'ni gir de sosyal alem entry görsün 🚀 "
           />
           <button
             onClick={addClupValueHook}

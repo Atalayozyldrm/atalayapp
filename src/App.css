@@ -11,16 +11,13 @@
   overflow: auto;
   cursor: pointer;
 }
-
+.clpV { margin-top: 35px;}
 .entry {
-  position: absolute;
+  position: relative;
   height: auto;
   top: 20vh;
   right: 0px;
   left: 0px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 19px;
 }
 
@@ -30,11 +27,15 @@
   font-size: bold;
   cursor: pointer;
 }
-
+.clp-main {
+  position: relative;
+  top: -20px
+}
 .popup {
   background-color: #36393f;
   margin: auto;
   position: absolute;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;

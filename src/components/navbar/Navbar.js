@@ -22,7 +22,7 @@ export default function Navbar() {
     <div className="nvbr flex justify-start  flex-col w-28 rounded-4">
       <div className="flex flex-col h-full ml-4 mt-5">
         <NavbarButton name="Profile" />
-        <NavbarButton show={popup} name="Külüp" />
+        <NavbarButton show={popup} name="Entry" />
         <NavbarButton name="+" />
         <div>{show ? <AddClupPopup close={popup} toggle={popup} /> : null}</div>
       </div>

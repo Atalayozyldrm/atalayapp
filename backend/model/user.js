@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken"
-import bcrypt from "bcrypt"
 
 const user = new mongoose.Schema({
   name: {
@@ -18,16 +17,13 @@ const user = new mongoose.Schema({
     required: true,
     min: [8, "En az 8 karakterli şifre gir "]
   },
-
   token: { type: String },
+  profile : {type : String},
   clup: [],
   frindes: [],
   admin: false,
   role: false,
 });
-
-
-
 
 user.methods.generateJWT = function (email, id) {
   const today = new Date();
@@ -40,6 +36,8 @@ user.methods.generateJWT = function (email, id) {
     exp: parseInt(expirationDate.getTime() / 1000, 10),
   }, 'secret');
 }
+
+// buraya bir bak 
 user.method.toAuthJSON = (email, id) => {
   return {
     _id,

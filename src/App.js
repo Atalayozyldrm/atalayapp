@@ -15,7 +15,6 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={!token ? (token ? "Yükleniyor bro" : <Login />) : <Navigate to="/home" />} />
-      {/* <Route exact path="/" element={<MainPage/>}/> */}
       <Route path="*" element={<Notfound />} />
       <Route path="/home" element={
         <ProtectedRoute>

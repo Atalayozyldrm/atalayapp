@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import getAll from '../../service/entry/entry'
+import React from 'react'
 
-export default function Entry() {
 
-    const entry = "Selam"
-    const deneme = "/hello"
+export default function Entry(props) {
     return (
-        <div className='flex flex-row entry '>
+        <div className='flex flex-row entry h-auto'>
             <div className="entry-head">
-
-                <a href={deneme}>
-                    # {entry} 🤖🤖🤖🤖🤖
+                <a href={props.link}>
+                    # {props.title} 🤖🤖🤖🤖🤖
                 </a>
             </div>
+            <span className='author'> {props.value} </span>
         </div>
     )
 }
