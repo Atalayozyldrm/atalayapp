@@ -9,6 +9,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import session from "express-session";
 import * as Sentry from "@sentry/node";
+import helmet from "helmet";
 const app = express();
 
 connectDb();
@@ -17,6 +18,7 @@ app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
 app.use(cookieParser());
+app.use(helmet())
 app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())

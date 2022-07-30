@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { userClup } from "../../context/ClupContext";
+import { userClup } from "../../context/ClupContext"
 
 export default function AddClupPopup(props) {
   const { createClup } = userClup();

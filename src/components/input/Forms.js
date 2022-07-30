@@ -15,7 +15,6 @@ export default function Forms() {
   const { authLogin, authStatusChange } = userAuth()
 
   const loginProccsess = async (e) => {
-    e.preventDefault()
     if (!email && !password) return toast.warn("Boş bırakma 🤖")
     authLogin(email, password)
   }
@@ -43,7 +42,7 @@ export default function Forms() {
         >
           <p className="text-2xl font-bold  w-full ">Tekrar Hoşgeldin 😎</p>
           <span className="text-black mt-6"> Email *</span>
-          <form action="/api/auth/login">
+          <div>
             <input type="hidden" />
             <input
               className=" p-1 m-1 shadow-2xl inp block w-80 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md shadow-2xl"
@@ -73,7 +72,7 @@ export default function Forms() {
                 Kayıtlı değilmisin ? Kayıt ol
               </span>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

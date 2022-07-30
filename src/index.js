@@ -14,7 +14,6 @@ root.render(
     <React.Fragment>
       <BrowserRouter>
         <AuthContextProvider>
-
           <App />
         </AuthContextProvider>
       </BrowserRouter>

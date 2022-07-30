@@ -1,20 +1,13 @@
-import React from 'react'
-import { userAuth } from '../../context/AuthContext'
-import Cookies from 'universal-cookie';
-import { Navigate } from 'react-router-dom';
+import Cookie from "universal-cookie";
 
-export default function AuthControllerComp({ children }) {
-  const cookies = new Cookies();
+const cookie = new Cookie()
 
-  const token = cookies.get("Acsess_token", token)
-  console.log(token)
-  return (
-    <>
 
-      {children}
-    </>
-  )
+const token = cookie.get("acsess_token")
+
+const authCon = () => {
+  if (token) return true
+  return false
 }
 
-
-
+export default authCon

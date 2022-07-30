@@ -12,7 +12,17 @@
   cursor: pointer;
 }
 
-
+.entry {
+  position: absolute;
+  height: auto;
+  top: 20vh;
+  right: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
 
 .txt {
   position: relative;
@@ -139,14 +149,4 @@ span {
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
 }

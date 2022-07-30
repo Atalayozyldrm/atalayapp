@@ -7,11 +7,9 @@ export const AddClupProvider = ({ children }) => {
 
   const createClup = (element) => {
     setInPvalue(element);
-    console.log(element);
   };
   return (
     <AddClup.Provider value={{ inpValue, createClup }}>
-      {" "}
       {children}
     </AddClup.Provider>
   );

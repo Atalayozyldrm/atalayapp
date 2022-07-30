@@ -3,6 +3,7 @@ import passport from "passport";
 import auth from "../../middleware/auth/auth.js"
 import User from "../../model/user.js"
 import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken";
 const router = express.Router();
 
 const authOP = auth.optional
@@ -64,4 +65,5 @@ router.post("/logut", (req, res, next) => {
     res.redirect("/")
   })
 })
+
 export default router;

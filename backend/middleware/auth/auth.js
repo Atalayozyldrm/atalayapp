@@ -5,7 +5,7 @@ import { expressjwt } from "express-jwt";
 const getTokenFromHeaders = (req) => {
     const { headers: { Authorization } } = req
 
-    if (Authorization && Authorization.spilt(' ')[0] === 'Token') {
+    if (Authorization && Authorization.spilt(' ')[0] === 'acsess_token') {
         return authorization.split(' ')[1]
     }
     return null
