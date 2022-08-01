@@ -10,7 +10,7 @@ package-lock.json
 /coverage
 /backend/node_modules
 /backend/env
-/backend/config
+
 # production
 /build
 
