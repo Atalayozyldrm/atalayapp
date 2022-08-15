@@ -8,28 +8,22 @@ export const EntryProvider = ({ children }) => {
     const [post, setPost] = useState();
     const cookie = new Cookies()
     const token = cookie.get("acsess_token")
-   
 
-
-    const getAll = () => {
-        axios.defaults.headers.common['Authorization'] = token;
-        const entry = axios.get("/api/entry/entry", {
+    const getAll = async() => {
+        const entry = await axios.get("/api/entry/entry", {
             headers: {
                 "Authorization": token
             }
         })
-            .then((response) => {
-               const data = response.data.data
-                data.map(element => {
-                    setPost(element)
-                });
-               setPost(data)    
-            })
-            .catch((err) => { console.log(err) })
+        const data = Object.entries(entry.data.data)
+        setPost(data)
     }
-
+    
+ useEffect(() => {
+    getAll()
+ },[])
     return (
-        <Entry.Provider value={{post }}>
+        <Entry.Provider value={{post}}>
             {children}
         </Entry.Provider>
     );

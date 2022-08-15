@@ -6,7 +6,6 @@ const cookie = new Cookies()
 const token = cookie.get("acsess_token")
 
 const getAll = () => {
-    axios.defaults.headers.common['Authorization'] = "Bear " + token;
     const entry = axios.get("/api/entry/entry", {
         headers: {
             "Authorization": token

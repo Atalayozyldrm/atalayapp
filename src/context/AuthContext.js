@@ -9,7 +9,7 @@ const AuthContext = React.createContext();
 
 
 export const AuthContextProvider = ({ children }) => {
-    const [user, setUser] = useState([])
+    const [user, setUser] = useState({})
     const [token, setToken] = useState()
     const dataA = {}
     const cookie = new Cookies()
@@ -33,7 +33,7 @@ export const AuthContextProvider = ({ children }) => {
         }).then((res) => {
             axios.defaults.headers.common['Authorization'] = res.data.user.token;
             cookie.set("acsess_token", res.data.user.token)
-            const data = Object.entries(res.data.user)
+            const data = Object.assign(res.data.user)
             setUser(data)
             setToken(data.token)
         })
@@ -41,11 +41,18 @@ export const AuthContextProvider = ({ children }) => {
     }
 
     const authStatus = async () => {
-    
-        if(user)
+        const cookie = new Cookies()
+        const token = cookie.get("acsess_token")
+        const email = user.email
+
+        if(!user)
         {
-          axios("/api/c")
-        }       
+         return console.log("Refresh token")
+        }     
+        await axios(`/api/auth/verify/${email}`,{headers : {"Authorization" : token}})
+        .then((atalay) => setUser(atalay))
+        .catch((err) => console.log(err))
+        
     };
     const isLoggedIn = async () => {
         const ctx = await cookie.get("acsess_token")
@@ -53,13 +60,13 @@ export const AuthContextProvider = ({ children }) => {
             return false
         }
         setToken(ctx)
+        authStatus()
         return true
     }
 
     useEffect(() => {
         isLoggedIn()
-        authStatus()
-    }, [isLoggedIn])
+    },[])
 
     return (
         <AuthContext.Provider value={{ authLogin, user, token, isLoggedIn }}>

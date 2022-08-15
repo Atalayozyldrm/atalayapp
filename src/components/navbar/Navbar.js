@@ -3,10 +3,15 @@ import NavbarButton from "../button/button";
 import { LogoutIcon } from "@heroicons/react/solid";
 import { useNavigate } from "react-router-dom";
 import AddClupPopup from "../input/addClup";
+import Cookies from 'universal-cookie';
+
+
 export default function Navbar() {
   const [show, setShow] = useState(null);
   const navigate = useNavigate();
-
+  const  cookie = new Cookies()
+ 
+  
   const popup = () => {
     if (!show) {
       setShow(true);
@@ -15,7 +20,8 @@ export default function Navbar() {
     }
   };
   const handleLogout = () => {
-    navigate("/");
+    cookie.remove("acsess_token")
+    return navigate("/");
   };
 
   return (

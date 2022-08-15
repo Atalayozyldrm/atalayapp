@@ -3,9 +3,6 @@ import Entry from "../../model/entry.js";
 import { v4 as uuidv4 } from 'uuid';
 const router = express.Router();
 
-
-
-
 router.get("/entry", async (req, res, next) => {
     const popi = await Entry.find({}).limit(5).sort({ $natural: -1 })
     return res.status(200).json({ data: popi })

@@ -1,20 +1,48 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { userClup } from "../../context/ClupContext"
+import Cookies from "universal-cookie";
+import {userAuth} from "../../context/AuthContext"
 
 export default function AddClupPopup(props) {
   const { createClup } = userClup();
+  const {user} = userAuth()
   const [AddVal, setAddValue] = useState(null);
+  const [entry,setEntry] = useState(null)
+  
+  const cookie = new Cookies()
+  const token = cookie.get("acsess_token")
   const popup = () => {
     props.toggle();
   };
   const closePopup = () => {
     props.close();
   };
+  const entryValue = (e) => {
+    setEntry(e.target.value)
+  }
+  const post = () => {
+      axios("/api/entry/add",{
+        method : "POST",
+        headers : {
+          "Authorization" : token,
+        },
+        data : {
+          entry : {
+            title : AddVal,
+            entry : entry,
+            author : "Atalay"
+          }
+        }
+      })
+      console.log(user)
+  } 
   const addClupValue = (e) => {
     setAddValue(e.target.value);
   };
   const addClupValueHook = () => {
     createClup(AddVal);
+    post()
     closePopup();
   };
   return (
@@ -37,7 +65,6 @@ export default function AddClupPopup(props) {
             />
           </svg>
         </div>
-        {/* <span className="text-center  txt">Külübünü oluşturalım 🚀</span> */}
         <div className="w-80 mt-3 clp-main">
           <input
             onChange={addClupValue}
@@ -46,6 +73,7 @@ export default function AddClupPopup(props) {
             placeholder="#hasthag  😎 ?"
           />
           <textarea
+            onChange={entryValue}
             type="text"
             className="bg-gray-50 border clpV border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Entry'ni gir de sosyal alem entry görsün 🚀 "

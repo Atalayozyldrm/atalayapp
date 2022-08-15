@@ -39,7 +39,6 @@ router.post("/login", authOP, (req, res, next) => {
       errors: "Eposta veya şifre zorunlu 😊 ! ",
     });
   }
-  // return console.log(user)
   return passport.authenticate('local', {
     session: false,
     successRedirect: '/home',
@@ -58,7 +57,16 @@ router.post("/login", authOP, (req, res, next) => {
 
   })(req, res, next)
 })
-
+router.get("/verify/:user", auth.optional, async (req, res, next) => {
+  const a = req.params.user
+  const token = req.get("Authorization")
+  const data = await User.findOne({ a })
+  const xyz = jwt.verify(token,"secret")
+  if (xyz) {
+   return res.status(200).json({ user: data })
+  }
+  return res.status(400).json({message : "Geçersiz oturum !"})
+})
 router.post("/logut", (req, res, next) => {
   req.logout((err) => {
     if (err) next(err)

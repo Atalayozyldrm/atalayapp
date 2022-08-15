@@ -6,7 +6,7 @@ export default function Entry(props) {
         <div className='flex flex-row entry h-auto'>
             <div className="entry-head">
                 <a href={props.link}>
-                    # {props.title} 🤖🤖🤖🤖🤖
+                    #{props.title} 🤖
                 </a>
             </div>
             <span className='author'> {props.value} </span>

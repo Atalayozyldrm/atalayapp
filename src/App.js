@@ -18,11 +18,11 @@ function App() {
       <Route path="*" element={<Notfound />} />
       <Route path="/home" element={
         <ProtectedRoute>
-          <EntryProvider>
             <AddClupProvider>
-              <Home />
+               <EntryProvider>
+                  <Home />
+              </EntryProvider>
             </AddClupProvider>
-          </EntryProvider>
         </ProtectedRoute>
       } />
 
