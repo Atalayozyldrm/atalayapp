@@ -2,16 +2,16 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Cookies from 'universal-cookie';
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const AuthContext = React.createContext();
 
 
 
 export const AuthContextProvider = ({ children }) => {
-    const [user, setUser] = useState({})
-    const [entry, setEntry] = useState({})
+    const [user, setUser] = useState([])
     const [token, setToken] = useState()
-
+    const dataA = {}
     const cookie = new Cookies()
     const navigate = useNavigate()
 
@@ -33,24 +33,32 @@ export const AuthContextProvider = ({ children }) => {
         }).then((res) => {
             axios.defaults.headers.common['Authorization'] = res.data.user.token;
             cookie.set("acsess_token", res.data.user.token)
-            setUser(res.data.user)
-            setToken(res.data.user.token)
-            navigate("/home")
+            const data = Object.entries(res.data.user)
+            setUser(data)
+            setToken(data.token)
         })
-            .catch(err => console.log(err))
+            .catch(err => toast.error("Eposta veya şifre yanlış !"))
     }
+
+    const authStatus = async () => {
+    
+        if(user)
+        {
+          axios("/api/c")
+        }       
+    };
     const isLoggedIn = async () => {
         const ctx = await cookie.get("acsess_token")
         if (!ctx) {
             return false
         }
         setToken(ctx)
-        setUser()
         return true
     }
 
     useEffect(() => {
         isLoggedIn()
+        authStatus()
     }, [isLoggedIn])
 
     return (
