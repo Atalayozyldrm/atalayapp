@@ -1,17 +1,17 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { userClup } from "../../context/ClupContext"
+import { userClup } from "../../context/ClupContext";
 import Cookies from "universal-cookie";
-import {userAuth} from "../../context/AuthContext"
-
+import { userAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 export default function AddClupPopup(props) {
   const { createClup } = userClup();
-  const {user} = userAuth()
+  const { user } = userAuth();
   const [AddVal, setAddValue] = useState(null);
-  const [entry,setEntry] = useState(null)
-  
-  const cookie = new Cookies()
-  const token = cookie.get("acsess_token")
+  const [entry, setEntry] = useState(null);
+
+  const cookie = new Cookies();
+  const token = cookie.get("acsess_token");
   const popup = () => {
     props.toggle();
   };
@@ -19,35 +19,37 @@ export default function AddClupPopup(props) {
     props.close();
   };
   const entryValue = (e) => {
-    setEntry(e.target.value)
-  }
+    setEntry(e.target.value);
+  };
   const post = () => {
-      axios("/api/entry/add",{
-        method : "POST",
-        headers : {
-          "Authorization" : token,
+    axios("/api/entry/add", {
+      method: "POST",
+      headers: {
+        Authorization: token,
+      },
+      data: {
+        entry: {
+          title: AddVal,
+          entry: entry,
+          author: "Atalay Özyıldırım ",
         },
-        data : {
-          entry : {
-            title : AddVal,
-            entry : entry,
-            author : "Atalay"
-          }
-        }
-      })
-      console.log(user)
-  } 
+      },
+    })
+      .then((res) => toast("Entryy yolllandııııı oleeeeyy 🚀"))
+      .catch((err) => toast("Hata ile karşılaşıldı  tekrar dene 🤔"));
+    console.log(user);
+  };
   const addClupValue = (e) => {
     setAddValue(e.target.value);
   };
   const addClupValueHook = () => {
     createClup(AddVal);
-    post()
+    post();
     closePopup();
   };
   return (
     <>
-      <div className="w-96 h-56 popup absolute flex justify-center aligin-center flex-col pt-5  ">
+      <div className="w-96 h-56 popup code-0x2 absolute flex justify-center aligin-center flex-col pt-5  ">
         <div onClick={popup} className="absolute z-3 top-4 right-5">
           <svg
             onClick={closePopup}

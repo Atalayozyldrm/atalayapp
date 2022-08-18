@@ -1,18 +1,18 @@
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
 const acsess = (req, res, next) => {
-    const authReq = req.get("Authorization")
-    console.log(authReq)
+  const token = req.get("Authorization");
 
-    const token = jwt.verify(authReq, "secret")
-    if (token) {
-       return  next()
-    }
-   
-    res.status(403).json({
-        message: "Giriş yap 😊!"
-    })
-}
+  if (!token) {
+    return res.status(403).json({
+      message: "Giriş yap 😊!",
+    });
+  }
+  jwt.verify(token, "secret", (err, decode) => {
+    if (err) return res.status(403).json({ meesage: "Geçersiz Token !" });
+    console.log(decode);
+    next();
+  });
+};
 
-
-export default acsess
+export default acsess;

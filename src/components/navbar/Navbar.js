@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import NavbarButton from "../button/button";
 import { LogoutIcon } from "@heroicons/react/solid";
+import { userAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import AddClupPopup from "../input/addClup";
-import Cookies from 'universal-cookie';
-
+import ProfileButton from "../button/ProfileButton";
+import Cookies from "universal-cookie";
 
 export default function Navbar() {
   const [show, setShow] = useState(null);
+  const { logoutProccsess } = userAuth();
+
   const navigate = useNavigate();
-  const  cookie = new Cookies()
- 
-  
+  const cookie = new Cookies();
+
   const popup = () => {
     if (!show) {
       setShow(true);
@@ -19,17 +21,16 @@ export default function Navbar() {
       setShow(null);
     }
   };
-  const handleLogout = () => {
-    cookie.remove("acsess_token")
+  const handleLogout = async () => {
+    await logoutProccsess();
     return navigate("/");
   };
 
   return (
-    <div className="nvbr flex justify-start  flex-col w-28 rounded-4">
+    <div className="nvbr flex justify-start fixed  flex-col w-28 rounded-4">
       <div className="flex flex-col h-full ml-4 mt-5">
-        <NavbarButton name="Profile" />
+        <ProfileButton name="Profile" />
         <NavbarButton show={popup} name="Entry" />
-        <NavbarButton name="+" />
         <div>{show ? <AddClupPopup close={popup} toggle={popup} /> : null}</div>
       </div>
       <div className="ml-6 mb-4">

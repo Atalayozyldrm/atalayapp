@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import getCsrf from "../../service/auth/csrf";
 import axios from "axios";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 import { userAuth } from "../../context/AuthContext";
 
 export default function Forms() {
-
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const navigate = useNavigate()
-  const { authLogin, authStatusChange } = userAuth()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const { authLogin, authStatusChange } = userAuth();
 
   const loginProccsess = async (e) => {
-    if (!email && !password) return toast.warn("Boş bırakma 🤖")
-    authLogin(email, password)
-  }
+    if (!email && !password) return toast.warn("Boş bırakma 🤖");
+    authLogin(email, password);
+  };
   useEffect(() => {
-    getCsrf()
-  })
+    getCsrf();
+  });
   return (
     <>
       <ToastContainer
@@ -48,7 +47,9 @@ export default function Forms() {
               className=" p-1 m-1 shadow-2xl inp block w-80 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md shadow-2xl"
               placeholder="Email"
               type="email"
-              onChange={(e) => { setEmail(e.target.value) }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               required
             />
             <span className="text-black"> Password *</span>
@@ -56,8 +57,9 @@ export default function Forms() {
               className="m-1 inp p-1 block w-80 shadow-2xl  sm:text-sm border-gray-300 rounded-md"
               placeholder="Password"
               type="password"
-              onChange={(e) => { setPassword(e.target.value) }}
-
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               required
             />
             <div className="text-center flex flex-col mt-4 w-80">

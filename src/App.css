@@ -11,7 +11,19 @@
   overflow: auto;
   cursor: pointer;
 }
-.clpV { margin-top: 35px;}
+.slm {
+  padding: 10px;
+  margin-left: 10px;
+}
+.code-123 {
+  background-color: #36393f;
+  height: 200px !important;
+  width: 400px !important;
+  border-radius: 10px;
+}
+.clpV {
+  margin-top: 35px;
+}
 .entry {
   position: relative;
   height: auto;
@@ -29,10 +41,10 @@
 }
 .clp-main {
   position: relative;
-  top: -20px
+  top: -20px;
 }
 .popup {
-  background-color: #36393f;
+  background-color: #202225;
   margin: auto;
   position: absolute;
   height: auto;
@@ -54,7 +66,7 @@
 .txt {
   position: relative;
   top: 8rem;
-  left: 35vh
+  left: 35vh;
 }
 
 .add-inpt {
@@ -100,7 +112,7 @@
 
 .btn2:hover {
   background-color: black;
-  color: white
+  color: white;
 }
 
 .wdth {
@@ -127,7 +139,13 @@
   padding: 10px;
   color: black;
 }
-
+.code-0x1 {
+  border : 2px solid white
+}
+.code-0x2 {
+  border: 3px solid white
+  border-
+}
 span {
   cursor: pointer;
 }
