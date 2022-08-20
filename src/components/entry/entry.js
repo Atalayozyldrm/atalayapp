@@ -33,7 +33,7 @@ export default function Entry(props) {
             />
           </svg> */}
         </div>
-        <span className="author w-18"> Atalay Özyıldırım </span>
+        <span className="author w-18">{props.author}</span>
         <div className="emoji flex  relative left-36">
           <div className="emoji">
             <svg

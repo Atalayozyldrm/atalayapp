@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NavbarButton from "../button/button";
+import { Link } from "react-router-dom";
 import { LogoutIcon } from "@heroicons/react/solid";
 import { userAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +30,9 @@ export default function Navbar() {
   return (
     <div className="nvbr flex justify-start fixed  flex-col w-28 rounded-4">
       <div className="flex flex-col h-full ml-4 mt-5">
-        <ProfileButton name="Profile" />
+        <Link to="/profile">
+          <ProfileButton name="Profile" />
+        </Link>
         <NavbarButton show={popup} name="Entry" />
         <div>{show ? <AddClupPopup close={popup} toggle={popup} /> : null}</div>
       </div>

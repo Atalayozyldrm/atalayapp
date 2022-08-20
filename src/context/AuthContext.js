@@ -9,7 +9,6 @@ const AuthContext = React.createContext();
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [token, setToken] = useState();
-  const dataA = {};
   const cookie = new Cookies();
   const navigate = useNavigate();
 

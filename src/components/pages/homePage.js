@@ -2,13 +2,19 @@ import React from "react";
 import Navbar from "../navbar/Navbar";
 import FrindesAdd from "../input/frindesAdd";
 import Entry from "../entry/entry";
+import Profile from "../pages/Profile";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import { userEntry } from "../../context/EntryContext";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Homepage() {
   const { post } = userEntry();
-
   return (
     <>
       <Navbar />
@@ -19,7 +25,12 @@ export default function Homepage() {
             <Skeleton />
           ) : (
             post.map((d, a) => (
-              <Entry key={a} link={d[1]._id} title={d[1].title} />
+              <Entry
+                key={a}
+                link={d[1]._id}
+                author={d[1].author}
+                title={d[1].title}
+              />
             ))
           )}
         </div>

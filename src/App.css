@@ -81,13 +81,19 @@
   height: 100vh;
   overflow: auto;
 }
-
+.bg-profile {
+  background-color: #202225;
+  color: white;
+  height: 100vh;
+  overflow: auto;
+}
 .nvbr {
   background-color: #36393f;
   color: white;
   height: 100vh;
   overflow: auto;
   border-radius: 4px;
+  z-index: 1;
 }
 
 .byt {
@@ -140,11 +146,47 @@
   color: black;
 }
 .code-0x1 {
-  border : 2px solid white
+  border: 2px solid white;
 }
 .code-0x2 {
-  border: 3px solid white
-  border-
+  border: 3px solid white border-;
+}
+.AtA11 {
+  background-color: #36393f;
+  border-radius: 10px;
+  box-shadow: #00000063 0px 1px 30px 1px;
+  width: 724px;
+  height: 600px;
+  display: flex;
+  top: 20px;
+  margin: auto;
+}
+.card-bg {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  min-width: 724px;
+  height: 224px;
+  background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+}
+.profile-image-card {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: -50px;
+  left: 35px;
+  box-sizing: content-box;
+}
+.profile-text {
+  position: relative;
+  top: -40px;
+  left: 30px;
+}
+.profile-content {
+  width: 100%;
+  height: auto;
+  top : -30px;
+  left : 25px;
+  margin: 5px;
 }
 span {
   cursor: pointer;
