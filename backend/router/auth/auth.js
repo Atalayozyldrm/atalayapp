@@ -64,12 +64,14 @@ router.post("/login", authOP, (req, res, next) => {
     }
   )(req, res, next);
 });
-router.get("/verify/:user", auth.optional, async (req, res, next) => {
-  const a = req.params.user;
+router.get("/verify/:id", auth.optional, async (req, res, next) => {
+  const a = req.params.id;
   const token = req.get("Authorization");
-  const data = await User.findOne({ a });
   const xyz = jwt.verify(token, "secret");
-  if (xyz) {
+  const data = await User.findOne({ _id: a }).select("-password");
+  console.log(a);
+  console.log(data);
+  if (xyz && a) {
     return res.status(200).json({ user: data });
   }
   return res.status(400).json({ message: "Geçersiz oturum !" });

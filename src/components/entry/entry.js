@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Entry(props) {
   return (
-    <div className="entry m-4 slm code-123 code-0x1 h-auto">
+    <div className="entry m-4 slm code-123  code-0x1 h-auto">
       <div className="w-full h-auto">
         <a href={props.link} className="text-xl" rel="noopenner">
           #{props.title}
@@ -12,7 +12,7 @@ export default function Entry(props) {
         Ne haber benden dert yok tasa yok
         {props.content}
       </div>
-      <div className="w-full h-auto flex relative top-20">
+      <div className="w-full OxA-mobile h-auto flex relative top-20">
         <div className="img w-8 rounded-full mr-2 s ">
           <img
             className="rounded-full"
@@ -34,8 +34,8 @@ export default function Entry(props) {
           </svg> */}
         </div>
         <span className="author w-18">{props.author}</span>
-        <div className="emoji flex  relative left-36">
-          <div className="emoji">
+        <div className="emoji flex  emoji-mobile  relative left-36">
+          <div className="">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

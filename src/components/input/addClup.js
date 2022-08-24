@@ -31,7 +31,7 @@ export default function AddClupPopup(props) {
         entry: {
           title: AddVal,
           entry: entry,
-          author: "Atalay Özyıldırım ",
+          author: user.name,
         },
       },
     })
@@ -52,9 +52,9 @@ export default function AddClupPopup(props) {
       <div className="w-96 h-56 popup code-0x2 absolute flex justify-center aligin-center flex-col pt-5  ">
         <div onClick={popup} className="absolute z-3 top-4 right-5">
           <svg
-            onClick={closePopup}
+            onChange={closePopup}
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
+            className="h-6 w-6 absolute  "
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

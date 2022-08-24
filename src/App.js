@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./App.css";
 import Login from "../src/pages/Login";
 import {
@@ -14,6 +14,8 @@ import { userAuth } from "./context/AuthContext";
 import { EntryProvider } from "./context/EntryContext";
 import { AddClupProvider } from "./context/ClupContext";
 import Profile from "./components/pages/Profile";
+import EditProfile from "./components/input/EditProfile";
+import { EditContext } from "./context/EditContext";
 function App() {
   const { token } = userAuth();
   return (
@@ -34,7 +36,14 @@ function App() {
         }
       />
       <Route path="*" element={<Notfound />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route
+        path="/profile"
+        element={
+          <EditContext>
+            <Profile />
+          </EditContext>
+        }
+      />
       <Route
         path="/home"
         element={

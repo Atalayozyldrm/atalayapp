@@ -33,6 +33,7 @@ export const AuthContextProvider = ({ children }) => {
         cookie.set("acsess_token", res.data.user.token);
         const data = Object.assign(res.data.user);
         setUser(data);
+        cookie.set("id", data._id);
         setToken(data.token);
       })
       .catch((err) => toast.error("Eposta veya şifre yanlış !"));
@@ -41,16 +42,15 @@ export const AuthContextProvider = ({ children }) => {
   const authStatus = async () => {
     const cookie = new Cookies();
     const token = cookie.get("acsess_token");
-    const email = user.email;
-
+    const userId = cookie.get("id");
     if (!user) {
       return console.log("Refresh token");
     }
-    await axios(`/api/auth/verify/${email}`, {
-      headers: { Authorization: token },
-    })
-      .then((atalay) => setUser(atalay))
-      .catch((err) => console.log(err));
+    const data = await axios(`/api/auth/verify/${userId}`, {
+      headers: { Authorization: token, withCredentials: true },
+    });
+    const resData = Object.assign(data.data.user);
+    setUser(resData);
   };
   const isLoggedIn = async () => {
     const ctx = await cookie.get("acsess_token");
@@ -59,6 +59,7 @@ export const AuthContextProvider = ({ children }) => {
     }
     setToken(ctx);
     authStatus();
+
     return true;
   };
   const logoutProccsess = () => {
@@ -66,7 +67,9 @@ export const AuthContextProvider = ({ children }) => {
       .then((res) => {
         const cookie = new Cookies();
         cookie.remove("acsess_token");
+        cookie.remove("id");
         setToken(null);
+        setUser(null);
         navigate("/");
       })
       .catch((err) => console.log(err));

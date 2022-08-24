@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getCsrf from "../../service/auth/csrf";
-import axios from "axios";
-import Cookies from "universal-cookie";
 import { userAuth } from "../../context/AuthContext";
 
 export default function Forms() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const { authLogin, authStatusChange } = userAuth();
+  const { authLogin } = userAuth();
 
   const loginProccsess = async (e) => {
     if (!email && !password) return toast.warn("Boş bırakma 🤖");
@@ -34,12 +30,12 @@ export default function Forms() {
         pauseOnHover
       />
 
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center sanabendenbirtavsiyegel w-full">
         <div
           className="flex-col flex w-1/3    justify-center h-  max-w-2xl max-h-2xl "
           id="frm"
         >
-          <p className="text-2xl font-bold  w-full ">Tekrar Hoşgeldin 😎</p>
+          <p className="text-2xl font-bold  w-full ">Tekrar Hoşgeldin </p>
           <span className="text-black mt-6"> Email *</span>
           <div>
             <input type="hidden" />
@@ -64,7 +60,7 @@ export default function Forms() {
             />
             <div className="text-center flex flex-col mt-4 w-80">
               <button
-                className="flex flex-row  rounded-md p-2  text-black btn2 btn m-1  w-full  shadow-2xl  bg-white text-center"
+                className="flex flex-row  rounded-md p-2  text-black btn2 btn m-1 text-center  w-full  shadow-2xl  bg-white text-center"
                 onClick={loginProccsess}
               >
                 Giriş yap

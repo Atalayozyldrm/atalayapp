@@ -5,11 +5,38 @@
 .ctnt {
   margin-top: 45vh;
 }
-
+.manga {
+  border: 2px solid black;
+  border-radius: 50px;
+  transition: all 0.2 ease-in-out;
+}
+.btn-amnakodugumbuttonu {
+  position: absolute;
+  z-index: 1;
+  top: 100px;
+  left: 15px;
+  cursor: pointer;
+}
+.manga:hover {
+  background-color: rgb(254, 240, 138);
+  color: black;
+}
 .nvbr-btns {
   background-color: #202225;
   overflow: auto;
   cursor: pointer;
+}
+.code-text {
+  display: flex;
+  border-radius: 50px;
+  height: 36px;
+  width: 11rem;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  background-color: black;
+  top: 10px;
+  right: 20vh;
 }
 .slm {
   padding: 10px;
@@ -58,7 +85,20 @@
   border-radius: 9px;
   cursor: pointer;
 }
-
+.popup-edit {
+  background-color: white;
+  box-shadow: 0px 0px 8px 0px black;
+  margin: auto;
+  height: 620px !important;
+  position: absolute;
+  z-index: 1000;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  cursor: pointer;
+}
 .exit {
   cursor: pointer;
 }
@@ -68,13 +108,28 @@
   top: 8rem;
   left: 35vh;
 }
-
+.profile-image-card-edit {
+  position: relative;
+  top: -75px;
+  left: -9rem;
+}
+.svg-edit {
+  top: -30px;
+}
+.clp-main-edit {
+  position: relative;
+  top: -175px;
+}
 .add-inpt {
   border-radius: 4px;
   background-color: #36393f;
   overflow: auto;
 }
-
+.code-bg-edit {
+  position: relative;
+  top: -100px;
+  z-index: -100;
+}
 .bg-home {
   background-color: #202225;
   color: white;
@@ -164,7 +219,7 @@
 .card-bg {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  min-width: 724px;
+  width: 724px;
   height: 224px;
   background-image: linear-gradient(to right, #83a4d4, #b6fbff);
 }
@@ -184,17 +239,105 @@
 .profile-content {
   width: 100%;
   height: auto;
-  top : -30px;
-  left : 25px;
+  top: -30px;
+  left: 25px;
   margin: 5px;
 }
 span {
   cursor: pointer;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Responsive design  */
+@media (max-width: 768px) {
+  .nereninhavasıbuguzelim {
+    display: none;
+  }
+  .sanabendenbirtavsiyegel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+  }
+  #frm {
+    width: auto;
+  }
+  .responsive {
+    overflow: none;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    transition: all 0.3 ease-in-out;
+  }
+  .darara {
+    display: none;
+  }
+  .mobileNavbarButtons {
+    visibility: visible;
+    display: flex;
+    flex-direction: row;
+  }
+  .OxA-1-m {
+    position: relative;
+    left: 10px;
+    top: 10px;
+    right: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
+  .code-Ox-m {
+    position: relative;
+    left: 0px;
+    right: 0px;
+  }
+  .emoji-mobile {
+    display: none;
+  }
+  .text-name {
+    position: absolute;
+    top: -10px;
+    left: -10vh;
+  }
+  .OxA-mobile {
+    width: auto;
+  }
+  .profile-a12A {
+    width: 100%;
+    display: flex;
+    top: 90px;
+    left: -10px;
+    right: 3px;
+    margin-left: 10px;
+    flex-wrap: wrap;
+    transition: all 0.1s ease-in-out;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  .profile-a12C {
+    width: 100%;
+    transition: all 0.1s ease-in-out;
+  }
+  .exit {
+    position: relative;
+    top: 30px;
+    left: 25px;
+    z-index: 100;
+  }
+  .profile-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .frindes {
+    display: none;
+  }
+  .text-name {
+    position: relative;
+    left: 10px;
+    top: 20px;
   }
 }
 
