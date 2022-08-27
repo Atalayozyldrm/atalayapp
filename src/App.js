@@ -14,8 +14,8 @@ import { userAuth } from "./context/AuthContext";
 import { EntryProvider } from "./context/EntryContext";
 import { AddClupProvider } from "./context/ClupContext";
 import Profile from "./components/pages/Profile";
-import EditProfile from "./components/input/EditProfile";
 import { EditContext } from "./context/EditContext";
+import { Register } from "./context/RegisterContext";
 function App() {
   const { token } = userAuth();
   return (
@@ -28,7 +28,9 @@ function App() {
             token ? (
               "Yükleniyor bro"
             ) : (
-              <Login />
+              <Register>
+                <Login />
+              </Register>
             )
           ) : (
             <Navigate to="/home" />
@@ -43,6 +45,7 @@ function App() {
             <Profile />
           </EditContext>
         }
+        exact
       />
       <Route
         path="/home"
@@ -55,6 +58,7 @@ function App() {
             </AddClupProvider>
           </ProtectedRoute>
         }
+        excat
       />
     </Routes>
   );

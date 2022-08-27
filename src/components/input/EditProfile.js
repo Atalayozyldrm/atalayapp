@@ -23,7 +23,7 @@ export default function EditProfile(props) {
   // };
   return (
     <>
-      <div className="w-full  popup-edit absolute flex justify-center aligin-center flex-col pt-5  ">
+      <div className="w-full  popup-edit  absolute flex justify-center aligin-center flex-col pt-5  ">
         <div onClick={popup} className="absolute z-3 top-1 right-3">
           <svg
             onChange={closePopup}

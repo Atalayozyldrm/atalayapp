@@ -8,7 +8,6 @@ import csrf from "csurf";
 import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import session from "express-session";
-import * as Sentry from "@sentry/node";
 import helmet from "helmet";
 const app = express();
 

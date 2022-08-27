@@ -38,7 +38,29 @@ export const AuthContextProvider = ({ children }) => {
       })
       .catch((err) => toast.error("Eposta veya şifre yanlış !"));
   };
-
+  const registerUser = async (email, password, name) => {
+    await axios("/api/auth/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      data: {
+        user: {
+          email: email,
+          password: password,
+          name: name,
+        },
+      },
+    })
+      .then((res) => {
+        axios.defaults.headers.common["Authorization"] = res.data.user.token;
+        cookie.set("acsess_token", res.data.user.token);
+        const data = Object.assign(res.data.user);
+        setUser(data);
+        cookie.set("id", data._id);
+        setToken(data.token);
+        console.log(res);
+      })
+      .catch((err) => toast.warn(err.response.data.message));
+  };
   const authStatus = async () => {
     const cookie = new Cookies();
     const token = cookie.get("acsess_token");
@@ -80,7 +102,14 @@ export const AuthContextProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ authLogin, user, token, isLoggedIn, logoutProccsess }}
+      value={{
+        authLogin,
+        user,
+        token,
+        isLoggedIn,
+        registerUser,
+        logoutProccsess,
+      }}
     >
       {children}
     </AuthContext.Provider>

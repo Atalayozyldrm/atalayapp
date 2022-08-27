@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import getCsrf from "../../service/auth/csrf";
 import { userAuth } from "../../context/AuthContext";
+import { registerUser } from "../../context/RegisterContext";
 
-export default function Forms() {
+const Register = React.lazy(() => import("../button/Register"));
+
+export default function Forms(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { authLogin } = userAuth();
+  const { edit, show } = registerUser();
 
   const loginProccsess = async (e) => {
     if (!email && !password) return toast.warn("Boş bırakma 🤖");
     authLogin(email, password);
+  };
+  const register = () => {
+    props.show();
   };
   useEffect(() => {
     getCsrf();
@@ -60,15 +67,18 @@ export default function Forms() {
             />
             <div className="text-center flex flex-col mt-4 w-80">
               <button
-                className="flex flex-row  rounded-md p-2  text-black btn2 btn m-1 text-center  w-full  shadow-2xl  bg-white text-center"
+                className="flex flex-row  rounded-md p-2  text-black btn2 btn m-1 text-center justify-center  w-full  shadow-2xl  bg-white text-center"
                 onClick={loginProccsess}
               >
-                Giriş yap
+                <span className="flex justify-center align-center ">
+                  {" "}
+                  Giriş yap
+                </span>
               </button>
               <p className="flex justify-center mt-4"> Veya </p>
-              <span className="justify-items-center  mt-3 text-black text-sm mt-">
-                Kayıtlı değilmisin ? Kayıt ol
-              </span>
+              <Suspense>
+                <Register show={edit} />
+              </Suspense>
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ export default function FrindesAdd() {
       <div className="frindes h-10 relative w-full flex ">
         <div className="flex ml-6 OxA-1-m  mt-3 relative left-36 flex-row">
           <input
+            disabled
             type="text"
             className="add-inpt h-8 w-60 p-2"
             placeholder="Arkadaş ekle Atalay#0000"
