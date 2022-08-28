@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { toast } from "react-toastify";
 import { userAuth } from "../../context/AuthContext";
+import axios from "axios";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function RegisterPopup(props) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
   const [passwordRepeat, setPasswordRepeat] = useState("");
   const [emailRepeat, setEmailRepeat] = useState("");
   const [errorEmail, setEmailError] = useState("");
@@ -15,6 +18,10 @@ export default function RegisterPopup(props) {
 
   const { registerUser } = userAuth();
 
+  const captchaRef = useRef(null);
+  const onLoad = () => {
+    captchaRef.current.execute();
+  };
   const sendRegisterRequest = async (e) => {
     e.preventDefault();
 
@@ -54,8 +61,24 @@ export default function RegisterPopup(props) {
     ) {
       toast.warn("Boş bırakma !");
     }
-    registerUser(clearEmail, clearPassword, clearName);
+
+    axios.defaults.headers.common["H-Chaptca"] = token;
+    axios
+      .post("/api/verify/", {
+        headers: {
+          "H-Chaptca": token,
+        },
+      })
+      .then((res) => {
+        if (res.data.message === true) {
+          registerUser(clearEmail, clearPassword, clearName);
+        } else {
+          toast("Validation error !");
+        }
+      })
+      .catch((err) => console.log(err));
   };
+
   const popup = () => {
     props.toggle();
   };
@@ -140,6 +163,15 @@ export default function RegisterPopup(props) {
                 placeholder="Şifre tekrar"
               />
               <label className="text-xs">{errorRepeatP}</label>
+              <div className="flex justify-center mt-4">
+                <HCaptcha
+                  sitekey="0464e40c-be66-4abd-9411-ba5ad795b412"
+                  onLoad={onLoad}
+                  onVerify={setToken}
+                  ref={captchaRef}
+                />
+              </div>
+
               <button
                 type="submit"
                 onClick={sendRegisterRequest}

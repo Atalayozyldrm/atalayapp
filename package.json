@@ -5,6 +5,7 @@
   "type": "module",
   "proxy": "http://localhost:5500",
   "dependencies": {
+    "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@headlessui/react": "^1.6.5",
     "@heroicons/react": "^1.0.6",
     "@testing-library/jest-dom": "^5.16.4",
@@ -12,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
     "base-64": "^1.0.0",
+    "base64-url": "^2.3.3",
     "bcryptjs": "^2.4.3",
     "helmet": "^5.1.1",
     "joi": "^17.6.0",

@@ -1,5 +1,6 @@
 import express from "express";
 import passport from "passport";
+import address from "address";
 import auth from "../../middleware/auth/auth.js";
 import User from "../../model/user.js";
 import bcrypt from "bcrypt";
@@ -32,6 +33,10 @@ router.post(
     }
     const salt = await bcrypt.genSalt(10);
     const id = uuidv4();
+    const ip = address.ip();
+    const mac = address.mac();
+    registerUser.ipAdress = ip;
+    registerUser.macAdress = mac;
     registerUser.password = await bcrypt.hash(registerUser.password, salt);
     registerUser.token = registerUser.generateJWT(user.email, id);
     return registerUser.save().then(() => res.json({ user: registerUser }));
