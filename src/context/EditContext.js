@@ -4,10 +4,13 @@ const EditProfile = React.createContext();
 
 export const EditContext = ({ children }) => {
   const [inpValue, setInPvalue] = useState(null);
+  const [nameValue, setNamvalue] = useState(null);
+
   const [show, setShow] = useState(null);
 
-  const createEdit = (element) => {
+  const createEdit = (element, name) => {
     setInPvalue(element);
+    setNamvalue(name);
   };
   const edit = () => {
     if (!show) {

@@ -5,7 +5,10 @@ import { userContent } from "../../context/EditContext";
 
 export default function EditProfile(props) {
   const [AddVal, setAddValue] = useState(null);
+  const [NickVal, setNickValue] = useState(null);
   const [entry, setEntry] = useState(null);
+
+  const { createEdit } = userContent();
 
   const { user } = userAuth();
 
@@ -16,11 +19,11 @@ export default function EditProfile(props) {
     props.toggle();
   };
   const closePopup = () => {
-    props.close();
+    props.close(AddVal, NickVal);
   };
-  // const EditProfileH = () => {
-  //   createEdit();
-  // };
+  const EditProfileH = () => {
+    createEdit();
+  };
   return (
     <>
       <div className="w-full  popup-edit  absolute flex justify-center aligin-center flex-col pt-5  ">
@@ -51,21 +54,23 @@ export default function EditProfile(props) {
           />
           <div className="add none"></div>
         </div>
-        <div className="w-full relative clp-main-edit mt-3 p-3 clp-main">
+        <div className="w-full flex justify-center align-center flex-col  relative s  p-10 margin-auto  ">
           <input
             type="text"
-            className="bg-gray-50 mt-3 border  clpV border-white-300 text-gray-900 text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Açıklama"
+            className="atalayaskım bg-slate-700 p-4 w-full"
+            placeholder={user.name}
+            onChange={(e) => setNickValue(e.target.value)}
           />
           <input
             type="text"
-            className="bg-gray-50 mt-3 border  clpV border-white-300 text-gray-900 text-sm rounded-lg focus:ring-white-500 focus:border-white-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder={user.name}
+            className="atalayaskım content-edit  h-24 p-10 mt-5 w-full"
+            placeholder="Açıklama"
+            onChange={(e) => setAddValue(e.target.value)}
           />
           <div className="social-media-link"></div>
           <button
-            // onClick={EditProfileH}
-            className="block text-white bg-yellow-200 hover:bg-yellow-400 focus:ring-4 mt-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            onClick={EditProfileH}
+            className="block w-42 hover:bg-black  çido border-2 border-black text-black focus:ring-4 mt-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Kaydet
           </button>

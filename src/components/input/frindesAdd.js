@@ -10,7 +10,7 @@ export default function FrindesAdd() {
             disabled
             type="text"
             className="add-inpt h-8 w-60 p-2"
-            placeholder="Arkadaş ekle Atalay#0000"
+            placeholder="Entry ara"
           />
         </div>
       </div>

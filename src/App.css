@@ -38,7 +38,7 @@
   align-items: center;
   cursor: pointer;
   position: absolute;
-  background-color: black;
+  background-color: #36393f;
   top: 10px;
   right: 20vh;
 }
@@ -73,12 +73,14 @@
 .clp-main {
   position: relative;
   top: -20px;
+  color: black;
 }
 .popup {
-  background-color: #202225;
   margin: auto;
   position: absolute;
   height: auto;
+  width: 600px;
+  height: 314px;
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -88,9 +90,16 @@
   right: 50vh;
   border-radius: 9px;
   cursor: pointer;
+  background-color: #36393f;
+}
+.code-Entry {
+  background-color: #202225;
+  border-radius: 5px;
+  outline: none;
+  color: white;
 }
 .popup-edit {
-  background-color: white;
+  background-color: #202225;
   box-shadow: 0px 0px 8px 0px black;
   margin: auto;
   height: 620px !important;
@@ -103,6 +112,26 @@
   border-radius: 9px;
   cursor: pointer;
 }
+.çido {
+  background-color: #202225;
+  color: white;
+}
+.s {
+  position: relative;
+  top: -20vh;
+}
+.content-edit {
+  padding: 10px;
+}
+.atalayaskım {
+  background-color: #202225;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.434);
+  border-radius: 4px;
+  color: black;
+  color: white;
+}
+
 .exit {
   cursor: pointer;
 }
@@ -112,6 +141,14 @@
   z-index: 2;
   position: absolute;
 
+  background-color: rgba(0, 0, 0, 0.434);
+}
+.bg-transp-1 {
+  height: 100vh;
+  width: 100%;
+  z-index: 5;
+  top: -3px;
+  position: absolute;
   background-color: rgba(0, 0, 0, 0.434);
 }
 .txt {
@@ -300,13 +337,19 @@ span {
     margin: 0px;
     padding: 0px;
   }
-  .text-register {
-  }
   .inp-mobile {
     max-width: 40vh;
   }
+  .image-card {
+    position: relative;
+    top: -5vh;
+  }
   .btn-mobile {
     width: 40vh;
+  }
+  .author {
+    position: relative;
+    top: -5vh;
   }
   .sanabendenbirtavsiyegel {
     display: flex;
@@ -400,19 +443,4 @@ span {
     left: 10px;
     top: 20px;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }

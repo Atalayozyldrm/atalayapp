@@ -5,6 +5,7 @@ const profile = new mongoose.Schema({
   authorId: { type: String, required: true },
   image: { type: String },
   content: String,
+  ref: "User",
   token: { type: String, required: true },
 });
 
