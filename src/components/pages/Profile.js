@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { userAuth } from "../../context/AuthContext";
 import { userContent } from "../../context/EditContext";
+import { userData } from "../../context/UserContext";
 import ProfileEdit from "../button/ProfileEdit";
 import EditProfile from "../input/EditProfile";
 import Navbar from "../navbar/Navbar";
@@ -9,7 +10,7 @@ import Navbar from "../navbar/Navbar";
 export default function Profile() {
   const { user } = userAuth();
   const { edit, show } = userContent();
-
+  const { profile } = userData();
   return (
     <>
       <Navbar className="atalay" />
@@ -46,9 +47,9 @@ export default function Profile() {
             <div className="text-xl text-bold profile-text ">{user.name}</div>
             <div className="profile-content relative">
               {" "}
-              {!user.content
-                ? "Sana benden bir tavisye gel inceldiği yerden kopalım biz"
-                : user.content}{" "}
+              {!profile.content
+                ? "Sana benden bir tavisye gel inceldiği yerden kopalım biz "
+                : profile.content}{" "}
             </div>
           </div>
         </div>

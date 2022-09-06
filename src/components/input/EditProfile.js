@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
 import { userAuth } from "../../context/AuthContext";
-import { userContent } from "../../context/EditContext";
+import { userData } from "../../context/UserContext";
+import getCsrf from "../../service/auth/csrf";
 
 export default function EditProfile(props) {
-  const [AddVal, setAddValue] = useState(null);
-  const [NickVal, setNickValue] = useState(null);
-  const [entry, setEntry] = useState(null);
-
-  const { createEdit } = userContent();
+  const [NickVal, setNickValue] = useState("null");
+  const [AddVal, setAddValue] = useState("null");
+  const [entry, setEntry] = useState("null");
 
   const { user } = userAuth();
+  const { updateProfile } = userData();
+
+  const id = user._id;
 
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
@@ -22,8 +24,12 @@ export default function EditProfile(props) {
     props.close(AddVal, NickVal);
   };
   const EditProfileH = () => {
-    createEdit();
+    updateProfile(id, AddVal, NickVal);
   };
+
+  useEffect(() => {
+    getCsrf();
+  }, []);
   return (
     <>
       <div className="w-full  popup-edit  absolute flex justify-center aligin-center flex-col pt-5  ">

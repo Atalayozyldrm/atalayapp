@@ -7,6 +7,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import { UserProvider } from "./context/UserContext";
 import Notfound from "../src/components/Notfound";
 import ProtectedRoute from "./middleware/ProtectedRoute/router";
 import Home from "../src/pages/Home";
@@ -42,7 +43,9 @@ function App() {
         path="/profile"
         element={
           <EditContext>
-            <Profile />
+            <UserProvider>
+              <Profile />
+            </UserProvider>
           </EditContext>
         }
         exact
