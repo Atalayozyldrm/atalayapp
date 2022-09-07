@@ -12,7 +12,15 @@ router.get(
     return res.status(200).json({ data: popi });
   })
 );
+router.get(
+  "/:id",
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+    const getEntry = await Entry.find({ _id: id });
 
+    return res.status(200).json({ entry: getEntry });
+  })
+);
 router.post(
   "/add",
   asyncHandler(async (req, res, next) => {

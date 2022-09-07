@@ -77,13 +77,13 @@ export default function AddClupPopup(props) {
             onChange={addClupValue}
             className="p-5 code-Entry w-96 mt-4 rounded-xs shadow-xl"
             type="text"
-            placeholder="#hasthag  😎 ?"
+            placeholder="#hasthag ?"
           />
           <textarea
             onChange={entryValue}
             type="text"
             className="p-5 code-Entry w-96 h-36 mt-4 rounded-xs"
-            placeholder="Entry'ni gir de sosyal alem entry görsün 🚀 "
+            placeholder="Entry'ni gir de sosyal alem entry görsün  "
           />
           <button
             onClick={addClupValueHook}

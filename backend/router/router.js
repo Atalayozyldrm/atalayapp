@@ -11,8 +11,8 @@ const router = express.Router();
 
 router.use("/csrf", csrf);
 router.use("/clup", accsess, clup);
-router.use("/user", user);
-router.use("/auth", accsess, auth);
+router.use("/user", accsess, user);
+router.use("/auth", auth);
 router.use("/entry", accsess, entry);
 router.use("/verify", verify);
 export default router;

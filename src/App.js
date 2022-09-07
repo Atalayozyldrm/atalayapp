@@ -17,6 +17,7 @@ import { AddClupProvider } from "./context/ClupContext";
 import Profile from "./components/pages/Profile";
 import { EditContext } from "./context/EditContext";
 import { Register } from "./context/RegisterContext";
+import EntryDetail from "./components/pages/EntryDetail";
 function App() {
   const { token } = userAuth();
   return (
@@ -49,6 +50,14 @@ function App() {
           </EditContext>
         }
         exact
+      />
+      <Route
+        path="/entry/:id"
+        element={
+          <EntryProvider>
+            <EntryDetail />
+          </EntryProvider>
+        }
       />
       <Route
         path="/home"

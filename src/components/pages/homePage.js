@@ -32,7 +32,8 @@ export default function Homepage() {
             post.map((d, a) => (
               <Entry
                 key={a}
-                link={d[1]._id}
+                procsess={d[1]._id}
+                link={`/entry/${d[1]._id}`}
                 author={d[1].author}
                 title={d[1].title}
               />
