@@ -70,7 +70,7 @@ export const AuthContextProvider = ({ children }) => {
     }
     const data = await axios(`/api/auth/verify/${userId}`, {
       headers: { Authorization: token, withCredentials: true },
-    });
+    }).catch(() => logoutProccsess());
     const resData = Object.assign(data.data.user);
     setUser(resData);
   };

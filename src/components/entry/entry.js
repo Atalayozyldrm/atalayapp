@@ -1,5 +1,6 @@
 import React from "react";
 import { HiOutlineHeart } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 export default function Entry(props) {
   return (
@@ -15,10 +16,7 @@ export default function Entry(props) {
             #{props.title}
           </a>
         </div>
-        <div className="text-base ml-5 mt-4">
-          Ne haber benden dert yok tasa yok
-          {props.content}
-        </div>
+        <div className="text-base ml-5 mt-4">{props.content}</div>
         <div className="relative flex flex-row justify-end  cursor-pointer">
           <HiOutlineHeart />
         </div>
@@ -29,7 +27,9 @@ export default function Entry(props) {
               src="https://scontent.fsaw2-1.fna.fbcdn.net/v/t1.6435-9/70043768_100756527983912_5331784942558904320_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dFgzoTKqOwQAX9934DE&_nc_ht=scontent.fsaw2-1.fna&oh=00_AT8xbx7wwELh-Wej1SlC2wVZmK9X4pIDdIZGs3qGAZ_Qgw&oe=6323F446"
             ></img>
           </div>
-          <span className="author w-18">{props.author}</span>
+          <a href={props.profile} rel="noopenner">
+            <span className="author w-18">{props.author}</span>
+          </a>
         </div>
       </div>
     </>

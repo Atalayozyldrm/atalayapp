@@ -46,7 +46,7 @@ export default function EntryDetail(props) {
           <div className="text-white ">
             <Entry
               title={entry.title}
-              content={entry.content}
+              content={entry.entry}
               author={entry.author}
             />
           </div>

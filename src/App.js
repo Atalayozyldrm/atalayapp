@@ -18,6 +18,7 @@ import Profile from "./components/pages/Profile";
 import { EditContext } from "./context/EditContext";
 import { Register } from "./context/RegisterContext";
 import EntryDetail from "./components/pages/EntryDetail";
+import ProfilDetail from "./components/pages/ProfilDetail";
 function App() {
   const { token } = userAuth();
   return (
@@ -40,6 +41,7 @@ function App() {
         }
       />
       <Route path="*" element={<Notfound />} />
+      <Route path="/profile/:id" element={<ProfilDetail />} excat />
       <Route
         path="/profile"
         element={

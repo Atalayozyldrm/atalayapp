@@ -32,7 +32,7 @@ export default function Profile() {
           </svg>
         </Link>
         <div className="relative profile-a12A AtA11">
-          <div className="flex  flex-col relative">
+          <div className="flex w-full flex-col relative">
             <div className="card-bg profile-a12C "></div>
             <ProfileEdit show={edit} />
             {show ? <EditProfile show={edit} toggle={edit} /> : null}
@@ -44,12 +44,14 @@ export default function Profile() {
                 height={100}
               />
             </div>
-            <div className="text-xl text-bold profile-text ">{user.name}</div>
-            <div className="profile-content relative">
-              {" "}
-              {!profile.content
-                ? "Sana benden bir tavisye gel inceldiği yerden kopalım biz "
-                : profile.content}{" "}
+            <div className="flex flex-wrap">
+              <div className="text-xl text-bold profile-text ">{user.name}</div>
+              <div className="profile-content relative">
+                {" "}
+                {!profile.content
+                  ? "Sana benden bir tavisye gel inceldiği yerden kopalım biz "
+                  : profile.content}{" "}
+              </div>
             </div>
           </div>
         </div>
