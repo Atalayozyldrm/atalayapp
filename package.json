@@ -11,7 +11,6 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build",
     "animejs": "^3.2.1",
     "axios": "^0.27.2",
     "base-64": "^1.0.0",
@@ -31,7 +30,6 @@
     "react-toastify": "^8.2.0",
     "socket.io-client": "^4.5.1",
     "universal-cookie": "^4.0.4",
-    "web-vitals": "^3.0.0-rc.0"
     "validator": "^13.7.0",
     "web-vitals": "^2.1.4"
   },
