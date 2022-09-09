@@ -72,6 +72,7 @@ router.post(
           console.log(passportUser);
           const user = passportUser;
           user.token = userLogin.generateJWT(user.email, user.id);
+          user.isOnline = true;
           return res.json({ user: passportUser });
         }
         return res.status(400).json({ message: info });

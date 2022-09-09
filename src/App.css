@@ -21,6 +21,9 @@
   left: 15px;
   cursor: pointer;
 }
+.btn-amnakodugumbuttonu > div {
+  position: fixed;
+}
 .manga:hover {
   background-color: rgb(254, 240, 138);
   color: black;
