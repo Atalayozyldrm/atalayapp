@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "proxy": "http://localhost:5500",
   "dependencies": {
     "@hcaptcha/react-hcaptcha": "^1.4.4",
     "@headlessui/react": "^1.6.5",
@@ -10,6 +11,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm && run build",
     "animejs": "^3.2.1",
     "axios": "^0.27.2",
     "base-64": "^1.0.0",
