@@ -1,6 +1,7 @@
 {
   "name": "atalay",
   "version": "0.1.0",
+  "proxy": "https://atalay-app.herokuapp.com:5500",
   "private": true,
   "type": "module",
   "dependencies": {
