@@ -18,8 +18,11 @@ export const UserProvider = ({ children }) => {
   const id = cookie.get("id");
 
   const getProfile = async (id) => {
-    const data = await axios.get(`/api/user/profile/${id}`);
-    // const res = await res.json();
+    const data = await axios.get(`/api/user/profile/${id}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
     await setProfile(data.data.profile[0]);
   };
 

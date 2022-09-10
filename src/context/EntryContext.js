@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { userAuth } from "./AuthContext";
+import LogoutProccsess from "../middleware/ErrorRedirect";
 
 const Entry = React.createContext();
 
 export const EntryProvider = ({ children }) => {
   const [post, setPost] = useState();
   const [c, setC] = useState({});
+
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
 

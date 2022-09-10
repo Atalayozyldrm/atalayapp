@@ -5,13 +5,14 @@ import Cookies from "universal-cookie";
 import { userAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
 import anime from "animejs";
+import { useNavigate } from "react-router";
 
 export default function AddClupPopup(props) {
   const { createClup } = userClup();
   const { user } = userAuth();
   const [AddVal, setAddValue] = useState(null);
   const [entry, setEntry] = useState(null);
-
+  const navigate = useNavigate();
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
   const popup = () => {
@@ -38,9 +39,11 @@ export default function AddClupPopup(props) {
         },
       },
     })
-      .then((res) => toast("Entryy yolllandııııı oleeeeyy 🚀"))
+      .then((res) => {
+        toast("Entryy yolllandııııı oleeeeyy 🚀");
+        navigate(0);
+      })
       .catch((err) => toast("Hata ile karşılaşıldı  tekrar dene 🤔"));
-    console.log(user);
   };
   const addClupValue = (e) => {
     setAddValue(e.target.value);

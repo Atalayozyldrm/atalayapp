@@ -51,10 +51,11 @@
 }
 .code-123 {
   background-color: #36393f;
-  height: 200px !important;
-  width: 400px !important;
+  height: auto !important;
+  min-width: 300px !important;
   border-radius: 10px;
 }
+
 .clpV {
   margin-top: 35px;
 }
@@ -361,8 +362,8 @@ span {
     width: 40vh;
   }
   .author {
-    position: relative;
-    top: -5vh;
+    position: absolute !important;
+    bottom: -5px;
   }
   .sanabendenbirtavsiyegel {
     display: flex;

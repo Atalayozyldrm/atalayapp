@@ -16,11 +16,13 @@ export default function Entry(props) {
             #{props.title}
           </a>
         </div>
-        <div className="text-base ml-5 mt-4">{props.content}</div>
+        <div className="text-base flex flex-wrap ml-5 mt-4">
+          {props.content}
+        </div>
         <div className="relative flex flex-row justify-end  cursor-pointer">
           <HiOutlineHeart />
         </div>
-        <div className="w-full OxA-mobile h-auto flex relative top-14">
+        <div className="w-full flex-wrap OxA-mobile h-auto flex relative  ">
           <div className="img w-8 rounded-full mr-2">
             <img
               className="rounded-full image-card"

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import Cookies from "universal-cookie";
 import axios from "axios";
 import { toast } from "react-toastify";
+import LogoutProccsess from "../middleware/ErrorRedirect";
 
 const AuthContext = React.createContext();
 
@@ -70,7 +71,7 @@ export const AuthContextProvider = ({ children }) => {
     }
     const data = await axios(`/api/auth/verify/${userId}`, {
       headers: { Authorization: token, withCredentials: true },
-    }).catch(() => logoutProccsess());
+    });
     const resData = Object.assign(data.data.user);
     setUser(resData);
   };
