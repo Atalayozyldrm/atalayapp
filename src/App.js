@@ -1,24 +1,24 @@
 import React from "react";
 import "./App.css";
-import Login from "../src/pages/Login";
+import Login from "../src/pages/Login.js";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import { UserProvider } from "./context/UserContext";
-import Notfound from "../src/components/Notfound";
-import ProtectedRoute from "./middleware/ProtectedRoute/router";
-import Home from "../src/pages/Home";
-import { userAuth } from "./context/AuthContext";
-import { EntryProvider } from "./context/EntryContext";
-import { AddClupProvider } from "./context/ClupContext";
-import Profile from "./components/pages/Profile";
-import { EditContext } from "./context/EditContext";
-import { Register } from "./context/RegisterContext";
-import EntryDetail from "./components/pages/EntryDetail";
-import ProfilDetail from "./components/pages/ProfilDetail";
+import { UserProvider } from "./context/UserContext.js";
+import Notfound from "../src/components/Notfound.js";
+import ProtectedRoute from "./middleware/ProtectedRoute/router.js";
+import Home from "../src/pages/Home.js";
+import { userAuth } from "./context/AuthContext.js";
+import { EntryProvider } from "./context/EntryContext.js";
+import { AddClupProvider } from "./context/ClupContext.js";
+import Profile from "./components/pages/Profile.js";
+import { EditContext } from "./context/EditContext.js";
+import { Register } from "./context/RegisterContext.js";
+import EntryDetail from "./components/pages/EntryDetail.js";
+import ProfilDetail from "./components/pages/ProfilDetail.js";
 function App() {
   const { token } = userAuth();
   return (

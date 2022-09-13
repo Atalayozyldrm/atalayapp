@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Cookies from "universal-cookie";
-import { userAuth } from "../../context/AuthContext";
-import { userData } from "../../context/UserContext";
-import getCsrf from "../../service/auth/csrf";
+import { userAuth } from "../../context/AuthContext.js";
+import { userData } from "../../context/UserContext.js";
+import getCsrf from "../../service/auth/csrf.js";
 
 export default function EditProfile(props) {
   const [NickVal, setNickValue] = useState("null");

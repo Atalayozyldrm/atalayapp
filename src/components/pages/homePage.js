@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "../navbar/Navbar";
-import FrindesAdd from "../input/frindesAdd";
-import Entry from "../entry/entry";
-import { userEntry } from "../../context/EntryContext";
+import FrindesAdd from "../input/frindesAdd.js";
+import Entry from "../entry/entry.js";
+import { userEntry } from "../../context/EntryContext.js";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import AddClupPopup from "../input/addClup";
-import { userClup } from "../../context/ClupContext";
+import AddClupPopup from "../input/addClup.js";
+import { userClup } from "../../context/ClupContext.js";
 import "react-loading-skeleton/dist/skeleton.css";
-import NavbarButton from "../button/button";
+import NavbarButton from "../button/button.js";
 
 export default function Homepage() {
   const { post } = userEntry();

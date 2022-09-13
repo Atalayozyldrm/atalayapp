@@ -2,9 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
-import { userEntry } from "../../context/EntryContext";
-import Entry from "../entry/entry";
-import Navbar from "../navbar/Navbar";
+import { userEntry } from "../../context/EntryContext.js";
+import Entry from "../entry/entry.js";
+import Navbar from "../navbar/Navbar.js";
 
 export default function EntryDetail(props) {
   const { token } = userEntry();

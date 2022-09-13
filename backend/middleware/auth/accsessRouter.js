@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 const acsess = (req, res, next) => {
   const token = req.get("Authorization");
 
+  console.log(token);
   if (!token) {
     return res.status(403).json({
       message: "Giriş yap 😊!",

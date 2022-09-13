@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { userAuth } from "./AuthContext";
-import LogoutProccsess from "../middleware/ErrorRedirect";
+import { userAuth } from "./AuthContext.js";
+import LogoutProccsess from "../middleware/ErrorRedirect.js";
 
 const Entry = React.createContext();
 

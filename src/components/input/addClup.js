@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { userClup } from "../../context/ClupContext";
+import { userClup } from "../../context/ClupContext.js";
 import Cookies from "universal-cookie";
-import { userAuth } from "../../context/AuthContext";
+import { userAuth } from "../../context/AuthContext.js";
 import { toast } from "react-toastify";
 import anime from "animejs";
 import { useNavigate } from "react-router";

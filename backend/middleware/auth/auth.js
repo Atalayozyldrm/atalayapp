@@ -5,8 +5,8 @@ const getTokenFromHeaders = (req) => {
     headers: { Authorization },
   } = req;
 
-  if (Authorization && Authorization.spilt(" ")[0] === "acsess_token") {
-    return authorization.split(" ")[1];
+  if (Authorization) {
+    return Authorization;
   }
   return null;
 };

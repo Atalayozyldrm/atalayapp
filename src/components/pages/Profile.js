@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { userAuth } from "../../context/AuthContext";
-import { userContent } from "../../context/EditContext";
-import { userData } from "../../context/UserContext";
-import ProfileEdit from "../button/ProfileEdit";
-import EditProfile from "../input/EditProfile";
-import Navbar from "../navbar/Navbar";
+import { userAuth } from "../../context/AuthContext.js";
+import { userContent } from "../../context/EditContext.js";
+import { userData } from "../../context/UserContext.js";
+import ProfileEdit from "../button/ProfileEdit.js";
+import EditProfile from "../input/EditProfile.js";
+import Navbar from "../navbar/Navbar.js";
 
 export default function Profile() {
   const { user } = userAuth();

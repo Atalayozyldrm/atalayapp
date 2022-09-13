@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { toast } from "react-toastify";
-import { userAuth } from "../../context/AuthContext";
+import { userAuth } from "../../context/AuthContext.js";
 import axios from "axios";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 

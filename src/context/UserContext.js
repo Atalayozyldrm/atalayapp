@@ -1,13 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Cookie from "universal-cookie";
-import { userAuth } from "../context/AuthContext";
+import { userAuth } from "../context/AuthContext.js";
 
 const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
   const [profile, setProfile] = useState({});
-
   const cookie = new Cookie();
 
   const token = cookie.get("acsess_token");
@@ -35,7 +34,7 @@ export const UserProvider = ({ children }) => {
       user: {
         id: id,
         content: content,
-        name: name ? name : "",
+        name: !name ? user.name : name,
         token: token,
       },
     });

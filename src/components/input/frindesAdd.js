@@ -1,5 +1,5 @@
 import React from "react";
-import { userAuth } from "../../context/AuthContext";
+import { userAuth } from "../../context/AuthContext.js";
 export default function FrindesAdd() {
   const { user } = userAuth();
   return (

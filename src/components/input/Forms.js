@@ -1,9 +1,9 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import getCsrf from "../../service/auth/csrf";
-import { userAuth } from "../../context/AuthContext";
-import { registerUser } from "../../context/RegisterContext";
+import getCsrf from "../../service/auth/csrf.js";
+import { userAuth } from "../../context/AuthContext.js";
+import { registerUser } from "../../context/RegisterContext.js";
 
 const Register = React.lazy(() => import("../button/Register"));
 

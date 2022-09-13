@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import { userAuth } from "../../context/AuthContext";
+import { userAuth } from "../../context/AuthContext.js";
 import Cookies from "universal-cookie";
-import Navbar from "../navbar/Navbar";
+import Navbar from "../navbar/Navbar.js";
 import { toast, ToastContainer } from "react-toastify";
 
 export default function ProfilDetail() {

@@ -12,17 +12,16 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
   <title>Atalay app</title>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQ93ZBRG9M"></script>
 <script>
+  window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  gtag('js', new Date());
-
-  gtag('config', 'G-SQ93ZBRG9M');
-  </script>
+    gtag('config', 'G-SQ93ZBRG9M');
+</script>
 </head>
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>

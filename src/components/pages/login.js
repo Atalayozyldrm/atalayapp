@@ -1,8 +1,8 @@
 import React from "react";
-import Forms from "../input/Forms";
-import Content from "../layout/Content";
-import RegisterPopup from "../input/RegisterUser";
-import { registerUser } from "../../context/RegisterContext";
+import Forms from "../input/Forms.js";
+import Content from "../layout/Content.js";
+import RegisterPopup from "../input/RegisterUser.js";
+import { registerUser } from "../../context/RegisterContext.js";
 
 export default function LoginAuth() {
   const { edit, show } = registerUser();

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import NavbarButton from "../button/button";
 import { Link } from "react-router-dom";
-import { userAuth } from "../../context/AuthContext";
+import { userAuth } from "../../context/AuthContext.js";
 import { useNavigate } from "react-router-dom";
-import ProfileButton from "../button/ProfileButton";
+import ProfileButton from "../button/ProfileButton.js";
 
 export default function Navbar() {
   const { logoutProccsess } = userAuth();
