@@ -2,6 +2,13 @@ import React from "react";
 import { HiOutlineHeart } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
+const contentLoader = (content) => {
+  if (content.length >= 100) {
+    return <div>{content.slice(0, 100) + "..."}</div>;
+  }
+  return <div>{content}</div>;
+};
+
 export default function Entry(props) {
   return (
     <>
@@ -18,12 +25,12 @@ export default function Entry(props) {
             </a>
           </div>
           <div className="text-base flex flex-wrap ml-5 mt-4">
-            {props.content}
+            {contentLoader(props.content)}
           </div>
           <div className="relative flex flex-row justify-end  cursor-pointer">
             <HiOutlineHeart />
           </div>
-          <div className="w-full flex-wrap OxA-mobile h-auto flex relative  ">
+          <div className="w-full flex-wrap OxA-mobile h-auto flex relative top-0 ">
             <div className="img w-8 rounded-full mr-2">
               <img
                 className="rounded-full image-card"
@@ -31,7 +38,7 @@ export default function Entry(props) {
               ></img>
             </div>
             <a href={props.profile} rel="noopenner">
-              <span className="author w-18">{props.author}</span>
+              <span className="author  w-18">{props.author}</span>
             </a>
           </div>
         </div>

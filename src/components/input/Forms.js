@@ -11,14 +11,11 @@ export default function Forms(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { authLogin } = userAuth();
-  const { edit, show } = registerUser();
+  const { edit } = registerUser();
 
   const loginProccsess = async (e) => {
     if (!email && !password) return toast.warn("Boş bırakma 🤖");
     authLogin(email, password);
-  };
-  const register = () => {
-    props.show();
   };
   useEffect(() => {
     getCsrf();

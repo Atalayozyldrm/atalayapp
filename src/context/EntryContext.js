@@ -7,7 +7,6 @@ const Entry = React.createContext();
 
 export const EntryProvider = ({ children }) => {
   const [post, setPost] = useState();
-  const [c, setC] = useState({});
 
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");

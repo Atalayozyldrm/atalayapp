@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "../navbar/Navbar";
 import FrindesAdd from "../input/frindesAdd.js";
 import Entry from "../entry/entry.js";

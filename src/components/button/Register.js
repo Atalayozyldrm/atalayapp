@@ -1,5 +1,4 @@
 import React from "react";
-import { registerUser } from "../../context/RegisterContext.js";
 
 export default function Register(props) {
   const show = () => {

@@ -4,6 +4,7 @@ const entry = new mongoose.Schema({
   title: {
     type: String,
     required: true,
+    max: [100, "En az 100 karakter"],
   },
   date: {
     type: Date,
@@ -18,6 +19,7 @@ const entry = new mongoose.Schema({
     type: String,
     required: true,
     min: [2, "En az 3 karakter "],
+    max: [280, "En fazla 280 karakter "],
   },
   like: {
     type: Number,
