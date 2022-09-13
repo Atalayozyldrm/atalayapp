@@ -71,9 +71,12 @@ export const AuthContextProvider = ({ children }) => {
     }
     const data = await axios(`/api/auth/verify/${userId}`, {
       headers: { Authorization: token, withCredentials: true },
-    });
-    const resData = Object.assign(data.data.user);
-    setUser(resData);
+    })
+      .then((res) => {
+        const resData = Object.assign(res.data.user);
+        setUser(resData);
+      })
+      .catch((err) => LogoutProccsess());
   };
   const isLoggedIn = async () => {
     const ctx = await cookie.get("acsess_token");

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import { userAuth } from "./AuthContext.js";
 import LogoutProccsess from "../middleware/ErrorRedirect.js";
 
 const Entry = React.createContext();
@@ -14,13 +13,17 @@ export const EntryProvider = ({ children }) => {
   const token = cookie.get("acsess_token");
 
   const getAll = async () => {
-    const entry = await axios.get("/api/entry/entry", {
-      headers: {
-        Authorization: token,
-      },
-    });
-    const data = Object.entries(entry.data.data);
-    setPost(data);
+    const entry = await axios
+      .get("/api/entry/entry", {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then((res) => {
+        const data = Object.entries(res.data.data);
+        setPost(data);
+      })
+      .catch((err) => LogoutProccsess());
   };
 
   useEffect(() => {

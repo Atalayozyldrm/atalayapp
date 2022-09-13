@@ -48,7 +48,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(csrf({ cookie: true }));
+// app.use(csrf({ cookie: true }));
 app.use("/api", router);
 
 app.listen(process.env.PORT || 5500, () =>

@@ -42,9 +42,11 @@ export default function EntryDetail(props) {
             />
           </svg>
         </Link>
-        <div className="flex justify-center align-center">
-          <div className="text-white ">
+        <div className="flex justify-center align-center ">
+          <div className="text-white">
             <Entry
+              className={"code-124 entry  h-auto flex"}
+              cardCss={"h-full md w-full"}
               title={entry.title}
               content={entry.entry}
               author={entry.author}

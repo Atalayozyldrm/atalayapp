@@ -1,5 +1,6 @@
 import express from "express";
 import Entry from "../../model/entry.js";
+import Joi from "joi";
 import { v4 as uuidv4 } from "uuid";
 import asyncHandler from "express-async-handler";
 
@@ -22,6 +23,18 @@ router.get(
   })
 );
 router.post(
+  "/like/:id",
+  asyncHandler(async (req, res, next) => {
+    const id = req.params.id;
+
+    const entry = await Entry.find({ _id: id });
+    const process = entry.like + 1;
+    entry.like = process;
+    res.json(entry);
+    // res.status(400).json({ message: "Bad request , type not a number !" });
+  })
+);
+router.post(
   "/add",
   asyncHandler(async (req, res, next) => {
     const {
@@ -37,6 +50,7 @@ router.post(
 
     console.log(entry);
     post.id = uid;
+    post.like = 0;
 
     post.save().then((data) => res.status(200).json({ entry: { data } }));
   })

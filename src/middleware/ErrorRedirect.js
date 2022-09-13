@@ -5,7 +5,7 @@ const cookie = new Cookie();
 const LogoutProccsess = () => {
   cookie.remove("acsess_token");
   cookie.remove("id");
-  toast.error("Çok fazla istek yapıldı. Çıkış yapılıyor  !");
+  toast.error("Bir hata  ile karşılaşıldı. Çıkış yapılıyor...");
   setTimeout(() => {
     window.location.href = "/";
   }, 1000);

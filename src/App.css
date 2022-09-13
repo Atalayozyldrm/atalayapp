@@ -1,10 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 .App {
   text-align: center;
 }
-
 .ctnt {
   margin-top: 45vh;
 }
@@ -58,7 +54,16 @@
   min-width: 300px !important;
   border-radius: 10px;
 }
-
+.code-124 {
+  display: flex;
+  flex-direction: col;
+  align-items: center;
+  justify-content: center;
+  background-color: #36393f;
+  min-height: 250px;
+  width: 596px;
+  border-radius: 10px;
+}
 .clpV {
   margin-top: 35px;
 }
@@ -84,7 +89,7 @@
 }
 .popup {
   margin: auto;
-  position: absolute;
+  position: fixed;
   height: auto;
   width: 600px;
   height: 314px;
@@ -412,6 +417,16 @@ span {
   }
   .emoji-mobile {
     display: none;
+  }
+  .code-124 {
+    width: 90vh;
+    height: auto;
+    padding: 30px;
+    transition: all 0.1s ease-in-out;
+  }
+
+  .md {
+    display: flex;
   }
   .text-name {
     position: absolute;
