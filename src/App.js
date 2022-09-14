@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "react-loading-skeleton/dist/skeleton.css";
 import Login from "../src/pages/Login.js";
 import {
   BrowserRouter as Router,
@@ -19,6 +20,7 @@ import { EditContext } from "./context/EditContext.js";
 import { Register } from "./context/RegisterContext.js";
 import EntryDetail from "./components/pages/EntryDetail.js";
 import ProfilDetail from "./components/pages/ProfilDetail.js";
+
 function App() {
   const { token } = userAuth();
   return (

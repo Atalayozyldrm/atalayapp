@@ -45,7 +45,8 @@ export default function EntryDetail(props) {
         <div className="flex justify-center align-center ">
           <div className="text-white">
             <Entry
-              className={"code-124 entry  h-auto flex"}
+              titleClass={"title-2"}
+              className={"code-124 entry h-auto flex"}
               cardCss={"h-full md w-full"}
               title={entry.title}
               content={entry.entry}

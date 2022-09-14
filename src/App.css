@@ -46,7 +46,13 @@
 }
 .title {
   position: relative;
-  top: 0px;
+  top: -5px;
+  margin-left: 5px;
+}
+.title-2 {
+  position: relative;
+  top: -5px;
+  margin-left: 5px;
 }
 .slm {
   padding: 10px;
@@ -55,7 +61,7 @@
 .code-123 {
   background-color: #36393f;
   min-height: 30vh !important;
-  min-width: 55vh !important;
+  width: 400px !important;
   border-radius: 10px;
 }
 .code-124 {
@@ -367,6 +373,7 @@ span {
   .inp-mobile {
     max-width: 40vh;
   }
+
   .image-card {
     position: relative;
     top: -5vh;
@@ -374,11 +381,10 @@ span {
   .btn-mobile {
     width: 40vh;
   }
-  .author {
-    position: absolute !important;
-    bottom: 0px;
-    margin-bottom: -100px;
-  }
+  /* .author > span {
+    position: relative;
+    bottom: -28px;
+  } */
   .sanabendenbirtavsiyegel {
     display: flex;
     justify-content: center;

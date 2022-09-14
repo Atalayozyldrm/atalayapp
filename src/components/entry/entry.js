@@ -2,9 +2,14 @@ import React from "react";
 import { HiOutlineHeart } from "react-icons/hi";
 import { Link } from "react-router-dom";
 
-const contentLoader = (content) => {
-  if (content.length >= 100) {
-    return <div>{content.slice(0, 100) + "..."}</div>;
+const contentLoader = (content, url) => {
+  if (!content) return <p>Yükleniyor</p>;
+  if (content.length >= 100 && window.location.pathname === "/home") {
+    return (
+      <div className="flex flex-wrap">
+        <Link to={url}>{content.slice(0, 100) + "..."}</Link>
+      </div>
+    );
   }
   return <div>{content}</div>;
 };
@@ -14,7 +19,7 @@ export default function Entry(props) {
     <>
       <div className={props.className}>
         <div className={props.cardCss}>
-          <div className="w-full title h-full">
+          <div className={props.titleClass}>
             <a
               href={props.link}
               data-key={props.procsess}
@@ -24,13 +29,13 @@ export default function Entry(props) {
               #{props.title}
             </a>
           </div>
-          <div className="text-base flex flex-wrap ml-5 mt-4">
-            {contentLoader(props.content)}
+          <div className="text-base flex p-2 flex-wrap ml-5 mt-4">
+            {contentLoader(props.content, props.link)}
           </div>
           <div className="relative flex flex-row justify-end  cursor-pointer">
             <HiOutlineHeart />
           </div>
-          <div className="w-full flex-wrap OxA-mobile h-auto flex relative top-0 ">
+          <div className="w-auto flex-wrap OxA-mobile h-full align-end flex  ">
             <div className="img w-8 rounded-full mr-2">
               <img
                 className="rounded-full image-card"
@@ -38,7 +43,7 @@ export default function Entry(props) {
               ></img>
             </div>
             <a href={props.profile} rel="noopenner">
-              <span className="author  w-18">{props.author}</span>
+              <span className="w-18">{props.author}</span>
             </a>
           </div>
         </div>

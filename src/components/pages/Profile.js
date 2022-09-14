@@ -1,4 +1,5 @@
 import React from "react";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { Link } from "react-router-dom";
 import { userAuth } from "../../context/AuthContext.js";
 import { userContent } from "../../context/EditContext.js";
@@ -48,9 +49,14 @@ export default function Profile() {
               <div className="text-xl text-bold profile-text ">{user.name}</div>
               <div className="profile-content relative">
                 {" "}
-                {!profile.content
-                  ? "Sana benden bir tavisye gel inceldiği yerden kopalım biz "
-                  : profile.content}{" "}
+                {!profile.content ? (
+                  <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                    <Skeleton count={1} width="150px" />
+                    <Skeleton count={1} width="250px" />
+                  </SkeletonTheme>
+                ) : (
+                  profile.content
+                )}{" "}
               </div>
             </div>
           </div>
