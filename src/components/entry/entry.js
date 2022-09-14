@@ -16,7 +16,7 @@ const contentLoader = (content, url) => {
 
 export default function Entry(props) {
   return (
-    <>
+    <div>
       <div className={props.className}>
         <div className={props.cardCss}>
           <div className={props.titleClass}>
@@ -29,13 +29,13 @@ export default function Entry(props) {
               #{props.title}
             </a>
           </div>
-          <div className="text-base flex p-2 flex-wrap ml-5 mt-4">
+          <div className="text-base pavyon flex p-2 flex-wrap ml-5 mt-4">
             {contentLoader(props.content, props.link)}
           </div>
-          <div className="relative flex flex-row justify-end  cursor-pointer">
+          <div className="relative flex flex-row justify-end mr-6 cursor-pointer">
             <HiOutlineHeart />
           </div>
-          <div className="w-auto flex-wrap OxA-mobile h-full align-end flex  ">
+          <div className="w-auto flex-wrap ml-2 OxA-mobile h-full align-end flex  ">
             <div className="img w-8 rounded-full mr-2">
               <img
                 className="rounded-full image-card"
@@ -48,6 +48,6 @@ export default function Entry(props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

@@ -52,7 +52,7 @@
 .title-2 {
   position: relative;
   top: -5px;
-  margin-left: 5px;
+  margin-left: 10px;
 }
 .slm {
   padding: 10px;
@@ -66,13 +66,13 @@
 }
 .code-124 {
   display: flex;
-  flex-direction: col;
+  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   background-color: #36393f;
   min-height: 250px;
-  max-width: 596px;
+  width: 596px;
   border-radius: 10px;
 }
 .clpV {
@@ -335,6 +335,9 @@
   left: 25px;
   margin: 5px;
 }
+.pavyon {
+  min-height: 100px;
+}
 span {
   cursor: pointer;
 }
@@ -361,6 +364,11 @@ span {
     left: 20vh;
     top: -24px;
   }
+  .code-123 {
+    max-width: 286px;
+    height: auto;
+    flex-wrap: wrap;
+  }
   .popup-register {
     width: 100%;
     height: 100%;
@@ -381,10 +389,7 @@ span {
   .btn-mobile {
     width: 40vh;
   }
-  /* .author > span {
-    position: relative;
-    bottom: -28px;
-  } */
+
   .sanabendenbirtavsiyegel {
     display: flex;
     justify-content: center;

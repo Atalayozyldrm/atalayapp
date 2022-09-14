@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const profile = new mongoose.Schema({
   token: { type: String, required: true },
   authorId: { type: String, required: true },
