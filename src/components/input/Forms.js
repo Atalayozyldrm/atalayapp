@@ -62,7 +62,7 @@ export default function Forms(props) {
               }}
               required
             />
-            <div className="text-center flex flex-col mt-4 w-80">
+            <div className="text-center  flex flex-col mt-4 w-80">
               <button
                 className="flex flex-row  rounded-md p-2 mt-4  text-black btn2 btn m-1 text-center justify-center  w-full  shadow-2xl  bg-white text-center"
                 onClick={loginProccsess}

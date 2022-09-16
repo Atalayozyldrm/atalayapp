@@ -16,7 +16,7 @@ const contentLoader = (content, url) => {
 
 export default function Entry(props) {
   return (
-    <div>
+    <>
       <div className={props.className}>
         <div className={props.cardCss}>
           <div className={props.titleClass}>
@@ -48,6 +48,6 @@ export default function Entry(props) {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
