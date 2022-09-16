@@ -27,7 +27,6 @@ export default function EntryDetail(props) {
         setLoad(true);
         const data = Object.entries(res.data.message);
         setComment(data);
-        console.log(res.data.message);
       })
       .catch((err) => console.log(err));
   };
@@ -42,7 +41,6 @@ export default function EntryDetail(props) {
       })
       .catch((err) => console.log(err));
   };
-  console.log(entry);
   useEffect(() => {
     getEntry();
   }, []);
