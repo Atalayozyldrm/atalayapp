@@ -8,10 +8,15 @@ import Entry from "../entry/entry.js";
 import "react-loading-skeleton/dist/skeleton.css";
 import Navbar from "../navbar/Navbar.js";
 import EntryComment from "../entry/entryComment.js";
+import { userComment } from "../../context/Comment.js";
+import CommentForm from "../input/CommentForm.js";
+import { userAuth } from "../../context/AuthContext.js";
 
 export default function EntryDetail(props) {
   const { token } = userEntry();
   const { id } = useParams();
+  const { user } = userAuth();
+  const { popup, show } = userComment();
   const [entry, setEntry] = useState({});
   const [comment, setComment] = useState([]);
   const [load, setLoad] = useState(false);
@@ -30,6 +35,7 @@ export default function EntryDetail(props) {
       })
       .catch((err) => console.log(err));
   };
+  console.log(comment);
   const getEntry = async () => {
     const d = await axios
       .get(`/api/entry/${id}`, {
@@ -46,12 +52,12 @@ export default function EntryDetail(props) {
   }, []);
   return (
     <>
-      <div className="bg-profile">
+      <div className="bg-profile w-full overflow-hidden  md:bg-blend-darken relative">
         <Navbar />
         <Link to="/home" replace>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 relative exit left-36 top-5 cursor-pointer"
+            className="h-6 w-6 relative z-1 exit left-36 top-5 cursor-pointer"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -64,8 +70,11 @@ export default function EntryDetail(props) {
             />
           </svg>
         </Link>
-        <section className="w-full flex flex-col flex-wrap  code-Ox-m h-auto absolute mt-10 m-auto">
-          <div className="text-white m-auto">
+        <section className="w-auto flex flex-col flex-wrap code-Ox-m h-auto  mt-3 ">
+          {show ? (
+            <CommentForm popup={popup} author={user.name} toggle={popup} />
+          ) : null}
+          <div className="text-white flex flex-col  m-auto">
             {!entry ? (
               <SkeletonTheme baseColor="#202020" highlightColor="#444">
                 <Skeleton count={5} />
@@ -73,28 +82,36 @@ export default function EntryDetail(props) {
             ) : (
               <Entry
                 titleClass={"title-2"}
-                className={"code-124 entry h-auto flex"}
-                cardCss={"h-full md w-full"}
+                className={
+                  "bg-[#36393f] justify-center sm:w-36   top-10 p-18 relative sm:p-0 w-full code-124 algin-center md:w-80 flex-col h-auto flex"
+                }
+                cardCss={"h-full flex flex-col w-full"}
                 title={entry.title}
                 content={entry.entry}
                 author={entry.author}
               />
             )}
           </div>
-          <div className="m-auto mt-9 flex flex-row  flex-wrap h-auto">
-            {!load
-              ? null
-              : comment.map((d, a) => (
-                  <EntryComment
-                    titleClass={"title-2"}
-                    className={"comment mt-36  h-auto flex"}
-                    key={a}
-                    content={"What dedin gülüm"}
-                    author={"Atalay Özyıldırım"}
-                  />
-                ))}
-          </div>
         </section>
+        <p className="text-xl flex justify-center relative top-24 text-white">
+          {comment.length === 0 ? null : "#Yorumlar"}
+        </p>
+        <div className="mt-9 relative m-auto  amınakodugumunkartı justify-center algin-center flex flex-row relative right-4.5 flex-wrap h-auto">
+          {!load
+            ? null
+            : comment.map((d, a) => (
+                <EntryComment
+                  titleClass={"title-2"}
+                  className={
+                    "comment mt-36 justify-center algin-center sm:flex-col  md:flex-col h-auto flex"
+                  }
+                  key={a}
+                  link={`/profile/${d[1].authorId}`}
+                  content={d[1].content}
+                  author={d[1].name}
+                />
+              ))}
+        </div>
       </div>
     </>
   );

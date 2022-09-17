@@ -20,6 +20,7 @@ import { EditContext } from "./context/EditContext.js";
 import { Register } from "./context/RegisterContext.js";
 import EntryDetail from "./components/pages/EntryDetail.js";
 import ProfilDetail from "./components/pages/ProfilDetail.js";
+import { AddCommentProvider } from "./context/Comment";
 
 function App() {
   const { token } = userAuth();
@@ -38,7 +39,7 @@ function App() {
               </Register>
             )
           ) : (
-            <Navigate to="/home" />
+            <Navigate to="/home" excat />
           )
         }
       />
@@ -59,7 +60,9 @@ function App() {
         path="/entry/:id"
         element={
           <EntryProvider>
-            <EntryDetail />
+            <AddCommentProvider>
+              <EntryDetail />
+            </AddCommentProvider>
           </EntryProvider>
         }
       />
@@ -69,7 +72,9 @@ function App() {
           <ProtectedRoute>
             <AddClupProvider>
               <EntryProvider>
-                <Home />
+                <AddCommentProvider>
+                  <Home />
+                </AddCommentProvider>
               </EntryProvider>
             </AddClupProvider>
           </ProtectedRoute>

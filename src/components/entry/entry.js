@@ -1,9 +1,19 @@
 import React from "react";
-import { HiOutlineHeart } from "react-icons/hi";
+import { BiComment } from "react-icons/bi";
+import { FcLikePlaceholder } from "react-icons/fc";
+
 import { Link } from "react-router-dom";
 
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { userComment } from "../../context/Comment";
+
 const contentLoader = (content, url) => {
-  if (!content) return <p>Yükleniyor</p>;
+  if (!content)
+    return (
+      <SkeletonTheme baseColor="#202020" highlightColor="#444">
+        <Skeleton count={5} />
+      </SkeletonTheme>
+    );
   if (content.length >= 100 && window.location.pathname === "/home") {
     return (
       <div className="flex flex-wrap">
@@ -15,6 +25,7 @@ const contentLoader = (content, url) => {
 };
 
 export default function Entry(props) {
+  const { popup } = userComment();
   return (
     <>
       <div className={props.className}>
@@ -32,16 +43,12 @@ export default function Entry(props) {
           <div className="text-base pavyon flex p-2 flex-wrap ml-5 mt-4">
             {contentLoader(props.content, props.link)}
           </div>
-          <div className="relative flex flex-row justify-end mr-6 cursor-pointer">
-            <HiOutlineHeart />
+          <div className="relative flex flex-row justify-end mr-9 cursor-pointer">
+            <BiComment onClick={popup} className="mr-3 mt-0.5" />
+            <FcLikePlaceholder />
           </div>
           <div className="w-auto flex-wrap ml-2 OxA-mobile h-full align-end flex  ">
-            <div className="img w-8 rounded-full mr-2">
-              <img
-                className="rounded-full image-card"
-                src="https://scontent.fsaw2-1.fna.fbcdn.net/v/t1.6435-9/70043768_100756527983912_5331784942558904320_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dFgzoTKqOwQAX9934DE&_nc_ht=scontent.fsaw2-1.fna&oh=00_AT8xbx7wwELh-Wej1SlC2wVZmK9X4pIDdIZGs3qGAZ_Qgw&oe=6323F446"
-              ></img>
-            </div>
+            <div className="img w-8 rounded-full mr-2"></div>
             <a href={props.profile} rel="noopenner">
               <span className="w-18">{props.author}</span>
             </a>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-const AddClup = React.createContext();
+const AddComment = React.createContext();
 
-export const AddClupProvider = ({ children }) => {
+export const AddCommentProvider = ({ children }) => {
   const [inpValue, setInPvalue] = useState("");
   const [show, setShow] = useState(null);
 
-  const createClup = (element) => {
+  const createComment = (element) => {
     setInPvalue(element);
   };
   const popup = () => {
@@ -17,12 +17,12 @@ export const AddClupProvider = ({ children }) => {
     }
   };
   return (
-    <AddClup.Provider value={{ inpValue, createClup, popup, show }}>
+    <AddComment.Provider value={{ inpValue, createComment, popup, show }}>
       {children}
-    </AddClup.Provider>
+    </AddComment.Provider>
   );
 };
 
-export const userClup = () => {
-  return React.useContext(AddClup);
+export const userComment = () => {
+  return React.useContext(AddComment);
 };

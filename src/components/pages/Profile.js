@@ -40,7 +40,7 @@ export default function Profile() {
             <div className="profile-image-card">
               <img
                 className="rounded-full"
-                src="https://scontent.fsaw2-1.fna.fbcdn.net/v/t1.6435-9/70043768_100756527983912_5331784942558904320_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dFgzoTKqOwQAX9934DE&_nc_ht=scontent.fsaw2-1.fna&oh=00_AT8xbx7wwELh-Wej1SlC2wVZmK9X4pIDdIZGs3qGAZ_Qgw&oe=6323F446"
+                src={profile.image ? profile.image : null}
                 width={100}
                 height={100}
               />

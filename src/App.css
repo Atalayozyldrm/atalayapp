@@ -58,6 +58,15 @@
   padding: 10px;
   margin-left: 10px;
 }
+.amınakodugumunkartı {
+  position: relative;
+  width: 800px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 .code-123 {
   background-color: #36393f;
   min-height: 30vh !important;
@@ -65,12 +74,6 @@
   border-radius: 10px;
 }
 .code-124 {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  background-color: #36393f;
   min-height: 250px;
   width: 596px;
   border-radius: 10px;
@@ -436,10 +439,10 @@ span {
     display: none;
   }
   .code-124 {
-    width: 90vh;
+    width: 100%;
     height: auto;
-    padding: 30px;
-    transition: all 0.1s ease-in-out;
+    padding: 0px;
+    transition: all 0.3s cubic-bezier(1, 0, 0, 1);
   }
   .md {
     display: flex;
@@ -509,6 +512,11 @@ span {
     top: 30px;
     left: 25px;
     z-index: 100;
+  }
+  .amınakodugumunkartı {
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
   }
   .profile-content {
     display: flex;

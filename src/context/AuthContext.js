@@ -37,7 +37,7 @@ export const AuthContextProvider = ({ children }) => {
         cookie.set("id", data._id);
         setToken(data.token);
       })
-      .catch((err) => toast.error("Eposta veya şifre yanlış !"));
+      .catch((err) => toast("kullancı adın veya eposta yanlış "));
   };
   const registerUser = async (email, password, name) => {
     await axios("/api/auth/register", {
