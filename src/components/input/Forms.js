@@ -74,12 +74,12 @@ export default function Forms(props) {
                 </span>
               </button>
               <p className="flex justify-center mt-4"> Veya </p>
-              <button
-                // onClick={authLoginFacebook}
+              {/* <button
                 className=" mt-3 flex  w-full aligin-center justify-center flex-row bg-[#1a77f2] items-center text-white font-bold p-2 m-2 rounded-md"
+                disabled
               >
                 <FaFacebook className="mr-4 w-6 h-6" /> Facebook ile Devam et
-              </button>
+              </button> */}
               <Suspense>
                 <Register show={edit} />
               </Suspense>

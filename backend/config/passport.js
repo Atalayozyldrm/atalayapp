@@ -1,8 +1,15 @@
 import passport from "passport";
 import LocalStrategy from "passport-local";
+import data from "./googleApi.js";
+import { v4 as uuidv4 } from "uuid";
+import address from "address";
+import GoogleStrategy from "passport-google-oauth20";
 import FacebookStrategy from "passport-facebook";
 import User from "../model/user.js";
 import bcrypt from "bcryptjs";
+
+const uid = uuidv4();
+const ip = address.ip();
 
 passport.use(
   new LocalStrategy(
@@ -29,7 +36,33 @@ passport.use(
   )
 );
 // Google login
-// passport.use();
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: data.web.client_id,
+      clientSecret: data.web.client_secret,
+      callbackURL: "http://localhost:5500/api/auth/login/google/callback",
+    },
+    async (accessToken, refreshToken, user, done) => {
+      const userGoogle = await User.findOne({
+        email: user.emails[0].value,
+      });
+      if (!userGoogle) {
+        const userG = await User.create({
+          name: user.displayName,
+          email: user.emails[0].value,
+          password: uid,
+          ip: ip,
+          profile_image: user.photos[0].value,
+          token: accessToken,
+          location: user._json.locale,
+        });
+        return done(null, userG);
+      }
+      return done(null, userGoogle);
+    }
+  )
+);
 
 // facebook login
 passport.use(

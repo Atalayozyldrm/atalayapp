@@ -12,6 +12,8 @@ const router = express.Router();
 
 const authOP = auth.optional;
 const client = "http://localhost:3000/";
+const clienthome =
+  "http://localhost:5500/api/auth/login/google/redirect/succsess";
 
 router.get("/login", (req, res, next) => {
   res.send("nah 😊");
@@ -50,12 +52,33 @@ router.get(
     {
       scope: ["email", "user_location"],
     },
-    { failureRedirect: client, failureMessage: true },
-    (req, res, next) => {
-      res.redirect(client + "home");
+    {
+      failureRedirect: client,
+      failureMessage: true,
     }
   )
 );
+router.get(
+  "/google",
+  passport.authenticate("google", { scope: ["profile", "email"] })
+);
+router.get(
+  "/login/google/callback",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    successRedirect: clienthome,
+    failureRedirect: client,
+  })
+);
+router.get("/login/google/redirect/succsess", (req, res, next) => {
+  res.cookie("acsess_token", req.user.token, {
+    httpOnly: true,
+  });
+  res.redirect(client);
+});
+router.get("/login/google/logout", (req, res, next) => {
+  req.logout((err) => console.log(err));
+});
 router.post(
   "/login",
   authOP,
@@ -74,7 +97,7 @@ router.post(
       "local",
       {
         session: false,
-        successRedirect: client + "home",
+        successRedirect: clienthome,
         failureRedirect: client,
       },
       (err, passportUser, info) => {
