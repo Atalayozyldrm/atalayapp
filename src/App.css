@@ -350,7 +350,7 @@ span {
   cursor: pointer;
 }
 /* Responsive design  */
-@media (max-width: 768px) {
+@media (max-width: 768px) and (max-width: 1000px) {
   .nereninhavasıbuguzelim {
     display: none;
   }

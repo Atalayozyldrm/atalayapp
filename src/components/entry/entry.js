@@ -48,7 +48,9 @@ export default function Entry(props) {
             <FcLikePlaceholder />
           </div>
           <div className="w-auto flex-wrap ml-2 OxA-mobile h-full align-end flex  ">
-            <div className="img w-8 rounded-full mr-2"></div>
+            <div className="img w-8 rounded-full mr-2">
+              <img src={props.profileImage} className="rounded-full" />
+            </div>
             <a href={props.profile} rel="noopenner">
               <span className="w-18">{props.author}</span>
             </a>

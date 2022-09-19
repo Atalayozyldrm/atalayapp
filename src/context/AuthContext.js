@@ -11,9 +11,8 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [token, setToken] = useState();
   const cookie = new Cookies();
-  const GoogleToken = cookie.get("google_acsess_token");
+
   const navigate = useNavigate();
-  console.log(GoogleToken);
 
   const authLogin = (email, password) => {
     axios("/api/auth/login", {
@@ -73,6 +72,7 @@ export const AuthContextProvider = ({ children }) => {
   const authStatus = async () => {
     const cookie = new Cookies();
     const token = cookie.get("acsess_token");
+
     const userId = cookie.get("id");
     if (!user) {
       return console.log("Refresh token");
@@ -122,7 +122,6 @@ export const AuthContextProvider = ({ children }) => {
         registerUser,
         logoutProccsess,
         authLoginFacebook,
-        GoogleToken,
       }}
     >
       {children}

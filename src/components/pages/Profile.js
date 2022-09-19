@@ -40,23 +40,26 @@ export default function Profile() {
             <div className="profile-image-card">
               <img
                 className="rounded-full"
-                src={profile.image ? profile.image : null}
+                src={user.profile_image ? user.profile_image : null}
                 width={100}
                 height={100}
+                alt="profile"
               />
             </div>
             <div className="flex flex-wrap">
               <div className="text-xl text-bold profile-text ">{user.name}</div>
               <div className="profile-content relative">
-                {" "}
-                {!profile.content ? (
-                  <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                    <Skeleton count={1} width="150px" />
-                    <Skeleton count={1} width="250px" />
-                  </SkeletonTheme>
+                {/* {" "}
+                {!profile ? (
+                  !profile.content ? null : (
+                    <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                      <Skeleton count={1} width="150px" />
+                      <Skeleton count={1} width="250px" />
+                    </SkeletonTheme>
+                  )
                 ) : (
                   profile.content
-                )}{" "}
+                )}{" "} */}
               </div>
             </div>
           </div>

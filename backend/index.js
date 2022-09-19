@@ -3,6 +3,8 @@ import router from "./router/router.js";
 import passport from "passport";
 import "./config/passport.js";
 import connectDb from "./helpers/connectDb.js";
+import config from "./config/config.js";
+import { default as connectMongoDBSession } from "connect-mongodb-session";
 import cors from "cors";
 import csrf from "csurf";
 import cookieParser from "cookie-parser";
@@ -12,6 +14,7 @@ import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 
 const app = express();
+const MongoDBStore = connectMongoDBSession(session);
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 60 * 10000, // 15 minutes
@@ -45,13 +48,17 @@ app.use((req, res, next) => {
 });
 app.use(
   session({
-    secret: "secret",
+    secret: config.sessionSecret,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
     },
     resave: false,
     saveUninitialized: false,
     cookie: { secure: false },
+    store: MongoDBStore({
+      uri: "mongodb+srv://admin:19031903@atalayozy.swolt.mongodb.net/?retryWrites=true&w=majority",
+      collection: "sessions",
+    }),
   })
 );
 app.use(passport.initialize());

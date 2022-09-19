@@ -86,6 +86,7 @@ export default function EntryDetail(props) {
                   "bg-[#36393f] justify-center sm:w-36   top-10 p-18 relative sm:p-0 w-full code-124 algin-center md:w-80 flex-col h-auto flex"
                 }
                 cardCss={"h-full flex flex-col w-full"}
+                // profileImage={user.profile_image}
                 title={entry.title}
                 content={entry.entry}
                 author={entry.author}
@@ -106,6 +107,7 @@ export default function EntryDetail(props) {
                     "comment mt-36 justify-center algin-center sm:flex-col  md:flex-col h-auto flex"
                   }
                   key={a}
+                  // profileImage={d[1].profile_image}
                   link={`/profile/${d[1].authorId}`}
                   content={d[1].content}
                   author={d[1].name}

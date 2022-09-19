@@ -43,6 +43,7 @@ router.post(
     return registerUser.save().then(() => res.json({ user: registerUser }));
   })
 );
+
 router.get(
   "/login/facebook",
   passport.authenticate(
@@ -56,6 +57,7 @@ router.get(
     }
   )
 );
+
 router.get(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
@@ -68,13 +70,19 @@ router.get(
     failureRedirect: client,
   })
 );
-router.get("/login/google/redirect/succsess", (req, res, next) => {
-  res.cookie("google_acsess_token", req.user.token);
-  res.redirect(client);
-});
+router.get(
+  "/login/google/redirect/succsess",
+  asyncHandler((req, res, next) => {
+    const id = req.user.id;
+    res.cookie("acsess_token", req.user.token);
+    res.cookie("id", id, { encode: String });
+    res.redirect(client);
+  })
+);
 router.get("/login/google/logout", (req, res, next) => {
   req.logout((err) => console.log(err));
 });
+
 router.post(
   "/login",
   authOP,
@@ -116,13 +124,11 @@ router.get(
   "/verify/:id",
   auth.optional,
   asyncHandler(async (req, res, next) => {
-    const a = req.params.id;
+    const a = req.params.id.toString();
     const token = req.get("Authorization");
-    const xyz = jwt.verify(token, "secret");
+    if (!token) return res.status(403).json({ message: "Giriş yap !" });
     const data = await User.findOne({ _id: a }).select("-password");
-    console.log(a);
-    console.log(data);
-    if (xyz && a) {
+    if (a) {
       return res.status(200).json({ user: data });
     }
     return res.status(400).json({ message: "Geçersiz oturum !" });

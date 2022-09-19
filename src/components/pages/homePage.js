@@ -8,10 +8,12 @@ import AddClupPopup from "../input/addClup.js";
 import { userClup } from "../../context/ClupContext.js";
 import "react-loading-skeleton/dist/skeleton.css";
 import NavbarButton from "../button/button.js";
+import { userAuth } from "../../context/AuthContext";
 
 export default function Homepage() {
   const { post } = userEntry();
   const { popup, show } = userClup();
+  const { user } = userAuth();
   return (
     <>
       <Navbar />

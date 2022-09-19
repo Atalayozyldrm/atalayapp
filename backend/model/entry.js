@@ -29,6 +29,7 @@ const entry = new mongoose.Schema({
     type: String,
     required: true,
   },
+  authorImage: String,
   authorId: { type: String, required: true },
   token: { type: String },
 });

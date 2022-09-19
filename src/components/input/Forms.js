@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import { FaFacebook } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import getCsrf from "../../service/auth/csrf.js";
 import { userAuth } from "../../context/AuthContext.js";
@@ -11,7 +10,7 @@ const Register = React.lazy(() => import("../button/Register"));
 export default function Forms(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { authLogin, authLoginFacebook } = userAuth();
+  const { authLogin } = userAuth();
   const { edit } = registerUser();
 
   const loginProccsess = async (e) => {
@@ -65,7 +64,7 @@ export default function Forms(props) {
             />
             <div className="text-center  flex flex-col mt-4 w-80">
               <button
-                className="flex flex-row  rounded-md p-2 mt-4  text-black btn2 btn m-1 text-center justify-center  w-full  shadow-2xl  bg-white text-center"
+                className="flex flex-row  rounded-md p-2 m-1 mt-4  text-black btn2 btn m-1 text-center justify-center  w-full  shadow-2xl  bg-white text-center"
                 onClick={loginProccsess}
               >
                 <span className="flex justify-center align-center ">
@@ -74,12 +73,25 @@ export default function Forms(props) {
                 </span>
               </button>
               <p className="flex justify-center mt-4"> Veya </p>
-              {/* <button
-                className=" mt-3 flex  w-full aligin-center justify-center flex-row bg-[#1a77f2] items-center text-white font-bold p-2 m-2 rounded-md"
-                disabled
-              >
-                <FaFacebook className="mr-4 w-6 h-6" /> Facebook ile Devam et
-              </button> */}
+              <div className="mr-3 p-1">
+                <a
+                  className="relative googl "
+                  href="http://localhost:5500/api/auth/google"
+                >
+                  <button className=" w-80 flex googlebutton aligin-center justify-center border-black border-2 text-black flex-row bg-white items-center text-white    rounded-md">
+                    <img
+                      src="https://developers.google.com/static/identity/images/g-logo.png"
+                      alt="google"
+                      className="mr-5"
+                      width={30}
+                      height={30}
+                    />
+                    <span className="text-black mr-5">
+                      Google ile giriş yap
+                    </span>
+                  </button>
+                </a>
+              </div>
               <Suspense>
                 <Register show={edit} />
               </Suspense>

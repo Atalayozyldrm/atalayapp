@@ -36,6 +36,7 @@ export const UserProvider = ({ children }) => {
         content: content,
         name: !name ? user.name : name,
         token: token,
+        image: user.profile_image || null,
       },
     });
 

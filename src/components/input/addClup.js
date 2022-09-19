@@ -36,6 +36,7 @@ export default function AddClupPopup(props) {
           entry: entry,
           author: user.name,
           authorId: user._id,
+          authorImage: user.profile_image,
         },
       },
     })
