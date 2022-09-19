@@ -67,6 +67,9 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.pop {
+  height: 100vh;
+}
 .code-123 {
   background-color: #36393f;
   min-height: 30vh !important;
@@ -188,9 +191,11 @@
   left: -9rem;
 }
 .popup-register {
+  position: absolute;
+  z-index: 100;
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: 60vh;
+  height: 100vh;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
@@ -375,14 +380,10 @@ span {
   .popup-register {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0px;
-    padding: 0px;
+    position: fixed;
   }
   .inp-mobile {
-    max-width: 40vh;
+    width: 90%;
   }
 
   .image-card {
@@ -525,6 +526,7 @@ span {
   .code-text {
     width: 50vh;
   }
+
   .frindes {
     display: none;
   }

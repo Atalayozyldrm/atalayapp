@@ -1,5 +1,6 @@
 import passport from "passport";
 import LocalStrategy from "passport-local";
+import FacebookStrategy from "passport-facebook";
 import User from "../model/user.js";
 import bcrypt from "bcryptjs";
 
@@ -27,7 +28,28 @@ passport.use(
     }
   )
 );
+// Google login
+// passport.use();
 
+// facebook login
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: "1081876262446413",
+      clientSecret: "0e18352d0e992d96ce0ff5b4bf37e5ec",
+      callbackURL: "https://www.localhost.com:5500/oauth2/redirect/facebook",
+    },
+    (accessToken, refreshToken, profile, done) => {
+      User.find({ facebook_id: profile.id }, (user, err) => {
+        if (err) console.log(err);
+
+        if (user) return done(null, user);
+
+        console.log(profile);
+      });
+    }
+  )
+);
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });

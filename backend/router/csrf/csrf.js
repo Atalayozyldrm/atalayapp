@@ -11,4 +11,10 @@ router.get(
     res.headersSent[("X-Csrf-Token", true)];
   })
 );
+router.get(
+  "/a",
+  asyncHandler((req, res, next) => {
+    res.redirect("/aab");
+  })
+);
 export default router;

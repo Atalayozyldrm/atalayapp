@@ -87,16 +87,16 @@ export default function RegisterPopup(props) {
   };
   return (
     <>
-      <div className="w-full absolute bg-transp"></div>
-      <div className="w-full  flex-wrap popup-register shadow-2xl window flex-col  ">
-        <p className="text-xl text-end relative top-16 font-bold">
+      <div className="w-full absolute  bg-transp"></div>
+      <div className=" popup-register z-1 m-auto shadow-2xl bg-white   ">
+        <p className="text-xl  relative font-bold">
           Yeni maceraya ilk adımı at
         </p>
         <svg
           onClick={popup}
           onChange={closePopup}
           xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6 relative icons hover:bg-sky-200 rounded-md left-60 cursor-pointer"
+          className="h-6 w-6 relative hover:bg-sky-200 rounded-md md:left-36 md:top-10 left-8 cursor-pointer"
           fill="none"
           viewBox="0 0 24 24"
           stroke="black"
@@ -108,12 +108,10 @@ export default function RegisterPopup(props) {
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-        <div className="flex w-96 inp-mobile flex-wrap flex-col justify-center align-center m-auto ">
-          <span className="relative mt-3 text-register font-bold">
-            Kullanıcı adı *
-          </span>
-          <form action="" className="">
-            <div className="flex justify-center align-center flex-col ">
+        <div className="flex   justify-center flex-col ">
+          <div action="" className="relative ">
+            <span className="font-bold">Kullanıcı adı *</span>
+            <div className="flex flex-col ">
               <input
                 onChange={(e) => setName(e.target.value)}
                 className="inp mt-4 inp-mobile focus:bg-yellow-200 shadow-md rounded-md"
@@ -180,7 +178,7 @@ export default function RegisterPopup(props) {
                 Kayıt ol
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </>

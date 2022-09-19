@@ -39,6 +39,12 @@ export const AuthContextProvider = ({ children }) => {
       })
       .catch((err) => toast("kullancı adın veya eposta yanlış "));
   };
+  const authLoginFacebook = async () => {
+    await window.open(
+      "https://localhost:5500/api/auth/login/facebook",
+      "_self"
+    );
+  };
   const registerUser = async (email, password, name) => {
     await axios("/api/auth/register", {
       method: "POST",
@@ -113,6 +119,7 @@ export const AuthContextProvider = ({ children }) => {
         isLoggedIn,
         registerUser,
         logoutProccsess,
+        authLoginFacebook,
       }}
     >
       {children}

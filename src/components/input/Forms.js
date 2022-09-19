@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import { FaFacebook } from "react-icons/fa";
 import "react-toastify/dist/ReactToastify.css";
 import getCsrf from "../../service/auth/csrf.js";
 import { userAuth } from "../../context/AuthContext.js";
@@ -10,7 +11,7 @@ const Register = React.lazy(() => import("../button/Register"));
 export default function Forms(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { authLogin } = userAuth();
+  const { authLogin, authLoginFacebook } = userAuth();
   const { edit } = registerUser();
 
   const loginProccsess = async (e) => {
@@ -73,6 +74,12 @@ export default function Forms(props) {
                 </span>
               </button>
               <p className="flex justify-center mt-4"> Veya </p>
+              <button
+                // onClick={authLoginFacebook}
+                className=" mt-3 flex  w-full aligin-center justify-center flex-row bg-[#1a77f2] items-center text-white font-bold p-2 m-2 rounded-md"
+              >
+                <FaFacebook className="mr-4 w-6 h-6" /> Facebook ile Devam et
+              </button>
               <Suspense>
                 <Register show={edit} />
               </Suspense>

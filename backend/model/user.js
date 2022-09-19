@@ -21,7 +21,7 @@ const user = new mongoose.Schema({
     min: [8, "En az 8 karakterli şifre gir "],
   },
   token: { type: String },
-  profile: { type: String },
+  profile_image: { type: String },
   content: { type: String, max: [200, "Max karakteri aştın !"] },
   entries: [],
   frindes: [],

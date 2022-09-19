@@ -11,6 +11,7 @@ import asyncHandler from "express-async-handler";
 const router = express.Router();
 
 const authOP = auth.optional;
+const client = "http://localhost:3000/";
 
 router.get("/login", (req, res, next) => {
   res.send("nah 😊");
@@ -42,7 +43,19 @@ router.post(
     return registerUser.save().then(() => res.json({ user: registerUser }));
   })
 );
-
+router.get(
+  "/login/facebook",
+  passport.authenticate(
+    "facebook",
+    {
+      scope: ["email", "user_location"],
+    },
+    { failureRedirect: client, failureMessage: true },
+    (req, res, next) => {
+      res.redirect(client + "home");
+    }
+  )
+);
 router.post(
   "/login",
   authOP,
@@ -61,8 +74,8 @@ router.post(
       "local",
       {
         session: false,
-        successRedirect: "/home",
-        failureRedirect: "/login",
+        successRedirect: client + "home",
+        failureRedirect: client,
       },
       (err, passportUser, info) => {
         if (err) {
