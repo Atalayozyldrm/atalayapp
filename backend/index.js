@@ -1,5 +1,7 @@
 import express from "express";
 import router from "./router/router.js";
+import path from "path";
+import { fileURLToPath } from "url";
 import passport from "passport";
 import "./config/passport.js";
 import connectDb from "./helpers/connectDb.js";
@@ -24,12 +26,17 @@ const limiter = rateLimit({
   message: "Çok fazla istekte bulundun , biraz bekletelim seni 🤔",
 });
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 connectDb();
 
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
+
 app.use(limiter);
+// app.use(express.static(path.join(__dirname, "/build")));
 app.use(cookieParser());
 app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
@@ -64,6 +71,11 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(csrf({ cookie: true }));
+
+// app.get("*", (req, res, next) => {
+//   res.sendFile(path.join(__dirname, "build", "../../build/index.html"));
+// });
+
 app.use("/api", router);
 
 app.listen(process.env.PORT || 5500, () =>

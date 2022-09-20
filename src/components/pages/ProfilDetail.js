@@ -24,14 +24,17 @@ export default function ProfilDetail() {
           Authorization: token,
         },
       })
+      .then((atalay) => {
+        const profile = Object.assign(atalay.data.profile);
+        setUser(profile);
+      })
       .catch((err) => {
+        console.log(err);
         toast.error(
           "Upps sunucu hata verdi tekrar giriş yap ? Tamam yönlendiriyorum ."
         );
         logoutProccsess();
       });
-    const res = Object.assign(data.data.profile[0]);
-    setUser(res);
   };
   useEffect(() => {
     if (userId === id) {

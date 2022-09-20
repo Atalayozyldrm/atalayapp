@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: "Roboto";
@@ -11,10 +15,547 @@ body {
   padding-left: 42px;
   padding-right: 42px;
 }
-.googl {
-  /* position: relative; */
-}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.App {
+  text-align: center;
+}
+.ctnt {
+  margin-top: 45vh;
+}
+.nereninhavasıbuguzelim {
+  position: relative;
+  z-index: -1;
+}
+.manga {
+  border: 2px solid black;
+  border-radius: 50px;
+  transition: all 0.2 ease-in-out;
+}
+.btn-amnakodugumbuttonu {
+  position: absolute;
+  z-index: 1;
+  top: 100px;
+  left: 15px;
+  cursor: pointer;
+}
+.btn-amnakodugumbuttonu > div {
+  position: fixed;
+}
+.manga:hover {
+  background-color: rgb(254, 240, 138);
+  color: black;
+}
+.nvbr-btns {
+  background-color: #202225;
+  overflow: auto;
+  cursor: pointer;
+}
+.code-text {
+  display: flex;
+  border-radius: 50px;
+  height: 36px;
+  width: auto;
+  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  background-color: #36393f;
+  top: 10px;
+  right: 20vh;
+}
+.title {
+  position: relative;
+  top: -5px;
+  margin-left: 5px;
+}
+.title-2 {
+  position: relative;
+  top: -5px;
+  margin-left: 10px;
+}
+.slm {
+  padding: 10px;
+  margin-left: 10px;
+}
+.amınakodugumunkartı {
+  position: relative;
+  width: 800px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.pop {
+  height: 100vh;
+}
+.code-123 {
+  background-color: #36393f;
+  min-height: 30vh !important;
+  width: 400px !important;
+  border-radius: 10px;
+}
+.code-124 {
+  min-height: 250px;
+  width: 596px;
+  border-radius: 10px;
+}
+.clpV {
+  margin-top: 35px;
+}
+.entry {
+  position: relative;
+  height: auto;
+  top: 20vh;
+  right: 0px;
+  left: 0px;
+  font-size: 19px;
+}
+
+.txt {
+  position: relative;
+  top: -30px;
+  font-size: bold;
+  cursor: pointer;
+}
+.clp-main {
+  position: relative;
+  top: -20px;
+  color: black;
+}
+.popup {
+  margin: auto;
+  position: fixed;
+  height: auto;
+  width: 600px;
+  height: 314px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 25vh;
+  left: 50vh;
+  right: 50vh;
+  border-radius: 9px;
+  cursor: pointer;
+  background-color: #36393f;
+}
+.code-Entry {
+  background-color: #202225;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+}
+.popup-edit {
+  background-color: #202225;
+  box-shadow: 0px 0px 8px 0px black;
+  margin: auto;
+  height: 620px !important;
+  position: absolute;
+  z-index: 1000;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  cursor: pointer;
+}
+.çido {
+  background-color: #202225;
+  color: white;
+}
+.s {
+  position: relative;
+  top: -20vh;
+}
+.content-edit {
+  padding: 10px;
+}
+.atalayaskım {
+  background-color: #202225;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.434);
+  border-radius: 4px;
+  color: black;
+  color: white;
+}
+
+.exit {
+  cursor: pointer;
+}
+.bg-transp {
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+  position: absolute;
+
+  background-color: rgba(0, 0, 0, 0.434);
+}
+.bg-transp-1 {
+  height: 100vh;
+  width: 100%;
+  z-index: 5;
+  top: -3px;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.434);
+}
+.txt {
+  position: relative;
+  top: 8rem;
+  left: 35vh;
+}
+.profile-image-card-edit {
+  position: relative;
+  top: -75px;
+  left: -9rem;
+}
+.popup-register {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  width: 60vh;
+  height: 100vh;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.505);
+}
+.window {
+  width: 420px;
+  background-color: white;
+  height: 100vh;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: auto;
+  z-index: 100;
+}
+.svg-edit {
+  top: -30px;
+}
+.clp-main-edit {
+  position: relative;
+  top: -175px;
+}
+.add-inpt {
+  border-radius: 4px;
+  background-color: #36393f;
+  overflow: auto;
+}
+.code-bg-edit {
+  position: relative;
+  top: -100px;
+  z-index: -100;
+}
+.bg-home {
+  background-color: #202225;
+  color: white;
+  height: 100vh;
+  overflow: auto;
+}
+.bg-profile {
+  background-color: #202225;
+  color: white;
+  height: 100vh;
+  overflow: auto;
+}
+.nvbr {
+  background-color: #36393f;
+  color: white;
+  height: 100vh;
+  overflow: auto;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.byt {
+  width: 100%;
+  height: 100vh;
+}
+
+.z-10 {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  right: 1vh;
+  font-size: 40px;
+  background-color: #f1f2f7;
+}
+
+.btn2 {
+  border: solid 2px black;
+  color: black;
+  background-color: transparent;
+}
+
+.btn2:hover {
+  background-color: black;
+  color: white;
+}
+
+.wdth {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.btn {
+  text-align: center !important;
+  border-color: black;
+}
+
+.inp {
+  border-color: black;
+  background-color: white;
+  border: 2px solid black;
+  padding: 10px;
+  color: black;
+}
+.code-0x1 {
+  border: 2px solid white;
+}
+.code-0x2 {
+  border: 3px solid white border-;
+}
+.AtA11 {
+  background-color: #36393f;
+  border-radius: 10px;
+  box-shadow: #00000063 0px 1px 30px 1px;
+  width: 724px;
+  height: 600px;
+  display: flex;
+  top: 20px;
+  margin: auto;
+}
+.card-bg {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  height: 224px;
+  background-image: linear-gradient(to right, #83a4d4, #b6fbff);
+}
+.profile-image-card {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  top: -50px;
+  left: 35px;
+  box-sizing: content-box;
+}
+.profile-text {
+  position: relative;
+  top: -40px;
+  left: 30px;
+}
+.profile-content {
+  width: 100%;
+  height: auto;
+  top: -30px;
+  left: 25px;
+  margin: 5px;
+}
+.pavyon {
+  min-height: 100px;
+}
+span {
+  cursor: pointer;
+}
+/* Responsive design  */
+@media (max-width: 768px) and (max-width: 1000px) {
+  .nereninhavasıbuguzelim {
+    display: none;
+  }
+  .bg-transp {
+    display: none;
+  }
+  .manga {
+    right: 4px;
+  }
+  .profile-image-card {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-text {
+    margin-top: 4em;
+  }
+  .icons {
+    position: relative;
+    left: 20vh;
+    top: -24px;
+  }
+  .code-123 {
+    max-width: 286px;
+    height: auto;
+    flex-wrap: wrap;
+  }
+  .popup-register {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+  }
+  .inp-mobile {
+    width: 90%;
+  }
+
+  .image-card {
+    position: relative;
+    top: -5vh;
+  }
+  .btn-mobile {
+    width: 40vh;
+  }
+
+  .sanabendenbirtavsiyegel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+  }
+  #frm {
+    width: auto;
+  }
+  .responsive {
+    overflow: none;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    transition: all 0.3 ease-in-out;
+  }
+  .darara {
+    display: none;
+  }
+  .mobileNavbarButtons {
+    visibility: visible;
+    display: flex;
+    flex-direction: row;
+  }
+  .OxA-1-m {
+    position: relative;
+    left: 10px;
+    top: 10px;
+    right: 0px;
+    margin: 0px;
+    padding: 0px;
+  }
+  .code-Ox-m {
+    position: relative;
+    left: 0px;
+    right: 0px;
+  }
+  .emoji-mobile {
+    display: none;
+  }
+  .code-124 {
+    width: 100%;
+    height: auto;
+    padding: 0px;
+    transition: all 0.3s cubic-bezier(1, 0, 0, 1);
+  }
+  .md {
+    display: flex;
+  }
+  .text-name {
+    position: absolute;
+    top: -10px;
+    left: -10vh;
+  }
+  .OxA-mobile {
+    width: auto;
+  }
+  .z-3 {
+    position: absolute;
+    z-index: 9;
+  }
+
+  .popup {
+    width: 100%;
+    height: 100%;
+    flex: auto;
+    display: flex;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+  }
+  .code-Entry {
+    width: 95%;
+    margin-left: 9px;
+  }
+  .clp-main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 1vh;
+  }
+  .clp-main > button {
+    margin-left: 1rem;
+  }
+  .code-0x2 {
+    width: 100%;
+    height: 100%;
+  }
+  .profile-a12A {
+    width: 100%;
+    display: flex;
+    top: 90px;
+    left: -10px;
+    right: 3px;
+    margin-left: 10px;
+    flex-wrap: wrap;
+    transition: all 0.1s ease-in-out;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  .profile-a12C {
+    width: 100%;
+    transition: all 0.1s ease-in-out;
+  }
+  .window {
+    width: 100%;
+    height: 100vh;
+  }
+  .exit {
+    position: relative;
+    top: 30px;
+    left: 25px;
+    z-index: 100;
+  }
+  .amınakodugumunkartı {
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+  }
+  .profile-content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .code-text {
+    width: 50vh;
+  }
+
+  .frindes {
+    display: none;
+  }
+  .text-name {
+    position: relative;
+    left: 10px;
+    top: 20px;
+  }
 }

@@ -51,7 +51,14 @@ export default function Profile() {
             <div className="flex flex-wrap">
               <div className="text-xl text-bold profile-text ">{user.name}</div>
               <div className="profile-content relative">
-                {!profile ? null : !profile.content ? null : profile.content}
+                {!profile ? null : !profile.content ? (
+                  <SkeletonTheme baseColor="#202020" highlightColor="#444">
+                    <Skeleton count={1} width="150px" />
+                    <Skeleton count={1} width="250px" />
+                  </SkeletonTheme>
+                ) : (
+                  profile.content
+                )}
               </div>
             </div>
           </div>
