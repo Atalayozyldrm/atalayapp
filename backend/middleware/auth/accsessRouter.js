@@ -5,6 +5,7 @@ const acsess = (req, res, next) => {
       message: "Giriş yap 😊!",
     });
   }
+  console.log(req.isAuthenticated());
   if (req.isAuthenticated()) {
     return next();
   }

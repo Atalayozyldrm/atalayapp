@@ -16,6 +16,7 @@ export const EntryProvider = ({ children }) => {
       .get("/api/entry/entry", {
         headers: {
           Authorization: token,
+          credentials: "include",
         },
       })
       .then((res) => {

@@ -108,14 +108,19 @@ router.post(
         if (err) {
           return next(err);
         }
-        if (passportUser) {
-          console.log(passportUser);
-          const user = passportUser;
-          user.token = userLogin.generateJWT(user.email, user.id);
-          user.isOnline = true;
-          return res.json({ user: passportUser });
-        }
-        return res.status(400).json({ message: info });
+        req.login(passportUser, (err) => {
+          if (err) return next(err);
+          console.log("Request Login Succsess (passport-local)");
+
+          if (passportUser) {
+            console.log(passportUser);
+            const user = passportUser;
+            user.token = userLogin.generateJWT(user.email, user.id);
+            user.isOnline = true;
+            return res.json({ user: passportUser });
+          }
+          return res.status(400).json({ message: info });
+        });
       }
     )(req, res, next);
   })

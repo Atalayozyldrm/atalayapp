@@ -47,12 +47,14 @@ export default function EditProfile(props) {
         </div>
         <div className="card-bg  code-bg-edit h-full"></div>
         <div className="profile-image-card-edit">
-          <img
-            className="rounded-full profile-image-card-edit"
-            src="https://scontent.fsaw2-1.fna.fbcdn.net/v/t1.6435-9/70043768_100756527983912_5331784942558904320_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=dFgzoTKqOwQAX9934DE&_nc_ht=scontent.fsaw2-1.fna&oh=00_AT8xbx7wwELh-Wej1SlC2wVZmK9X4pIDdIZGs3qGAZ_Qgw&oe=6323F446"
-            width={100}
-            height={100}
-          />
+          {!user.profile_image ? null : (
+            <img
+              className="rounded-full profile-image-card-edit"
+              src={user.profile_image}
+              width={100}
+              height={100}
+            />
+          )}
           <div className="add none"></div>
         </div>
         <div className="w-full flex justify-center align-center flex-col  relative s  p-10 margin-auto  ">

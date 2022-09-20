@@ -38,28 +38,20 @@ export default function Profile() {
             <ProfileEdit show={edit} />
             {show ? <EditProfile show={edit} toggle={edit} /> : null}
             <div className="profile-image-card">
-              <img
-                className="rounded-full"
-                src={user.profile_image ? user.profile_image : null}
-                width={100}
-                height={100}
-                alt="profile"
-              />
+              {!user.profile_image ? null : (
+                <img
+                  className="rounded-full"
+                  src={user.profile_image ? user.profile_image : null}
+                  width={100}
+                  height={100}
+                  alt="profile"
+                />
+              )}
             </div>
             <div className="flex flex-wrap">
               <div className="text-xl text-bold profile-text ">{user.name}</div>
               <div className="profile-content relative">
-                {/* {" "}
-                {!profile ? (
-                  !profile.content ? null : (
-                    <SkeletonTheme baseColor="#202020" highlightColor="#444">
-                      <Skeleton count={1} width="150px" />
-                      <Skeleton count={1} width="250px" />
-                    </SkeletonTheme>
-                  )
-                ) : (
-                  profile.content
-                )}{" "} */}
+                {!profile ? null : !profile.content ? null : profile.content}
               </div>
             </div>
           </div>

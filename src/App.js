@@ -21,12 +21,10 @@ import { Register } from "./context/RegisterContext.js";
 import EntryDetail from "./components/pages/EntryDetail.js";
 import ProfilDetail from "./components/pages/ProfilDetail.js";
 import { AddCommentProvider } from "./context/Comment";
-import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const { token } = userAuth();
-  const uid = uuidv4();
-  console.log(uid);
+
   return (
     <Routes>
       <Route

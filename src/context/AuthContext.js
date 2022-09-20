@@ -21,6 +21,7 @@ export const AuthContextProvider = ({ children }) => {
       redirect: "follow",
       header: {
         "accept ": "application/json",
+        credentials: "include",
       },
       data: {
         user: {
@@ -49,7 +50,7 @@ export const AuthContextProvider = ({ children }) => {
   const registerUser = async (email, password, name) => {
     await axios("/api/auth/register", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", credentials: "include" },
       data: {
         user: {
           email: email,
@@ -78,7 +79,11 @@ export const AuthContextProvider = ({ children }) => {
       return console.log("Refresh token");
     }
     const data = await axios(`/api/auth/verify/${userId}`, {
-      headers: { Authorization: token, withCredentials: true },
+      headers: {
+        Authorization: token,
+        withCredentials: true,
+        credentials: "include",
+      },
     })
       .then((res) => {
         const resData = Object.assign(res.data.user);
@@ -96,17 +101,15 @@ export const AuthContextProvider = ({ children }) => {
 
     return true;
   };
-  const logoutProccsess = () => {
-    axios("/api/auth/logout")
-      .then((res) => {
-        const cookie = new Cookies();
-        cookie.remove("acsess_token");
-        cookie.remove("id");
-        setToken(null);
-        setUser(null);
-        navigate("/");
-      })
-      .catch((err) => console.log(err));
+  const logoutProccsess = async () => {
+    const cookie = new Cookies();
+
+    await axios("/api/auth/logout");
+    cookie.remove("acsess_token");
+    cookie.remove("id");
+    setToken(null);
+    setUser(null);
+    navigate("/");
   };
   useEffect(() => {
     isLoggedIn();

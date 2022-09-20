@@ -40,6 +40,7 @@ export default function Homepage() {
                 profile={`/profile/${d[1].authorId}`}
                 content={d[1].entry}
                 procsess={d[1]._id}
+                profileImage={d[1].authorImage}
                 link={`/entry/${d[1]._id}`}
                 author={d[1].author}
                 title={d[1].title}
