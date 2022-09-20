@@ -11,9 +11,11 @@ export const EntryProvider = ({ children }) => {
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
 
+  const client = "https://atalayapp.herokuapp.com";
+
   const getAll = async () => {
     const entry = await axios
-      .get("/api/entry/entry", {
+      .get(`${client}/api/entry/entry`, {
         headers: {
           Authorization: token,
           credentials: "include",

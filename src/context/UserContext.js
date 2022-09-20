@@ -22,9 +22,11 @@ export const UserProvider = ({ children }) => {
 
   const id = cookie.get("id");
 
+  const client = "https://atalayapp.herokuapp.com";
+
   const getProfile = async (id) => {
     const data = await axios
-      .get(`/api/user/profile/${id}`, {
+      .get(`${client}/api/user/profile/${id}`, {
         headers: {
           Authorization: token,
         },
@@ -36,7 +38,7 @@ export const UserProvider = ({ children }) => {
 
   axios.defaults.headers.common["X-CSRF-Token"] = csrf;
   const updateProfile = async (id, content, name) => {
-    const prof = await axios("/api/user/content/edit", {
+    const prof = await axios(`${client}/api/user/content/edit`, {
       method: "POST",
       headers: {
         Authorization: token,

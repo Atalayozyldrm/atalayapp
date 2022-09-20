@@ -13,6 +13,8 @@ export default function CommentForm(props) {
   const cookie = new Cookie();
   const token = cookie.get("acsess_token");
 
+  const client = "https://atalayapp.herokuapp.com";
+
   const close = () => {
     props.close();
   };
@@ -22,7 +24,7 @@ export default function CommentForm(props) {
   };
 
   const sendRequest = async () => {
-    await axios("/api/entry/reply", {
+    await axios(`${client}/api/entry/reply`, {
       method: "POST",
       headers: { Authorization: token },
       data: {
@@ -40,7 +42,7 @@ export default function CommentForm(props) {
   };
 
   const get = async () => {
-    const response = await axios.get("/api/csrf");
+    const response = await axios.get(`${client}/api/csrf`);
     axios.defaults.headers.common["X-CSRF-Token"] = response.data.csrf;
   };
 

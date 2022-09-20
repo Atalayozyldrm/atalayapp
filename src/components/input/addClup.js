@@ -15,6 +15,9 @@ export default function AddClupPopup(props) {
   const navigate = useNavigate();
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
+
+  const client = "https://atalayapp.herokuapp.com";
+
   const popup = () => {
     props.toggle();
   };
@@ -25,7 +28,7 @@ export default function AddClupPopup(props) {
     setEntry(e.target.value);
   };
   const post = () => {
-    axios("/api/entry/add", {
+    axios(`${client}/api/entry/add`, {
       method: "POST",
       headers: {
         Authorization: token,

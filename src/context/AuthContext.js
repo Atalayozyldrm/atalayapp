@@ -13,9 +13,10 @@ export const AuthContextProvider = ({ children }) => {
   const cookie = new Cookies();
 
   const navigate = useNavigate();
+  const client = "https://atalayapp.herokuapp.com";
 
   const authLogin = (email, password) => {
-    axios("/api/auth/login", {
+    axios(`${client}/api/auth/login`, {
       method: "POST",
       mode: "cors",
       redirect: "follow",
@@ -42,13 +43,10 @@ export const AuthContextProvider = ({ children }) => {
       .catch((err) => toast("kullancı adın veya eposta yanlış "));
   };
   const authLoginFacebook = async () => {
-    await window.open(
-      "https://localhost:5500/api/auth/login/facebook",
-      "_self"
-    );
+    await window.open(`${client}/api/auth/login/facebook`, "_self");
   };
   const registerUser = async (email, password, name) => {
-    await axios("/api/auth/register", {
+    await axios(`${client}/api/auth/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json", credentials: "include" },
       data: {
@@ -78,7 +76,7 @@ export const AuthContextProvider = ({ children }) => {
     if (!user) {
       return console.log("Refresh token");
     }
-    const data = await axios(`/api/auth/verify/${userId}`, {
+    const data = await axios(`${client}/api/auth/verify/${userId}`, {
       headers: {
         Authorization: token,
         withCredentials: true,
@@ -104,7 +102,7 @@ export const AuthContextProvider = ({ children }) => {
   const logoutProccsess = async () => {
     const cookie = new Cookies();
 
-    await axios("/api/auth/logout");
+    await axios(`${client}/api/auth/logout`);
     cookie.remove("acsess_token");
     cookie.remove("id");
     setToken(null);

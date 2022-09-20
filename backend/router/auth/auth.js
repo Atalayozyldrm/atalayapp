@@ -13,7 +13,7 @@ const router = express.Router();
 const authOP = auth.optional;
 const client = "http://localhost:3000/";
 const clienthome =
-  "http://localhost:5500/api/auth/login/google/redirect/succsess";
+  "https://atalayapp.herokuapp.com/api/auth/login/google/redirect/succsess";
 
 router.get("/login", (req, res, next) => {
   res.send("nah 😊");
