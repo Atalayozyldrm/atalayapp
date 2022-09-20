@@ -36,7 +36,7 @@ export default function CommentForm(props) {
         },
       },
     });
-    navigate();
+    navigate(0);
   };
 
   const get = async () => {

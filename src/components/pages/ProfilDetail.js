@@ -24,17 +24,15 @@ export default function ProfilDetail() {
           Authorization: token,
         },
       })
-      .then((atalay) => {
-        const profile = Object.assign(atalay.data.profile);
-        setUser(profile);
-      })
       .catch((err) => {
-        console.log(err);
         toast.error(
           "Upps sunucu hata verdi tekrar giriş yap ? Tamam yönlendiriyorum ."
         );
         logoutProccsess();
       });
+    const profile = Object.assign(data.data.profile[0]);
+    setUser(profile);
+    console.log(profile);
   };
   useEffect(() => {
     if (userId === id) {
@@ -77,7 +75,9 @@ export default function ProfilDetail() {
               )}
             </div>
             <div className="flex flex-wrap">
-              <div className="text-xl text-bold profile-text"></div>
+              <div className="text-xl text-bold profile-text">
+                {userData.name}
+              </div>
               <div className="profile-content relative">{userData.content}</div>
             </div>
           </div>

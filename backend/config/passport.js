@@ -7,6 +7,7 @@ import GoogleStrategy from "passport-google-oauth20";
 import FacebookStrategy from "passport-facebook";
 import User from "../model/user.js";
 import bcrypt from "bcryptjs";
+import Profile from "../model/profile.js";
 
 const uid = uuidv4();
 const ip = address.ip();
@@ -56,6 +57,14 @@ passport.use(
           profile_image: user.photos[0].value,
           token: accessToken,
           location: user._json.locale,
+        });
+        const Id = await User.find({ email: user.emails[0].value });
+        await Profile.create({
+          name: user.displayName,
+          authorId: Id[0]._id,
+          token: accessToken,
+          content: "",
+          email: user.emails[0].value,
         });
         return done(null, userG);
       }

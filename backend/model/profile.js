@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const profile = new mongoose.Schema({
   token: { type: String, required: true },
   authorId: { type: String, required: true },
+  email: String,
   image: { type: String },
   name: String,
   content: String,

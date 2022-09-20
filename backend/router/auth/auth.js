@@ -4,8 +4,8 @@ import address from "address";
 import auth from "../../middleware/auth/auth.js";
 import User from "../../model/user.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
 import { v4 as uuidv4 } from "uuid";
+import Profile from "../../model/profile.js";
 import asyncHandler from "express-async-handler";
 
 const router = express.Router();
@@ -40,6 +40,11 @@ router.post(
     registerUser.ipAdress = ip;
     registerUser.password = await bcrypt.hash(registerUser.password, salt);
     registerUser.token = registerUser.generateJWT(user.email, id);
+    const profileAuthor = await Profile.create({
+      name: user.name,
+      authorId: registerUser._id,
+      token: registerUser.token,
+    });
     return registerUser.save().then(() => res.json({ user: registerUser }));
   })
 );

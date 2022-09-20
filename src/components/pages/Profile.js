@@ -11,7 +11,7 @@ import Navbar from "../navbar/Navbar.js";
 export default function Profile() {
   const { user } = userAuth();
   const { edit, show } = userContent();
-  const { profile } = userData();
+  const { profile, content } = userData();
   return (
     <>
       <Navbar className="atalay" />

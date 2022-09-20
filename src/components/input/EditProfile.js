@@ -2,15 +2,17 @@ import React, { useEffect, useState } from "react";
 import { userAuth } from "../../context/AuthContext.js";
 import { userData } from "../../context/UserContext.js";
 import getCsrf from "../../service/auth/csrf.js";
+import Cookies from "universal-cookie";
 
 export default function EditProfile(props) {
   const [NickVal, setNickValue] = useState("null");
   const [AddVal, setAddValue] = useState("null");
 
   const { user } = userAuth();
-  const { updateProfile } = userData();
+  const { updateProfile, atalay } = userData();
 
-  const id = user._id;
+  const cookie = new Cookies();
+  const id = cookie.get("id");
 
   const popup = () => {
     props.toggle();
@@ -20,6 +22,7 @@ export default function EditProfile(props) {
   };
   const EditProfileH = () => {
     updateProfile(id, AddVal, NickVal);
+    atalay(AddVal);
   };
 
   useEffect(() => {

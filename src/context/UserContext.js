@@ -7,6 +7,12 @@ const UserContext = React.createContext();
 
 export const UserProvider = ({ children }) => {
   const [profile, setProfile] = useState({});
+  const [content, setContent] = useState("");
+
+  const atalay = (a) => {
+    setContent(a);
+  };
+
   const cookie = new Cookie();
 
   const token = cookie.get("acsess_token");
@@ -30,30 +36,33 @@ export const UserProvider = ({ children }) => {
 
   axios.defaults.headers.common["X-CSRF-Token"] = csrf;
   const updateProfile = async (id, content, name) => {
-    const prof = await axios
-      .post("/api/user/content/edit", {
-        headers: {
-          Authorization: token,
-          credentials: "include",
-        },
+    const prof = await axios("/api/user/content/edit", {
+      method: "POST",
+      headers: {
+        Authorization: token,
+        credentials: "include",
+      },
+      data: {
         user: {
           id: id,
           content: content,
-          name: !name ? user.name : name,
+          name: user.name || name,
           token: token,
           image: user.profile_image || null,
         },
-      })
-      .then((res) => {
-        const data = Object.entries(res.data);
-        setProfile(data);
-      });
+      },
+    }).then((res) => {
+      const data = Object.entries(res.data);
+      setProfile(data[0][1]);
+    });
   };
   useEffect(() => {
     getProfile(id);
   }, []);
   return (
-    <UserContext.Provider value={{ updateProfile, profile, getProfile }}>
+    <UserContext.Provider
+      value={{ updateProfile, profile, atalay, getProfile, content }}
+    >
       {children}
     </UserContext.Provider>
   );

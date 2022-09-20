@@ -83,10 +83,10 @@ export default function EntryDetail(props) {
               <Entry
                 titleClass={"title-2"}
                 className={
-                  "bg-[#36393f] justify-center sm:w-36   top-10 p-18 relative sm:p-0 w-full code-124 algin-center md:w-80 flex-col h-auto flex"
+                  "bg-[#36393f] justify-center   top-10 p-18 relative sm:p-0 md:w-full code-124 algin-center  flex-col h-auto flex"
                 }
-                cardCss={"h-full flex flex-col w-full"}
-                // profileImage={user.profile_image}
+                cardCss={"h-full  flex flex-col w-full"}
+                // profileImage={entry.profile_image}
                 title={entry.title}
                 content={entry.entry}
                 author={entry.author}

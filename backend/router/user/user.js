@@ -18,15 +18,15 @@ router.post(
     const {
       body: { user },
     } = req;
-
     const id = user.id;
+
     const profile = new Profile();
     const oldProfile = await Profile.findOne({ authorId: id });
 
     if (!oldProfile) {
       profile.authorId = user.id;
       profile.content = user.content;
-      profile.token = user.token;
+      profile.token = user.tSoken;
 
       profile.save((succsess) => {
         return res.status(200).json({ message: succsess });
@@ -37,7 +37,7 @@ router.post(
       { $set: { content: user.content } },
       { new: true },
       (a) => {
-        return res.status(200).json({ message: "Ok" });
+        return res.status(200).json({ message: user });
       }
     ).clone();
   })
