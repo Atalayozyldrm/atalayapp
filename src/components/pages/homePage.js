@@ -4,6 +4,7 @@ import FrindesAdd from "../input/frindesAdd.js";
 import Entry from "../entry/entry.js";
 import { userEntry } from "../../context/EntryContext.js";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import toast, { Toaster } from "react-hot-toast";
 import AddClupPopup from "../input/addClup.js";
 import { userClup } from "../../context/ClupContext.js";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -16,6 +17,31 @@ export default function Homepage() {
   const { user } = userAuth();
   return (
     <>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 5000,
+          style: {
+            background: "#363636",
+            color: "#fff",
+          },
+
+          // Default options for specific types
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "green",
+              secondary: "black",
+            },
+          },
+        }}
+      />
       <Navbar />
       <section className="w-full h-full ">
         <FrindesAdd />

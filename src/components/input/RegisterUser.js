@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import { userAuth } from "../../context/AuthContext.js";
 import axios from "axios";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
@@ -19,6 +19,7 @@ export default function RegisterPopup(props) {
   const { registerUser } = userAuth();
 
   const captchaRef = useRef(null);
+
   const onLoad = () => {
     captchaRef.current.execute();
   };
@@ -59,7 +60,7 @@ export default function RegisterPopup(props) {
       !clearPassword &&
       !clearName
     ) {
-      toast.warn("Boş bırakma !");
+      toast.error("Boş bırakma !");
     }
 
     axios.defaults.headers.common["H-Chaptca"] = token;
@@ -73,7 +74,7 @@ export default function RegisterPopup(props) {
         if (res.data.message === true) {
           registerUser(clearEmail, clearPassword, clearName);
         } else {
-          toast("Validation error !");
+          toast.error("Validation error !");
         }
       })
       .catch((err) => console.log(err));

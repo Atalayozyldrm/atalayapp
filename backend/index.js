@@ -8,10 +8,13 @@ import { default as connectMongoDBSession } from "connect-mongodb-session";
 import cors from "cors";
 import csrf from "csurf";
 import cookieParser from "cookie-parser";
+import address from "address";
+import geo from "geoip-lite";
 import morgan from "morgan";
 import session from "express-session";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import expressAsyncHandler from "express-async-handler";
 
 const app = express();
 const MongoDBStore = connectMongoDBSession(session);
@@ -36,7 +39,7 @@ app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://atalayapp.herokuapp.com/",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -66,9 +69,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(csrf({ cookie: true }));
 
-app.get("/", (req, res, next) => {
-  res.status(200).send("This is server amına kodugum");
-});
+app.get(
+  "/",
+  expressAsyncHandler(async (req, res, next) => {
+    const ip = address.ip();
+    const data = await geo.lookup();
+    const a = JSON.stringify(data);
+    return res
+      .status(418)
+      .send(
+        "<center style='font-size:36px;'>Evine piza yollayımi lan oççç</center>" +
+          a
+      );
+  })
+);
+
 app.use("/api", router);
 
 app.listen(process.env.PORT || 5500, () =>

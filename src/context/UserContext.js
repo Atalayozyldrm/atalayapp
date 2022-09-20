@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import Cookie from "universal-cookie";
 import { userAuth } from "../context/AuthContext.js";
 
@@ -38,6 +39,7 @@ export const UserProvider = ({ children }) => {
 
   axios.defaults.headers.common["X-CSRF-Token"] = csrf;
   const updateProfile = async (id, content, name) => {
+    if (!content || name) return toast.error("Boş bırakma !");
     const prof = await axios(`${client}/api/user/content/edit`, {
       method: "POST",
       headers: {

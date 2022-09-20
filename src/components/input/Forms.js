@@ -13,6 +13,8 @@ export default function Forms(props) {
   const { authLogin } = userAuth();
   const { edit } = registerUser();
 
+  const client = "https://atalayapp.herokuapp.com/";
+
   const loginProccsess = async (e) => {
     if (!email && !password) return toast.warn("Boş bırakma 🤖");
     authLogin(email, password);
@@ -76,7 +78,7 @@ export default function Forms(props) {
               <div className="mr-3 p-1">
                 <a
                   className="relative googl "
-                  href="http://localhost:5500/api/auth/google"
+                  href={`${client}api/auth/google`}
                 >
                   <button className=" w-80 flex googlebutton aligin-center justify-center border-black border-2 text-black flex-row bg-white items-center text-white    rounded-md">
                     <img

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { userAuth } from "../../context/AuthContext.js";
 import Cookies from "universal-cookie";
 import Navbar from "../navbar/Navbar.js";
-import { toast, ToastContainer } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 export default function ProfilDetail() {
@@ -17,6 +17,7 @@ export default function ProfilDetail() {
   const navigate = useNavigate();
   const userId = cookie.get("id");
   const token = cookie.get("acsess_token");
+
   const getUser = async () => {
     const data = await axios
       .get(`/api/user/profile/${id}`, {
@@ -32,7 +33,6 @@ export default function ProfilDetail() {
       });
     const profile = Object.assign(data.data.profile[0]);
     setUser(profile);
-    console.log(profile);
   };
   useEffect(() => {
     if (userId === id) {
@@ -44,7 +44,31 @@ export default function ProfilDetail() {
     <>
       <Navbar />
       <div className="flex relative overflow-auto bg-profile h-full w-full">
-        <ToastContainer />
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          gutter={8}
+          containerClassName=""
+          containerStyle={{}}
+          toastOptions={{
+            // Define default options
+            className: "",
+            duration: 5000,
+            style: {
+              background: "#363636",
+              color: "#fff",
+            },
+
+            // Default options for specific types
+            success: {
+              duration: 3000,
+              theme: {
+                primary: "green",
+                secondary: "black",
+              },
+            },
+          }}
+        />
         <Link to="/home" replace>
           <svg
             xmlns="http://www.w3.org/2000/svg"

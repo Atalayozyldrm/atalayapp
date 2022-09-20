@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Cookies from "universal-cookie";
 import axios from "axios";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import LogoutProccsess from "../middleware/ErrorRedirect.js";
 
 const AuthContext = React.createContext();
@@ -13,7 +13,7 @@ export const AuthContextProvider = ({ children }) => {
   const cookie = new Cookies();
 
   const navigate = useNavigate();
-  const client = "https://atalayapp.herokuapp.com";
+  const client = "https://atalayapp.herokuapp.com/";
 
   const authLogin = (email, password) => {
     axios(`${client}/api/auth/login`, {
@@ -34,13 +34,14 @@ export const AuthContextProvider = ({ children }) => {
     })
       .then((res) => {
         axios.defaults.headers.common["Authorization"] = res.data.user.token;
+        toast.loading("Başarılı giriş yönlendiriliyor...");
         cookie.set("acsess_token", res.data.user.token);
         const data = Object.assign(res.data.user);
         setUser(data);
         cookie.set("id", data._id);
         setToken(data.token);
       })
-      .catch((err) => toast("kullancı adın veya eposta yanlış "));
+      .catch((err) => toast.error("kullancı adın veya eposta yanlış "));
   };
   const authLoginFacebook = async () => {
     await window.open(`${client}/api/auth/login/facebook`, "_self");
@@ -103,11 +104,11 @@ export const AuthContextProvider = ({ children }) => {
     const cookie = new Cookies();
 
     await axios(`${client}/api/auth/logout`);
-    cookie.remove("acsess_token");
-    cookie.remove("id");
-    setToken(null);
-    setUser(null);
-    navigate("/");
+    await cookie.remove("acsess_token");
+    await cookie.remove("id");
+    await setToken(null);
+    await setUser(null);
+    await navigate("/");
   };
   useEffect(() => {
     isLoggedIn();

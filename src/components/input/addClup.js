@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { userClup } from "../../context/ClupContext.js";
 import Cookies from "universal-cookie";
 import { userAuth } from "../../context/AuthContext.js";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 import anime from "animejs";
 import { useNavigate } from "react-router";
 
@@ -28,6 +28,9 @@ export default function AddClupPopup(props) {
     setEntry(e.target.value);
   };
   const post = () => {
+    if (!AddVal && !entry) {
+      return toast.error("Boş bırakma ");
+    }
     axios(`${client}/api/entry/add`, {
       method: "POST",
       headers: {
@@ -44,10 +47,11 @@ export default function AddClupPopup(props) {
       },
     })
       .then((res) => {
-        toast("Entryy yolllandııııı oleeeeyy 🚀");
+        toast.success("Entryy yolllandııııı oleeeeyy 🚀");
+        closePopup();
         navigate(0);
       })
-      .catch((err) => toast("Hata ile karşılaşıldı  tekrar dene 🤔"));
+      .catch((err) => toast.error("Hata ile karşılaşıldı  tekrar dene 🤔"));
   };
   const addClupValue = (e) => {
     setAddValue(e.target.value);
@@ -55,7 +59,6 @@ export default function AddClupPopup(props) {
   const addClupValueHook = () => {
     createClup(AddVal);
     post();
-    closePopup();
   };
   return (
     <>
