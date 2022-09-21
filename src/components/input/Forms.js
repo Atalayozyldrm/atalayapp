@@ -1,7 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import getCsrf from "../../service/auth/csrf.js";
+import toast, { Toaster } from "react-hot-toast";
 import { userAuth } from "../../context/AuthContext.js";
 import { registerUser } from "../../context/RegisterContext.js";
 
@@ -16,7 +15,7 @@ export default function Forms(props) {
   const client = "https://atalayapp.herokuapp.com/";
 
   const loginProccsess = async (e) => {
-    if (!email && !password) return toast.warn("Boş bırakma 🤖");
+    if (!email && !password) return toast("Boş bırakma 🤖");
     authLogin(email, password);
   };
   useEffect(() => {
@@ -24,18 +23,6 @@ export default function Forms(props) {
   });
   return (
     <>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-
       <div className="flex justify-center sanabendenbirtavsiyegel w-full">
         <div
           className="flex-col flex w-1/3    justify-center h-  max-w-2xl max-h-2xl "

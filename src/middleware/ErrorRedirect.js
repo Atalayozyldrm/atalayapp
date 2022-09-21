@@ -1,5 +1,5 @@
 import Cookie from "universal-cookie";
-import { toast } from "react-toastify";
+import toast, { Toaster } from "react-hot-toast";
 const cookie = new Cookie();
 
 const LogoutProccsess = () => {

@@ -73,7 +73,7 @@ app.get(
   "/",
   expressAsyncHandler(async (req, res, next) => {
     const ip = address.ip();
-    const data = await geo.lookup();
+    const data = await geo.lookup(6);
     const a = JSON.stringify(data);
     return res
       .status(418)
