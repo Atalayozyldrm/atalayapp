@@ -42,6 +42,7 @@ app.use(
     origin: "https://atalayapp.herokuapp.com/",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
 app.use(express.urlencoded({ extended: true }));
@@ -73,7 +74,7 @@ app.get(
   "/",
   expressAsyncHandler(async (req, res, next) => {
     const ip = address.ip();
-    const data = await geo.lookup(6);
+    const data = await geo.lookup(ip);
     const a = JSON.stringify(data);
     return res
       .status(418)

@@ -8,7 +8,7 @@ const LogoutProccsess = () => {
   cookie.remove("id");
   toast.error("Bir hata  ile karşılaşıldı. Çıkış yapılıyor...");
   setTimeout(() => {
-    window.location.href = "/";
+    window.location.href = "/login";
   }, 1000);
 };
 

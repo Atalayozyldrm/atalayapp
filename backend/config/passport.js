@@ -42,7 +42,8 @@ passport.use(
     {
       clientID: data.web.client_id,
       clientSecret: data.web.client_secret,
-      callbackURL: "http://localhost:5500/api/auth/login/google/callback",
+      callbackURL:
+        "https://atalayapp.herokuapp.com//api/auth/login/google/callback",
     },
     async (accessToken, refreshToken, user, done) => {
       const userGoogle = await User.findOne({

@@ -59,9 +59,8 @@ export default function Homepage() {
           ) : (
             post.map((d, a) => (
               <Entry
-                cardCss={"amkCardı"}
                 titleClass={"title"}
-                className={"entry m-4 slm code-123  code-0x1 h-auto"}
+                className={"entry m-4 slm code-123 amkCardı h-auto"}
                 key={a}
                 profile={`/profile/${d[1].authorId}`}
                 content={d[1].entry}

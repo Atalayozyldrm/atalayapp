@@ -1,6 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -8,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 .googlebutton {
   height: 50px;
   border-radius: 5px;
@@ -35,6 +39,38 @@ code {
   border: 2px solid black;
   border-radius: 50px;
   transition: all 0.2 ease-in-out;
+}
+.Navbar-home {
+  width: 100vh;
+  position: relative;
+  right: -20vh;
+}
+.entry_10 {
+  width: 100%;
+}
+
+.text-atalay {
+  position: relative;
+  color: rgb(6 182 212);
+  top: 100px;
+  font-weight: 800;
+  font-size: 44px;
+  font-size: clamp(24px, 5vw, 44px);
+  line-height: 95%;
+  text-transform: uppercase;
+  text-rendering: geometricPrecision;
+}
+.signup {
+  background-color: transparent;
+  border: 2px solid black;
+  width: 150px;
+  height: 50px;
+  padding: 5px;
+  outline: none;
+  border-radius: 25px;
+}
+.signup:hover {
+  background-color: #fde047;
 }
 .btn-amnakodugumbuttonu {
   position: absolute;
@@ -324,10 +360,68 @@ code {
   color: black;
 }
 .code-0x1 {
-  border: 2px solid white;
+  border: 3px solid white;
 }
-.code-0x2 {
-  border: 3px solid white border-;
+.amkCardı {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: calc(2 * 3);
+}
+.amkCardı {
+  background: #1d1f20;
+  position: relative;
+  border-radius: 3px;
+}
+
+.amkCardı:after {
+  content: "";
+  position: absolute;
+  top: calc(-1 * 3);
+  left: calc(-1 * 3);
+  inset: -3px;
+  height: calc(100% + 3 * 2);
+  width: calc(100% + 3 * 2);
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  z-index: -1;
+  border-radius: 10px;
+  animation: anim 3s ease alternate infinite;
+  background-size: 300% 300%;
+}
+.z {
+  z-index: 100;
+}
+.card-one {
+  position: relative !important;
+  width: 100%;
+  top: 35vh;
+}
+.card_amk_cardını {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  left: 5rem;
+  padding-top: 5px;
+  padding-left: 1.5rem;
+  width: 40vh;
+  min-height: 30vh;
+}
+
+.a {
+  width: 70%;
+  position: relative;
+  left: -11.5vh;
 }
 .AtA11 {
   background-color: #36393f;
@@ -354,6 +448,9 @@ code {
   left: 35px;
   box-sizing: content-box;
 }
+.ata {
+  margin-top: 3px;
+}
 .profile-text {
   position: relative;
   top: -40px;
@@ -372,6 +469,19 @@ code {
 span {
   cursor: pointer;
 }
+/*Animations */
+@keyframes anim {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Responsive design  */
 @media (max-width: 768px) and (max-width: 1000px) {
   .nereninhavasıbuguzelim {
@@ -557,5 +667,10 @@ span {
     position: relative;
     left: 10px;
     top: 20px;
+  }
+  .resp_home {
+    display: flex;
+    flex-direction: column !important;
+    height: auto;
   }
 }

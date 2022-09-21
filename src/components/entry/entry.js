@@ -26,6 +26,7 @@ const contentLoader = (content, url) => {
 
 export default function Entry(props) {
   const { popup } = userComment();
+  const path = window.location.pathname;
   return (
     <>
       <div className={props.className}>
@@ -44,7 +45,12 @@ export default function Entry(props) {
             {contentLoader(props.content, props.link)}
           </div>
           <div className="relative flex flex-row justify-end mr-9 cursor-pointer">
-            <BiComment onClick={popup} className="mr-3 mt-0.5" />
+            <BiComment
+              onClick={
+                path === "/" ? console.log("sözler şerefsiz oldu") : popup
+              }
+              className="mr-3 mt-0.5"
+            />
             <FcLikePlaceholder />
           </div>
           <div className="w-auto flex-wrap ml-2 OxA-mobile h-full align-end flex  ">

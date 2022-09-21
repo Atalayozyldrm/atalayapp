@@ -104,7 +104,7 @@ export default function EntryDetail(props) {
                 <EntryComment
                   titleClass={"title-2"}
                   className={
-                    "comment mt-36 justify-center algin-center sm:flex-col  md:flex-col h-auto flex"
+                    "comment mt-36 justify-center algin-center sm:flex-col amkCardı md:flex-col h-auto flex"
                   }
                   key={a}
                   // profileImage={d[1].profile_image}

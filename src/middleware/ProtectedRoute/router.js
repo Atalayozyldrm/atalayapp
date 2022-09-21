@@ -4,6 +4,10 @@ import { userAuth } from "../../context/AuthContext.js";
 
 const ProtectedRoute = ({ children }) => {
   const { token, GoogleToken } = userAuth();
-  return token || GoogleToken ? children : <Navigate to="/" replace={true} />;
+  return token || GoogleToken ? (
+    children
+  ) : (
+    <Navigate to="/login" replace={true} />
+  );
 };
 export default ProtectedRoute;

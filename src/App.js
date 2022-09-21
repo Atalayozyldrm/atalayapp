@@ -21,6 +21,7 @@ import { Register } from "./context/RegisterContext.js";
 import EntryDetail from "./components/pages/EntryDetail.js";
 import ProfilDetail from "./components/pages/ProfilDetail.js";
 import { AddCommentProvider } from "./context/Comment";
+import LandigPage from "./pages/LandigPage";
 
 function App() {
   const { token } = userAuth();
@@ -29,7 +30,7 @@ function App() {
     <Routes>
       <Route
         exact
-        path="/"
+        path="/login"
         element={
           !token ? (
             token ? (
@@ -42,6 +43,15 @@ function App() {
           ) : (
             <Navigate to="/home" excat />
           )
+        }
+      />
+      <Route
+        path="/"
+        excat
+        element={
+          <AddCommentProvider>
+            <LandigPage />
+          </AddCommentProvider>
         }
       />
       <Route path="*" element={<Notfound />} />
