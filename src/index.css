@@ -7,6 +7,36 @@ html {
 ::-webkit-scrollbar {
   width: 10px;
 }
+footer {
+  height: 40vh;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+  transition: all;
+  animation: anim 3s ease alternate infinite;
+}
+.landig-topHeader {
+  background-color: #36393f !important;
+  align-items: center;
+  top: 15vh;
+  height: 300px;
+  width: 85% !important;
+  min-width: 200px;
+  align-content: center;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  border-radius: 10px !important;
+  position: relative;
+}
 ::-webkit-scrollbar-thumb {
   background: #18191c;
   border-radius: 10px;
@@ -30,7 +60,10 @@ body {
   padding-left: 42px;
   padding-right: 42px;
 }
-
+.t {
+  position: relative;
+  margin-top: 14vh;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -520,7 +553,7 @@ span {
     top: -24px;
   }
   .code-123 {
-    max-width: 286px;
+    max-width: 280px;
     height: auto;
     flex-wrap: wrap;
   }
@@ -689,11 +722,35 @@ span {
   }
   .card_amk_cardını {
     margin: auto;
-
     width: 30vh !important;
     margin-top: 20px !important;
   }
   .responsive_mobile_navbar {
     display: none !important;
+  }
+  .landig-topHeader {
+    background-color: transparent;
+    display: flex;
+    padding: 3px;
+    top: 30px !important;
+    justify-content: start;
+    align-items: flex-start;
+    margin-top: 5px;
+    width: 95% !important;
+  }
+  .landig-topHeader > span {
+    margin-top: 25px;
+  }
+  .atly {
+    width: 70% !important;
+    font-size: 0.7em !important;
+    font-weight: 300 !important;
+    top: -9rem;
+  }
+  .loginButton {
+    display: block;
+  }
+  .atalay-entry {
+    margin-top: -10px !important;
   }
 }

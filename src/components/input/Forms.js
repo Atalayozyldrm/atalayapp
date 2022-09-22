@@ -77,9 +77,27 @@ export default function Forms(props) {
                     </span>
                   </button>
                 </a>
-                <a className="relative googl mb-3 " href={`#`}>
-                  <button className=" w-80 flex googlebutton aligin-center mt-3 justify-center border-black border-2 text-black flex-row bg-white items-center  rounded-md">
-                    <span className="text-black mr-5">
+                <a
+                  className="relative googl mb-3 bg-[#3b5998] hover:bg-[#3b5998]/90 "
+                  href={`#`}
+                >
+                  <button className=" focus:ring-[#3b5998]/50 w-80 flex  googlebutton aligin-center mt-3 justify-center    flex-row bg-[#3b5998]  items-center  rounded-md">
+                    <span className="text-white  flex justify-center w-full font-medium text-sm flex-row">
+                      <svg
+                        class="mr-2 mt-0 -ml-1 w-6 h-6"
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fab"
+                        data-icon="facebook-f"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512"
+                      >
+                        <path
+                          fill="currentColor"
+                          d="M279.1 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.4 0 225.4 0c-73.22 0-121.1 44.38-121.1 124.7v70.62H22.89V288h81.39v224h100.2V288z"
+                        ></path>
+                      </svg>
                       Facebook ile giriş yap
                     </span>
                   </button>
@@ -87,7 +105,7 @@ export default function Forms(props) {
                 <a className="relative googl mb-3 " href={`#`}>
                   <button
                     disabled
-                    className=" w-80 flex googlebutton aligin-center mt-3 justify-center border-black border-2 text-black flex-row bg-white items-center  rounded-md"
+                    className=" w-80 flex googlebutton aligin-center mt-3 justify-center r border-black border-2 text-black flex-row bg-white items-center  rounded-md"
                   >
                     <span className="text -black mr-5">
                       Metamask ile giriş yap

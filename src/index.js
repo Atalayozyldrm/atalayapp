@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
+import "animate.css";
 import "react-loading-skeleton/dist/skeleton.css";
 import App from "./App.js";
 import reportWebVitals from "./reportWebVitals.js";
