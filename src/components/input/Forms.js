@@ -33,7 +33,7 @@ export default function Forms(props) {
           <div>
             <input type="hidden" />
             <input
-              className=" p-1 m-1 shadow-2xl inp block w-80 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md shadow-2xl"
+              className=" p-1 m-1 shadow-2xl inp block w-80 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md "
               placeholder="Email"
               type="email"
               onChange={(e) => {
@@ -53,13 +53,10 @@ export default function Forms(props) {
             />
             <div className="text-center  flex flex-col mt-4 w-80">
               <button
-                className="flex flex-row  rounded-md p-2 m-1 mt-4  text-black btn2 btn m-1 text-center justify-center  w-full  shadow-2xl  bg-white text-center"
+                className="flex flex-row  rounded-md p-2 m-1 mt-4  text-black btn2 btn justify-center  w-full  shadow-2xl  bg-white text-center"
                 onClick={loginProccsess}
               >
-                <span className="flex justify-center align-center ">
-                  {" "}
-                  Giriş yap
-                </span>
+                <span> Giriş yap</span>
               </button>
               <p className="flex justify-center mt-4"> Veya </p>
               <div className="mr-3 p-1">
@@ -67,7 +64,7 @@ export default function Forms(props) {
                   className="relative googl "
                   href={`${client}api/auth/google`}
                 >
-                  <button className=" w-80 flex googlebutton aligin-center justify-center border-black border-2 text-black flex-row bg-white items-center text-white    rounded-md">
+                  <button className=" w-80 flex googlebutton aligin-center justify-center border-black border-2 text-black flex-row bg-white items-center    rounded-md">
                     <img
                       src="https://developers.google.com/static/identity/images/g-logo.png"
                       alt="google"
@@ -77,6 +74,23 @@ export default function Forms(props) {
                     />
                     <span className="text-black mr-5">
                       Google ile giriş yap
+                    </span>
+                  </button>
+                </a>
+                <a className="relative googl mb-3 " href={`#`}>
+                  <button className=" w-80 flex googlebutton aligin-center mt-3 justify-center border-black border-2 text-black flex-row bg-white items-center  rounded-md">
+                    <span className="text-black mr-5">
+                      Facebook ile giriş yap
+                    </span>
+                  </button>
+                </a>
+                <a className="relative googl mb-3 " href={`#`}>
+                  <button
+                    disabled
+                    className=" w-80 flex googlebutton aligin-center mt-3 justify-center border-black border-2 text-black flex-row bg-white items-center  rounded-md"
+                  >
+                    <span className="text -black mr-5">
+                      Metamask ile giriş yap
                     </span>
                   </button>
                 </a>
