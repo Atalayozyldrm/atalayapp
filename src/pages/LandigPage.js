@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Link } from "react-router-dom";
+import QRCode from "qrcode.react";
 import Entry from "../components/entry/entry";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -19,24 +20,30 @@ export default function LandigPage() {
             <a href="#section2">
               <div className="mr-5 event">Güvenlik</div>
             </a>
-            <Link to="#section3">
+            <a href="#section3">
               <div className=" mr-5 event">Destek</div>
-            </Link>
+            </a>
           </div>
         </div>
-
         <Link to="/login">
           <div className="w-36 rounded-lg p-2 font-bold hover:bg-red align-end m-4  relative">
             <button
               type="button"
-              class="text-white hover:text-gray-900  bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+              className="text-white hover:text-gray-900 bg-gradient-to-r  from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >
               Giriş yap
             </button>
           </div>
         </Link>
       </div>
-      <div></div>
+      <div className="w-36 rounded-lg p-2 mobile-Bt  font-bold hover:bg-red OYLEDERTLİ align-end m-4  relative">
+        <button
+          type="button"
+          className="text-white hover:text-gray-900  bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+        >
+          Giriş yap
+        </button>
+      </div>
       <div className="relative flex i flex-col animate__fadeIn animate__delay__9  animate__animated z w-full h-auto ">
         <div className="entry_101 relative t text-center h-52 ">
           {" "}
@@ -99,7 +106,7 @@ export default function LandigPage() {
             {" "}
             Güvenli{" "}
           </p>
-          <span className="w-52 mt-5">
+          <span className="w-52 asa mt-5">
             Tüm verileriniz sha256 şifreleme yöntemi ile şifreleniyor{" "}
           </span>
         </div>
@@ -107,11 +114,11 @@ export default function LandigPage() {
           className="card_amk_cardını amkCardı z   bg-wihte shadow-md   rounded-md"
           id="section2"
         >
-          <p className="text-black mt-5 e text-2xl card-title font-bold tracking-tight">
+          <p className="text-black mt-5 e  asa text-2xl card-title font-bold tracking-tight">
             {" "}
             {"Hayal gücünü kullan ! "}
           </p>
-          <span className="w-52 mt-5">
+          <span className="w-52 asa  mt-5">
             {"Şahsen fazla da abartma sikerim belanı"}{" "}
           </span>
         </div>
@@ -130,7 +137,44 @@ export default function LandigPage() {
           </span>
         </div>
       </div>
-      <footer className="w-full relative shadow-md "></footer>
+      <footer className="w-full relative shadow-md " id="section3">
+        <div className="flex  h-full items-center sm:left-16  content-center w-full">
+          <ul className="flex flex-col w-54 relative  qrCode left-8 ">
+            <li className="mt-2 ">
+              <QRCode
+                renderAs="canvas"
+                className="qrCode"
+                value="https://www.instagram.com/atalay.ozyildirim/"
+              />
+            </li>
+            <li className="hover:text-black atalay-Text">
+              Created by Atalay Özyıldırım
+            </li>
+          </ul>
+          <div className="flex-row w-Set OxA-6 m-auto flex">
+            <div className="flex w-full flex-row justify-around">
+              <ul className="cursor-pointer mr-6">
+                <li className="text-black mt-4">Ürün</li>
+                <li className="">Hakkında</li>
+                <li className="">Durum</li>
+              </ul>
+              <ul className="cursor-pointer mr-6">
+                <li className="text-black mt-4">Şirket</li>
+                <li className="">Marka</li>
+                <li className="">I am now rich</li>
+              </ul>
+              <ul className="cursor-pointer mr-6">
+                <li className="text-black mt-4">İlkeler</li>
+                <li className="">Koşullar</li>
+                <li className="">Gizlilik</li>
+                <li>Çerez Ayaraları</li>
+                <li>Lisanslar</li>
+                <li>Moderasyon</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

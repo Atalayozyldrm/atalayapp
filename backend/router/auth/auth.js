@@ -11,9 +11,12 @@ import asyncHandler from "express-async-handler";
 const router = express.Router();
 
 const authOP = auth.optional;
-const client = "http://localhost:3000/";
+const client = "https://atalay.netlify.app/login";
 const clienthome =
   "https://atalayapp.herokuapp.com/api/auth/login/google/redirect/succsess";
+
+const clientFacebook =
+  "https://atalayapp.herokuapp.com/api/auth/login/facebook/redirect/succsess";
 
 router.get("/login", (req, res, next) => {
   res.send("nah 😊");
@@ -54,15 +57,32 @@ router.get(
   passport.authenticate(
     "facebook",
     {
-      scope: ["email", "user_location"],
+      scope: ["profile", "email"],
     },
     {
       failureRedirect: client,
+      successRedirect: clientFacebook,
       failureMessage: true,
     }
   )
 );
-
+router.get(
+  "/login/facebook/redirect/succsess",
+  asyncHandler((req, res, next) => {
+    const id = req.user.id;
+    res.cookie("acsess_token", req.user.token);
+    res.cookie("id", id, { encode: String });
+    res.redirect(client);
+  })
+);
+router.get(
+  "/login/facebook/callback",
+  passport.authenticate("google", {
+    scope: ["profile", "email"],
+    successRedirect: clientFacebook,
+    failureRedirect: client,
+  })
+);
 router.get(
   "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })

@@ -43,7 +43,7 @@ passport.use(
       clientID: data.web.client_id,
       clientSecret: data.web.client_secret,
       callbackURL:
-        "https://atalayapp.herokuapp.com//api/auth/login/google/callback",
+        "https://atalayapp.herokuapp.com/api/auth/login/google/callback",
     },
     async (accessToken, refreshToken, user, done) => {
       const userGoogle = await User.findOne({
@@ -80,16 +80,33 @@ passport.use(
     {
       clientID: "1081876262446413",
       clientSecret: "0e18352d0e992d96ce0ff5b4bf37e5ec",
-      callbackURL: "https://www.localhost.com:5500/oauth2/redirect/facebook",
+      callbackURL:
+        "https://atalayapp.herokuapp.com/api/auth/login/facebook/callback",
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.find({ facebook_id: profile.id }, (user, err) => {
-        if (err) console.log(err);
+    async (accessToken, refreshToken, user, done) => {
+      const a = await User.find({ facebook_id: user.emails[0].value });
 
-        if (user) return done(null, user);
-
-        console.log(profile);
-      });
+      if (!a) {
+        const userG = await User.create({
+          name: user.displayName,
+          email: user.emails[0].value,
+          password: uid,
+          ip: ip,
+          profile_image: user.photos[0].value,
+          token: accessToken,
+          location: user._json.locale,
+        });
+        const Id = await User.find({ email: user.emails[0].value });
+        await Profile.create({
+          name: user.displayName,
+          authorId: Id[0]._id,
+          token: accessToken,
+          content: "",
+          email: user.emails[0].value,
+        });
+        return done(null, userG);
+      }
+      return done(null, a);
     }
   )
 );
