@@ -86,7 +86,7 @@ router.get(
 );
 router.get(
   "/login/facebook/callback",
-  passport.authenticate("google", {
+  passport.authenticate("facebook", {
     scope: ["profile", "email"],
     successRedirect: clientFacebook,
     failureRedirect: client,
@@ -102,6 +102,7 @@ router.get(
     scope: ["profile", "email"],
     successRedirect: clienthome,
     failureRedirect: client,
+    domain: "https://atalay.netlify.app",
   })
 );
 router.get(

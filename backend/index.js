@@ -36,22 +36,38 @@ app.use(
 app.use(limiter);
 
 app.use(cookieParser());
+app.set("trust proxy", true);
+
 app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
+
 app.use(
   cors({
-    origin: "https://atalay.netlify.app/",
+    origin: "https://atalay.netlify.app",
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
     optionsSuccessStatus: 200,
   })
 );
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://atalay.netlify.app");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  res.header("Access-Control-Allow-Credentials", "true");
+  next();
+});
+
 app.use((req, res, next) => {
   res.header("Set-Cookie", "HttpOnly;Secure;SameSite=None");
   next();
 });
+
 app.use(
   session({
     secret: config.sessionSecret,
@@ -71,8 +87,10 @@ app.use(
     }),
   })
 );
+
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(csrf({ cookie: true }));
 
 app.get(
