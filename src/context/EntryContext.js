@@ -14,15 +14,15 @@ export const EntryProvider = ({ children }) => {
   const client = "https://atalayapp.herokuapp.com";
 
   const getAll = async () => {
-    const entry = await axios
-      .get(`${client}/api/entry/entry`, {
-        headers: {
-          Authorization: token,
-          withCredentials: true,
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
-        },
-      })
+    const entry = await axios(`${client}/api/entry/entry`, {
+      method: "GET",
+      headers: {
+        Authorization: token,
+        withCredentials: true,
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+      },
+    })
       .then((res) => {
         const data = Object.entries(res.data.data);
         setPost(data);

@@ -3,7 +3,8 @@ import axios from "axios";
 const getCsrf = async () => {
   const client = "https://atalayapp.herokuapp.com/";
 
-  const response = await axios.get(`${client}api/csrf`, {
+  const response = await axios(`${client}api/csrf`, {
+    method: "GET",
     header: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,

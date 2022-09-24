@@ -26,18 +26,17 @@ export const UserProvider = ({ children }) => {
   const client = "https://atalayapp.herokuapp.com";
 
   const getProfile = async (id) => {
-    const data = await axios
-      .get(`${client}/api/user/profile/${id}`, {
-        headers: {
-          Authorization: token,
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": true,
-          withCredentials: true,
-        },
-      })
-      .then((data) => {
-        setProfile(data.data.profile[0]);
-      });
+    const data = await axios(`${client}/api/user/profile/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: token,
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+        withCredentials: true,
+      },
+    }).then((data) => {
+      setProfile(data.data.profile[0]);
+    });
   };
 
   axios.defaults.headers.common["X-CSRF-Token"] = csrf;

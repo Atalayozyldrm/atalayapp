@@ -34,16 +34,15 @@ app.use(
 );
 
 app.use(limiter);
-app.set("trust proxy", 1);
+
 app.use(cookieParser());
 app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(
   cors({
-    origin: "*",
+    origin: "https://atalay.netlify.app/",
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
-    credentials: true,
     optionsSuccessStatus: 200,
   })
 );
@@ -79,7 +78,7 @@ app.use(csrf({ cookie: true }));
 app.get(
   "/",
   expressAsyncHandler(async (req, res, next) => {
-    const ip = address.ip();
+    const ip = await address.ip();
     const data = await geo.lookup(ip);
     const a = JSON.stringify(data);
     return res
