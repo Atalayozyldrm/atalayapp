@@ -30,6 +30,8 @@ export const UserProvider = ({ children }) => {
       .get(`${client}/api/user/profile/${id}`, {
         headers: {
           Authorization: token,
+          "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+          "Access-Control-Allow-Credentials": true,
         },
       })
       .then((data) => {

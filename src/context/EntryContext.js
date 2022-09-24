@@ -19,6 +19,8 @@ export const EntryProvider = ({ children }) => {
         headers: {
           Authorization: token,
           credentials: "include",
+          "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+          "Access-Control-Allow-Credentials": true,
         },
       })
       .then((res) => {

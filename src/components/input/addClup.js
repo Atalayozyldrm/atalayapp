@@ -35,6 +35,8 @@ export default function AddClupPopup(props) {
       method: "POST",
       headers: {
         Authorization: token,
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+        "Access-Control-Allow-Credentials": true,
       },
       data: {
         entry: {

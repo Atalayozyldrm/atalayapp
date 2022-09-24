@@ -68,6 +68,8 @@ export default function RegisterPopup(props) {
       .post("/api/verify/", {
         headers: {
           "H-Chaptca": token,
+          "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+          "Access-Control-Allow-Credentials": true,
         },
       })
       .then((res) => {

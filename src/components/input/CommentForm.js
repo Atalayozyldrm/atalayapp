@@ -26,7 +26,11 @@ export default function CommentForm(props) {
   const sendRequest = async () => {
     await axios(`${client}/api/entry/reply`, {
       method: "POST",
-      headers: { Authorization: token },
+      headers: {
+        Authorization: token,
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+        "Access-Control-Allow-Credentials": true,
+      },
       data: {
         replyUser: {
           authorId: user._id,

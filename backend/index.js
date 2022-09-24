@@ -39,7 +39,7 @@ app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(
   cors({
-    origin: "https://atalayapp.herokuapp.com/",
+    origin: "*",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
     optionsSuccessStatus: 200,
