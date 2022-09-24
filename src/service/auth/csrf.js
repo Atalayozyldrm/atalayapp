@@ -7,6 +7,7 @@ const getCsrf = async () => {
     header: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Credentials": true,
+      withCredentials: true,
     },
   });
   axios.defaults.headers.common["X-CSRF-Token"] = response.data.csrf;

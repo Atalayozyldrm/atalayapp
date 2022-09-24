@@ -70,8 +70,17 @@ router.get(
   "/login/facebook/redirect/succsess",
   asyncHandler((req, res, next) => {
     const id = req.user.id;
-    res.cookie("acsess_token", req.user.token);
-    res.cookie("id", id, { encode: String });
+    res.cookie("acsess_token", req.user.token, {
+      encode: String,
+      httpOnly: true,
+      domain: "https://atalay.netlify.app",
+    });
+
+    res.cookie("id", id, {
+      encode: String,
+      httpOnly: true,
+      domain: "https://atalay.netlify.app",
+    });
     res.redirect(client);
   })
 );
@@ -100,7 +109,11 @@ router.get(
   asyncHandler((req, res, next) => {
     const id = req.user.id;
     res.cookie("acsess_token", req.user.token);
-    res.cookie("id", id, { encode: String });
+    res.cookie("id", id, {
+      encode: String,
+      httpOnly: true,
+      domain: "https://atalay.netlify.app",
+    });
     res.redirect(client);
   })
 );

@@ -28,8 +28,9 @@ export default function CommentForm(props) {
       method: "POST",
       headers: {
         Authorization: token,
-        "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
+        withCredentials: true,
       },
       data: {
         replyUser: {
@@ -46,7 +47,14 @@ export default function CommentForm(props) {
   };
 
   const get = async () => {
-    const response = await axios.get(`${client}/api/csrf`);
+    const response = await axios.get(`${client}/api/csrf`, {
+      header: {
+        Authorization: token,
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+        withCredentials: true,
+      },
+    });
     axios.defaults.headers.common["X-CSRF-Token"] = response.data.csrf;
   };
 

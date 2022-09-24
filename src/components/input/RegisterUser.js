@@ -17,6 +17,7 @@ export default function RegisterPopup(props) {
   const [errorRepeatE, setEmailRepeatError] = useState("");
 
   const { registerUser } = userAuth();
+  const client = "https://atalayapp.herokuapp.com";
 
   const captchaRef = useRef(null);
 
@@ -65,10 +66,11 @@ export default function RegisterPopup(props) {
 
     axios.defaults.headers.common["H-Chaptca"] = token;
     axios
-      .post("/api/verify/", {
+      .post(`${client}/api/verify/`, {
         headers: {
           "H-Chaptca": token,
-          "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+          withCredentials: true,
+          "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Credentials": true,
         },
       })

@@ -22,8 +22,8 @@ export const AuthContextProvider = ({ children }) => {
       redirect: "follow",
       header: {
         "accept ": "application/json",
-        credentials: "include",
-        "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+        withCredentials: true,
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
       },
       data: {
@@ -31,7 +31,6 @@ export const AuthContextProvider = ({ children }) => {
           email: email,
           password: password,
         },
-        withCredentials: true,
       },
     })
       .then((res) => {
@@ -51,7 +50,14 @@ export const AuthContextProvider = ({ children }) => {
   const registerUser = async (email, password, name) => {
     await axios(`${client}api/auth/register`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", credentials: "include" },
+
+      headers: {
+        "Content-Type": "application/json",
+        withCredentials: true,
+        Authorization: token,
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+      },
       data: {
         user: {
           email: email,
@@ -83,7 +89,8 @@ export const AuthContextProvider = ({ children }) => {
       headers: {
         Authorization: token,
         withCredentials: true,
-        credentials: "include",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
       },
     })
       .then((res) => {

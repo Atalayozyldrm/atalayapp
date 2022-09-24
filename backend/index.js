@@ -34,12 +34,14 @@ app.use(
 );
 
 app.use(limiter);
+app.set("trust proxy", 1);
 app.use(cookieParser());
 app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(
   cors({
     origin: "*",
+    credentials: true,
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
     optionsSuccessStatus: 200,
@@ -56,10 +58,14 @@ app.use(
     secret: config.sessionSecret,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true,
     },
-    resave: false,
+    resave: true,
     saveUninitialized: false,
-    cookie: { secure: false },
+    cookie: {
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production",
+    },
     store: MongoDBStore({
       uri: "mongodb+srv://admin:19031903@atalayozy.swolt.mongodb.net/?retryWrites=true&w=majority",
       collection: "sessions",

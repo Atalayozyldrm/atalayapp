@@ -18,8 +18,8 @@ export const EntryProvider = ({ children }) => {
       .get(`${client}/api/entry/entry`, {
         headers: {
           Authorization: token,
-          credentials: "include",
-          "Access-Control-Allow-Origin": "https://atalay.netlify.app",
+          withCredentials: true,
+          "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Credentials": true,
         },
       })
