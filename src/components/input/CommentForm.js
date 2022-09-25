@@ -52,6 +52,8 @@ export default function CommentForm(props) {
         Authorization: token,
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
+        mode: "same-origin",
+        redirect: "follow",
         withCredentials: true,
       },
     });

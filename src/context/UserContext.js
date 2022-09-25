@@ -46,6 +46,8 @@ export const UserProvider = ({ children }) => {
       method: "POST",
       headers: {
         Authorization: token,
+        mode: "same-origin",
+        redirect: "follow",
         withCredentials: true,
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,

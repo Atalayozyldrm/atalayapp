@@ -15,6 +15,11 @@ export const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const client = "https://atalayapp.herokuapp.com/";
 
+  axios.create({
+    baseURL: "https://atalayapp.herokuapp.com/",
+    withCredentials: true,
+  });
+
   const authLogin = (email, password) => {
     axios(`${client}api/auth/login`, {
       method: "POST",
@@ -22,6 +27,8 @@ export const AuthContextProvider = ({ children }) => {
       redirect: "follow",
       header: {
         "accept ": "application/json",
+        mode: "same-origin",
+        redirect: "follow",
         withCredentials: true,
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
@@ -50,6 +57,8 @@ export const AuthContextProvider = ({ children }) => {
 
       headers: {
         "Content-Type": "application/json",
+        mode: "same-origin",
+        redirect: "follow",
         withCredentials: true,
         Authorization: token,
         "Access-Control-Allow-Origin": "*",
@@ -86,6 +95,8 @@ export const AuthContextProvider = ({ children }) => {
       headers: {
         Authorization: token,
         withCredentials: true,
+        mode: "same-origin",
+        redirect: "follow",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
       },

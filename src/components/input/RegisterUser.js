@@ -70,6 +70,8 @@ export default function RegisterPopup(props) {
         headers: {
           "H-Chaptca": token,
           withCredentials: true,
+          mode: "same-origin",
+          redirect: "follow",
           "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Credentials": true,
         },

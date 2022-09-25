@@ -19,6 +19,8 @@ export const EntryProvider = ({ children }) => {
       headers: {
         Authorization: token,
         withCredentials: true,
+        mode: "same-origin",
+        redirect: "follow",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
       },

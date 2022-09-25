@@ -20,7 +20,7 @@ const app = express();
 const MongoDBStore = connectMongoDBSession(session);
 
 const limiter = rateLimit({
-  windowMs: 60 * 60 * 60 * 10000, // 15 minutes
+  windowMs: 60 * 60 * 60 * 10000,
   max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
@@ -33,10 +33,10 @@ app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
 
+app.set("trust proxy", true);
 app.use(limiter);
 
 app.use(cookieParser());
-app.set("trust proxy", true);
 
 app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
@@ -47,6 +47,14 @@ app.use(
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
     optionsSuccessStatus: 200,
+    allowedHeaders: [
+      "Origin",
+      "X-Requested-With",
+      "Content-Type",
+      "Accept",
+      "Authorization",
+    ],
+    preflightContinue: true,
   })
 );
 
@@ -54,7 +62,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://atalay.netlify.app");
+  res.header("Access-Control-Allow-Origin", req.headers.origin);
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -73,13 +81,16 @@ app.use(
     secret: config.sessionSecret,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true,
+      httpOnly: false,
     },
     resave: true,
     saveUninitialized: false,
     cookie: {
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      sameSite: true,
+      signed: true,
     },
     store: MongoDBStore({
       uri: "mongodb+srv://admin:19031903@atalayozy.swolt.mongodb.net/?retryWrites=true&w=majority",
@@ -91,7 +102,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(csrf({ cookie: true }));
+app.use(csrf({ cookie: false }));
 
 app.get(
   "/",
