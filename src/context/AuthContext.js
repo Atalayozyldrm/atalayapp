@@ -13,24 +13,19 @@ export const AuthContextProvider = ({ children }) => {
   const cookie = new Cookies();
 
   const navigate = useNavigate();
-  const client = "https://atalayapp.herokuapp.com/";
-
-  axios.create({
-    baseURL: "https://atalayapp.herokuapp.com/",
-    withCredentials: true,
-  });
+  const client = "/api";
 
   const authLogin = (email, password) => {
-    axios(`${client}api/auth/login`, {
+    axios(`${client}/api/auth/login`, {
       method: "POST",
       mode: "cors",
       redirect: "follow",
+      withCredentials: true,
       header: {
         "accept ": "application/json",
         mode: "same-origin",
         redirect: "follow",
-        withCredentials: true,
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
       },
       data: {
@@ -52,16 +47,15 @@ export const AuthContextProvider = ({ children }) => {
       .catch((err) => toast.error("kullancı adın veya eposta yanlış "));
   };
   const registerUser = async (email, password, name) => {
-    await axios(`${client}api/auth/register`, {
+    await axios(`${client}/api/auth/register`, {
       method: "POST",
-
+      withCredentials: true,
       headers: {
         "Content-Type": "application/json",
         mode: "same-origin",
         redirect: "follow",
-        withCredentials: true,
         Authorization: token,
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
       },
       data: {
@@ -91,13 +85,13 @@ export const AuthContextProvider = ({ children }) => {
     if (!user) {
       return console.log("Refresh token");
     }
-    const data = await axios(`${client}api/auth/verify/${userId}`, {
+    const data = await axios(`${client}/api/auth/verify/${userId}`, {
+      withCredentials: true,
       headers: {
         Authorization: token,
-        withCredentials: true,
         mode: "same-origin",
         redirect: "follow",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
       },
     })

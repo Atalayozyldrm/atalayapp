@@ -15,8 +15,8 @@ import session from "express-session";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
 import expressAsyncHandler from "express-async-handler";
-
 const app = express();
+
 const MongoDBStore = connectMongoDBSession(session);
 
 const limiter = rateLimit({
@@ -32,7 +32,6 @@ connectDb();
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
-
 app.set("trust proxy", true);
 app.use(limiter);
 
@@ -40,7 +39,6 @@ app.use(cookieParser());
 
 app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
-
 app.use(
   cors({
     origin: "https://atalay.netlify.app",
@@ -71,11 +69,6 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use((req, res, next) => {
-  res.header("Set-Cookie", "HttpOnly;Secure;SameSite=None");
-  next();
-});
-
 app.use(
   session({
     secret: config.sessionSecret,
@@ -86,11 +79,9 @@ app.use(
     resave: true,
     saveUninitialized: false,
     cookie: {
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
       sameSite: true,
-      signed: true,
     },
     store: MongoDBStore({
       uri: "mongodb+srv://admin:19031903@atalayozy.swolt.mongodb.net/?retryWrites=true&w=majority",
@@ -102,8 +93,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(csrf({ cookie: false }));
-
+app.use(csrf({ cookie: true }));
 app.get(
   "/",
   expressAsyncHandler(async (req, res, next) => {
@@ -111,7 +101,7 @@ app.get(
     const data = await geo.lookup(ip);
     const a = JSON.stringify(data);
     return res
-      .status(418)
+      .status(200)
       .send(
         "<center style='font-size:36px;'>Evine piza yollayımi lan oççç</center>" +
           a

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Layout from "../components/layout/Layout.js";
 import LoginAuth from "../components/pages/login.js";
 import toast, { Toaster } from "react-hot-toast";

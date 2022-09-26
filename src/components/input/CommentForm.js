@@ -13,7 +13,7 @@ export default function CommentForm(props) {
   const cookie = new Cookie();
   const token = cookie.get("acsess_token");
 
-  const client = "https://atalayapp.herokuapp.com";
+  const client = "/api";
 
   const close = () => {
     props.close();
@@ -28,7 +28,7 @@ export default function CommentForm(props) {
       method: "POST",
       headers: {
         Authorization: token,
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
         withCredentials: true,
       },

@@ -23,16 +23,16 @@ export const UserProvider = ({ children }) => {
 
   const id = cookie.get("id");
 
-  const client = "https://atalayapp.herokuapp.com";
+  const client = "/api";
 
   const getProfile = async (id) => {
     const data = await axios(`${client}/api/user/profile/${id}`, {
+      withCredentials: true,
       method: "GET",
       headers: {
         Authorization: token,
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
-        withCredentials: true,
       },
     }).then((data) => {
       setProfile(data.data.profile[0]);
@@ -43,13 +43,13 @@ export const UserProvider = ({ children }) => {
   const updateProfile = async (id, content, name) => {
     if (!content || name) return toast.error("Boş bırakma !");
     const prof = await axios(`${client}/api/user/content/edit`, {
+      withCredentials: true,
       method: "POST",
       headers: {
         Authorization: token,
         mode: "same-origin",
         redirect: "follow",
-        withCredentials: true,
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
       },
       data: {

@@ -17,7 +17,7 @@ export default function RegisterPopup(props) {
   const [errorRepeatE, setEmailRepeatError] = useState("");
 
   const { registerUser } = userAuth();
-  const client = "https://atalayapp.herokuapp.com";
+  const client = "/api";
 
   const captchaRef = useRef(null);
 
@@ -72,7 +72,7 @@ export default function RegisterPopup(props) {
           withCredentials: true,
           mode: "same-origin",
           redirect: "follow",
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
           "Access-Control-Allow-Credentials": true,
         },
       })

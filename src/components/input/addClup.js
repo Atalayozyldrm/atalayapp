@@ -16,7 +16,7 @@ export default function AddClupPopup(props) {
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
 
-  const client = "https://atalayapp.herokuapp.com";
+  const client = "/api";
 
   const popup = () => {
     props.toggle();
@@ -37,7 +37,7 @@ export default function AddClupPopup(props) {
         Authorization: token,
         mode: "same-origin",
         redirect: "follow",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
       },
       data: {

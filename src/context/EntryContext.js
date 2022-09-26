@@ -11,17 +11,18 @@ export const EntryProvider = ({ children }) => {
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
 
-  const client = "https://atalayapp.herokuapp.com";
+  const client = "/api";
 
   const getAll = async () => {
     const entry = await axios(`${client}/api/entry/entry`, {
       method: "GET",
+      withCredentials: true,
+
       headers: {
         Authorization: token,
-        withCredentials: true,
         mode: "same-origin",
         redirect: "follow",
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
       },
     })
