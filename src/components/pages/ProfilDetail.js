@@ -20,7 +20,7 @@ export default function ProfilDetail() {
 
   const getUser = async () => {
     const data = await axios
-      .get(`/api/user/profile/${id}`, {
+      .get(`/v/user/profile/${id}`, {
         headers: {
           Authorization: token,
         },

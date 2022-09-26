@@ -23,7 +23,7 @@ export default function EntryDetail(props) {
 
   const coomentUser = async () => {
     const atalay = axios
-      .get(`/api/entry/entry/reply/${id}`, {
+      .get(`/v/entry/entry/reply/${id}`, {
         headers: { Authorization: token },
       })
       .then((res) => {
@@ -38,7 +38,7 @@ export default function EntryDetail(props) {
   console.log(comment);
   const getEntry = async () => {
     const d = await axios
-      .get(`/api/entry/${id}`, {
+      .get(`/v/entry/${id}`, {
         headers: { Authorization: token },
       })
       .then((atalay) => {

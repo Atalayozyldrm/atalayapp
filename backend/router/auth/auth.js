@@ -100,7 +100,7 @@ router.get(
   "/login/google/callback",
   passport.authenticate("google", {
     scope: ["profile", "email"],
-    successRedirect: clienthome,
+    successRedirect: "http://localhost:5500",
     failureRedirect: client,
     domain: "https://atalay.netlify.app",
   })
@@ -109,13 +109,13 @@ router.get(
   "/login/google/redirect/succsess",
   asyncHandler((req, res, next) => {
     const id = req.user.id;
+    console.log;
     res.cookie("acsess_token", req.user.token);
     res.cookie("id", id, {
       encode: String,
       httpOnly: true,
       domain: "https://atalay.netlify.app",
     });
-    res.redirect(client);
   })
 );
 router.get("/login/google/logout", (req, res, next) => {

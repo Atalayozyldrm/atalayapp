@@ -1,37 +1,42 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 html {
   scroll-behavior: smooth;
 }
+
 ::-webkit-scrollbar {
   width: 10px;
 }
+
 .mobile-Bt {
   visibility: hidden;
 }
+
 .facebook {
   background-color: #2374f2 !important;
 }
+
 footer {
   height: 40vh;
-  background: linear-gradient(
-    60deg,
-    #f79533,
-    #f37055,
-    #ef4e7b,
-    #a166ab,
-    #5073b8,
-    #1098ad,
-    #07b39b,
-    #6fba82
-  );
+  background: linear-gradient(60deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82);
   transition: all;
   animation: anim 3s ease alternate infinite;
 }
+
 .w-Set {
   width: 90vh !important;
 }
+
 .landig-topHeader {
   background-color: #36393f !important;
   align-items: center;
@@ -46,14 +51,17 @@ footer {
   border-radius: 10px !important;
   position: relative;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #18191c;
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-track {
   background-color: #2e3338;
   border-radius: 10px;
 }
+
 body {
   margin: 0;
   font-family: "Roboto";
@@ -69,10 +77,12 @@ body {
   padding-left: 42px;
   padding-right: 42px;
 }
+
 .t {
   position: relative;
   margin-top: 14vh;
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -81,23 +91,28 @@ code {
 .App {
   text-align: center;
 }
+
 .ctnt {
   margin-top: 45vh;
 }
+
 .nereninhavasıbuguzelim {
   position: relative;
   z-index: -1;
 }
+
 .manga {
   border: 2px solid black;
   border-radius: 50px;
   transition: all 0.2 ease-in-out;
 }
+
 .Navbar-home {
   width: 100vh;
   position: relative;
   right: -20vh;
 }
+
 .entry_101 {
   width: 100%;
   height: 300px;
@@ -114,6 +129,7 @@ code {
   text-transform: uppercase;
   text-rendering: geometricPrecision;
 }
+
 .signup {
   background-color: transparent;
   border: 2px solid black;
@@ -123,10 +139,12 @@ code {
   outline: none;
   border-radius: 25px;
 }
+
 .signup:hover {
   background-color: #fde047;
   color: black;
 }
+
 .btn-amnakodugumbuttonu {
   position: absolute;
   z-index: 1;
@@ -134,18 +152,22 @@ code {
   left: 15px;
   cursor: pointer;
 }
-.btn-amnakodugumbuttonu > div {
+
+.btn-amnakodugumbuttonu>div {
   position: fixed;
 }
+
 .manga:hover {
   background-color: rgb(254, 240, 138);
   color: black;
 }
+
 .nvbr-btns {
   background-color: #202225;
   overflow: auto;
   cursor: pointer;
 }
+
 .code-text {
   display: flex;
   border-radius: 50px;
@@ -158,20 +180,24 @@ code {
   top: 10px;
   right: 20vh;
 }
+
 .title {
   position: relative;
   top: -5px;
   margin-left: 5px;
 }
+
 .title-2 {
   position: relative;
   top: -5px;
   margin-left: 10px;
 }
+
 .slm {
   padding: 10px;
   margin-left: 10px;
 }
+
 .amınakodugumunkartı {
   position: relative;
   width: 800px;
@@ -181,23 +207,28 @@ code {
   align-items: center;
   flex-wrap: wrap;
 }
+
 .pop {
   height: 100vh;
 }
+
 .code-123 {
   background-color: #36393f;
   min-height: 30vh !important;
   width: 400px !important;
   border-radius: 10px;
 }
+
 .code-124 {
   min-height: 250px;
   width: 596px;
   border-radius: 10px;
 }
+
 .clpV {
   margin-top: 35px;
 }
+
 .entry {
   position: relative;
   height: auto;
@@ -213,11 +244,13 @@ code {
   font-size: bold;
   cursor: pointer;
 }
+
 .clp-main {
   position: relative;
   top: -20px;
   color: black;
 }
+
 .popup {
   margin: auto;
   position: fixed;
@@ -235,12 +268,14 @@ code {
   cursor: pointer;
   background-color: #36393f;
 }
+
 .code-Entry {
   background-color: #202225;
   border-radius: 5px;
   outline: none;
   color: white;
 }
+
 .popup-edit {
   background-color: #202225;
   box-shadow: 0px 0px 8px 0px black;
@@ -255,17 +290,21 @@ code {
   border-radius: 9px;
   cursor: pointer;
 }
+
 .çido {
   background-color: #202225;
   color: white;
 }
+
 .s {
   position: relative;
   top: -20vh;
 }
+
 .content-edit {
   padding: 10px;
 }
+
 .atalayaskım {
   background-color: #202225;
   outline: none;
@@ -278,6 +317,7 @@ code {
 .exit {
   cursor: pointer;
 }
+
 .bg-transp {
   height: 100%;
   width: 100%;
@@ -286,6 +326,7 @@ code {
 
   background-color: rgba(0, 0, 0, 0.434);
 }
+
 .bg-transp-1 {
   height: 100vh;
   width: 100%;
@@ -294,16 +335,19 @@ code {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.434);
 }
+
 .txt {
   position: relative;
   top: 8rem;
   left: 35vh;
 }
+
 .profile-image-card-edit {
   position: relative;
   top: -75px;
   left: -9rem;
 }
+
 .popup-register {
   position: absolute;
   z-index: 100;
@@ -315,6 +359,7 @@ code {
   align-items: center;
   box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.505);
 }
+
 .window {
   width: 420px;
   background-color: white;
@@ -327,35 +372,42 @@ code {
   margin: auto;
   z-index: 100;
 }
+
 .svg-edit {
   top: -30px;
 }
+
 .clp-main-edit {
   position: relative;
   top: -175px;
 }
+
 .add-inpt {
   border-radius: 4px;
   background-color: #36393f;
   overflow: auto;
 }
+
 .code-bg-edit {
   position: relative;
   top: -100px;
   z-index: -100;
 }
+
 .bg-home {
   background-color: #202225;
   color: white;
   height: 100vh;
   overflow: auto;
 }
+
 .bg-profile {
   background-color: #202225;
   color: white;
   height: 100vh;
   overflow: auto;
 }
+
 .nvbr {
   background-color: #36393f;
   color: white;
@@ -414,15 +466,18 @@ code {
   padding: 10px;
   color: black;
 }
+
 .code-0x1 {
   border: 3px solid white;
 }
+
 .amkCardı {
-  position: relative;
+  position: relative !important;
   width: 300px;
   height: 300px;
   border-radius: calc(2 * 3);
 }
+
 .amkCardı {
   background: #1d1f20;
   position: relative;
@@ -430,37 +485,38 @@ code {
 }
 
 .amkCardı:after {
-  content: "";
-  position: absolute;
-  top: calc(-1 * 3);
-  left: calc(-1 * 3);
-  inset: -3px;
-  height: calc(100% + 3 * 2);
+  content: "" !important;
+  position: absolute !important;
+  top: calc(-1 * 3) !important;
+  left: calc(-1 * 3) !important;
+  inset: -3px !important;
+  height: calc(100% + 3 * 2) !important;
   width: calc(100% + 3 * 2);
-  background: linear-gradient(
-    60deg,
-    #f79533,
-    #f37055,
-    #ef4e7b,
-    #a166ab,
-    #5073b8,
-    #1098ad,
-    #07b39b,
-    #6fba82
-  );
-  z-index: -1;
-  border-radius: 10px;
-  animation: anim 3s ease alternate infinite;
-  background-size: 300% 300%;
+  background: linear-gradient(60deg,
+      #f79533,
+      #f37055,
+      #ef4e7b,
+      #a166ab,
+      #5073b8,
+      #1098ad,
+      #07b39b,
+      #6fba82);
+  z-index: -1 !important;
+  border-radius: 10px !important;
+  animation: anim 3s ease alternate infinite !important;
+  background-size: 300% 300% !important;
 }
+
 .z {
   z-index: 100;
 }
+
 .card-one {
   position: relative !important;
   width: 100%;
   top: 35vh;
 }
+
 .card_amk_cardını {
   position: relative;
   display: flex;
@@ -479,6 +535,7 @@ code {
   position: relative;
   left: -11.5vh;
 }
+
 .AtA11 {
   background-color: #36393f;
   border-radius: 10px;
@@ -489,6 +546,7 @@ code {
   top: 20px;
   margin: auto;
 }
+
 .card-bg {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -496,6 +554,7 @@ code {
   height: 224px;
   background-image: linear-gradient(to right, #83a4d4, #b6fbff);
 }
+
 .profile-image-card {
   width: 100px;
   height: 100px;
@@ -504,14 +563,17 @@ code {
   left: 35px;
   box-sizing: content-box;
 }
+
 .ata {
   margin-top: 3px;
 }
+
 .profile-text {
   position: relative;
   top: -40px;
   left: 30px;
 }
+
 .profile-content {
   width: 100%;
   height: auto;
@@ -519,20 +581,25 @@ code {
   left: 25px;
   margin: 5px;
 }
+
 .pavyon {
   min-height: 100px;
 }
+
 span {
   cursor: pointer;
 }
+
 /*Animations */
 @keyframes anim {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -543,34 +610,42 @@ span {
   .nereninhavasıbuguzelim {
     display: none;
   }
+
   .bg-transp {
     display: none;
   }
+
   .manga {
     right: 4px;
   }
+
   .profile-image-card {
     width: 80px;
     height: 80px;
   }
+
   .profile-text {
     margin-top: 4em;
   }
+
   .icons {
     position: relative;
     left: 20vh;
     top: -24px;
   }
+
   .code-123 {
     max-width: 280px;
     height: auto;
     flex-wrap: wrap;
   }
+
   .popup-register {
     width: 100%;
     height: 100%;
     position: fixed;
   }
+
   .inp-mobile {
     width: 90%;
   }
@@ -579,6 +654,7 @@ span {
     position: relative;
     top: -5vh;
   }
+
   .btn-mobile {
     width: 40vh;
   }
@@ -590,9 +666,11 @@ span {
     margin: auto;
     text-align: center;
   }
+
   #frm {
     width: auto;
   }
+
   .responsive {
     overflow: none;
     bottom: 0px;
@@ -604,14 +682,17 @@ span {
     flex-direction: row;
     transition: all 0.3 ease-in-out;
   }
+
   .darara {
     display: none;
   }
+
   .mobileNavbarButtons {
     visibility: visible;
     display: flex;
     flex-direction: row;
   }
+
   .OxA-1-m {
     position: relative;
     left: 10px;
@@ -620,31 +701,38 @@ span {
     margin: 0px;
     padding: 0px;
   }
+
   .code-Ox-m {
     position: relative;
     left: 0px;
     right: 0px;
   }
+
   .emoji-mobile {
     display: none;
   }
+
   .code-124 {
     width: 100%;
     height: auto;
     padding: 0px;
     transition: all 0.3s cubic-bezier(1, 0, 0, 1);
   }
+
   .md {
     display: flex;
   }
+
   .text-name {
     position: absolute;
     top: -10px;
     left: -10vh;
   }
+
   .OxA-mobile {
     width: auto;
   }
+
   .z-3 {
     position: absolute;
     z-index: 9;
@@ -659,23 +747,28 @@ span {
     left: 0px;
     right: 0px;
   }
+
   .code-Entry {
     width: 95%;
     margin-left: 9px;
   }
+
   .clp-main {
     width: 100%;
     height: 100%;
     position: relative;
     top: 1vh;
   }
-  .clp-main > button {
+
+  .clp-main>button {
     margin-left: 1rem;
   }
+
   .code-0x2 {
     width: 100%;
     height: 100%;
   }
+
   .profile-a12A {
     width: 100%;
     display: flex;
@@ -689,29 +782,35 @@ span {
     padding: 0px;
     overflow: hidden;
   }
+
   .profile-a12C {
     width: 100%;
     transition: all 0.1s ease-in-out;
   }
+
   .window {
     width: 100%;
     height: 100vh;
   }
+
   .exit {
     position: relative;
     top: 30px;
     left: 25px;
     z-index: 100;
   }
+
   .amınakodugumunkartı {
     flex-direction: column;
     width: 80%;
     margin: auto;
   }
+
   .profile-content {
     display: flex;
     flex-wrap: wrap;
   }
+
   .code-text {
     width: 50vh;
   }
@@ -719,16 +818,19 @@ span {
   .frindes {
     display: none;
   }
+
   .text-name {
     position: relative;
     left: 10px;
     top: 20px;
   }
+
   .resp_home {
     display: flex;
     flex-direction: column !important;
     height: auto;
   }
+
   .card_amk_cardını {
     margin: auto;
     min-height: 50%;
@@ -738,9 +840,11 @@ span {
     margin-top: 10px;
     /* margin-top: -25vh !important; */
   }
+
   .responsive_mobile_navbar {
     display: none !important;
   }
+
   .landig-topHeader {
     background-color: transparent;
     display: flex;
@@ -751,18 +855,22 @@ span {
     margin-top: 5px;
     width: 95% !important;
   }
-  .landig-topHeader > span {
+
+  .landig-topHeader>span {
     margin-top: 25px;
   }
+
   .atly {
     width: 70% !important;
     font-size: 0.7em !important;
     font-weight: 300 !important;
     top: -9rem;
   }
+
   .loginButton {
     display: block;
   }
+
   footer {
     position: relative;
     min-height: 320px !important;
@@ -770,29 +878,35 @@ span {
     width: 100% !important;
     top: 90vh !important;
   }
+
   .atalay-entry {
     margin-top: -10px !important;
   }
+
   .qrCode {
     width: 90px !important;
     height: 90px !important;
     position: relative;
     top: 30px;
   }
+
   .atalay-Text {
     width: 200px !important;
     position: relative;
     top: 30px;
   }
+
   .OxA-6 {
     position: relative;
     box-sizing: content-box;
     top: -30px;
     right: 20% !important;
   }
+
   .asa {
     font-size: 0.7em;
   }
+
   .mobile-Bt {
     visibility: visible;
   }
