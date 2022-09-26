@@ -13,7 +13,7 @@ export default function CommentForm(props) {
   const cookie = new Cookie();
   const token = cookie.get("acsess_token");
 
-  const client = "/api";
+  const client = "/v";
 
   const close = () => {
     props.close();
@@ -24,7 +24,7 @@ export default function CommentForm(props) {
   };
 
   const sendRequest = async () => {
-    await axios(`${client}/api/entry/reply`, {
+    await axios(`${client}/entry/reply`, {
       method: "POST",
       headers: {
         Authorization: token,
@@ -47,7 +47,7 @@ export default function CommentForm(props) {
   };
 
   const get = async () => {
-    const response = await axios.get(`${client}/api/csrf`, {
+    const response = await axios.get(`${client}/csrf`, {
       header: {
         Authorization: token,
         "Access-Control-Allow-Origin": "*",

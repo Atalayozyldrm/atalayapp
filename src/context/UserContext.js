@@ -23,10 +23,10 @@ export const UserProvider = ({ children }) => {
 
   const id = cookie.get("id");
 
-  const client = "/api";
+  const client = "/v";
 
   const getProfile = async (id) => {
-    const data = await axios(`${client}/api/user/profile/${id}`, {
+    const data = await axios(`${client}/user/profile/${id}`, {
       withCredentials: true,
       method: "GET",
       headers: {
@@ -42,7 +42,7 @@ export const UserProvider = ({ children }) => {
   axios.defaults.headers.common["X-CSRF-Token"] = csrf;
   const updateProfile = async (id, content, name) => {
     if (!content || name) return toast.error("Boş bırakma !");
-    const prof = await axios(`${client}/api/user/content/edit`, {
+    const prof = await axios(`${client}/user/content/edit`, {
       withCredentials: true,
       method: "POST",
       headers: {

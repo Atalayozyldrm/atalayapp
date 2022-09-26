@@ -11,10 +11,10 @@ export const EntryProvider = ({ children }) => {
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
 
-  const client = "/api";
+  const client = "/v";
 
   const getAll = async () => {
-    const entry = await axios(`${client}/api/entry/entry`, {
+    const entry = await axios(`${client}/entry/entry`, {
       method: "GET",
       withCredentials: true,
 

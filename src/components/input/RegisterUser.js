@@ -17,7 +17,7 @@ export default function RegisterPopup(props) {
   const [errorRepeatE, setEmailRepeatError] = useState("");
 
   const { registerUser } = userAuth();
-  const client = "/api";
+  const client = "/v";
 
   const captchaRef = useRef(null);
 
@@ -66,7 +66,7 @@ export default function RegisterPopup(props) {
 
     axios.defaults.headers.common["H-Chaptca"] = token;
     axios
-      .post(`${client}/api/verify/`, {
+      .post(`${client}/verify/`, {
         headers: {
           "H-Chaptca": token,
           withCredentials: true,

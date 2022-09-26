@@ -16,7 +16,7 @@ export default function AddClupPopup(props) {
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
 
-  const client = "/api";
+  const client = "/v";
 
   const popup = () => {
     props.toggle();
@@ -31,7 +31,7 @@ export default function AddClupPopup(props) {
     if (!AddVal && !entry) {
       return toast.error("Boş bırakma ");
     }
-    axios(`${client}/api/entry/add`, {
+    axios(`${client}/entry/add`, {
       method: "POST",
       headers: {
         Authorization: token,

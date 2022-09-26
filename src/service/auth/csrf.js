@@ -1,11 +1,9 @@
 import axios from "axios";
 import Cookie from "universal-cookie";
-
 const getCsrf = async () => {
-  const client = "/api/";
+  const client = "/v/";
   const cookie = new Cookie();
-  const csrf = cookie.get("_csrf");
-  const response = await axios(`${client}api/csrf`, {
+  const response = await axios(`${client}csrf`, {
     method: "GET",
     withCredentials: true,
     header: {
@@ -15,6 +13,6 @@ const getCsrf = async () => {
       redirect: "follow",
     },
   });
-  axios.defaults.headers.common["X-CSRF-Token"] = csrf;
+  axios.defaults.headers.common["X-CSRF-Token"] = response.data.csrf;
 };
 export default getCsrf;

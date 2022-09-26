@@ -13,10 +13,10 @@ export const AuthContextProvider = ({ children }) => {
   const cookie = new Cookies();
 
   const navigate = useNavigate();
-  const client = "/api";
+  const client = "/v";
 
   const authLogin = (email, password) => {
-    axios(`${client}/api/auth/login`, {
+    axios(`${client}/auth/login`, {
       method: "POST",
       mode: "cors",
       redirect: "follow",
@@ -47,7 +47,7 @@ export const AuthContextProvider = ({ children }) => {
       .catch((err) => toast.error("kullancı adın veya eposta yanlış "));
   };
   const registerUser = async (email, password, name) => {
-    await axios(`${client}/api/auth/register`, {
+    await axios(`${client}/auth/register`, {
       method: "POST",
       withCredentials: true,
       headers: {
@@ -85,7 +85,7 @@ export const AuthContextProvider = ({ children }) => {
     if (!user) {
       return console.log("Refresh token");
     }
-    const data = await axios(`${client}/api/auth/verify/${userId}`, {
+    const data = await axios(`${client}/auth/verify/${userId}`, {
       withCredentials: true,
       headers: {
         Authorization: token,
@@ -114,7 +114,7 @@ export const AuthContextProvider = ({ children }) => {
   const logoutProccsess = async () => {
     const cookie = new Cookies();
 
-    await axios(`${client}/api/auth/logout`);
+    await axios(`${client}/auth/logout`);
     await cookie.remove("acsess_token");
     await cookie.remove("id");
     await setToken(null);
