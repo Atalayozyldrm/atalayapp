@@ -37,12 +37,14 @@ export default function LandigPage() {
         </Link>
       </div>
       <div className="w-36 rounded-lg p-2 mobile-Bt  font-bold hover:bg-red OYLEDERTLİ align-end m-4  relative">
-        <button
-          type="button"
-          className="text-white hover:text-gray-900  bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-        >
-          Giriş yap
-        </button>
+        <Link to="/login">
+          <button
+            type="button"
+            className="text-white hover:text-gray-900  bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          >
+            Giriş yap
+          </button>
+        </Link>
       </div>
       <div className="relative flex i flex-col animate__fadeIn animate__delay__9  animate__animated z w-full h-auto ">
         <div className="entry_101 relative t text-center h-52 ">

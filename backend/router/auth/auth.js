@@ -72,14 +72,12 @@ router.get(
     const id = req.user.id;
     res.cookie("acsess_token", req.user.token, {
       encode: String,
-      httpOnly: true,
-      domain: "https://atalay.netlify.app",
+      httpOnly: false,
     });
 
     res.cookie("id", id, {
       encode: String,
-      httpOnly: true,
-      domain: "https://atalay.netlify.app",
+      httpOnly: false,
     });
     res.redirect(client);
   })
@@ -108,12 +106,14 @@ router.get(
 router.get(
   "/login/google/redirect/succsess",
   asyncHandler((req, res, next) => {
+    console.log(req.user);
     const id = req.user.id;
-    console.log(id);
-    res.cookie("acsess_token", req.user.token);
+    res.cookie("acsess_token", req.user.token, {
+      encode: String,
+      domain: "https://atalay.netlify.app",
+    });
     res.cookie("id", id, {
       encode: String,
-      httpOnly: true,
       domain: "https://atalay.netlify.app",
     });
     res.redirect(client);
@@ -121,6 +121,7 @@ router.get(
 );
 router.get("/login/google/logout", (req, res, next) => {
   req.logout((err) => console.log(err));
+  res.redirect(client);
 });
 
 router.post(

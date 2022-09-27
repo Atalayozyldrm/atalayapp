@@ -58,10 +58,7 @@ export default function Forms(props) {
               </button>
               <p className="flex justify-center mt-4"> Veya </p>
               <div className="mr-3 p-1">
-                <a
-                  className="relative googl "
-                  href={`https://atalayapp.herokuapp.com/api/auth/google`}
-                >
+                <a className="relative googl " href={`/v/auth/google`}>
                   <button className=" w-80 flex googlebutton aligin-center justify-center border-black border-2 text-black flex-row bg-white items-center    rounded-md">
                     <img
                       src="https://developers.google.com/static/identity/images/g-logo.png"
@@ -77,9 +74,7 @@ export default function Forms(props) {
                 </a>
                 <a
                   className="relative    mb-3 bg-[#2374f2]"
-                  href={
-                    "https://atalayapp.herokuapp.com/api/auth/login/facebook"
-                  }
+                  href={"/v/auth/login/facebook"}
                 >
                   <button className="  w-80 flex facebook  googlebutton aligin-center mt-3 justify-center    flex-row  items-center  rounded-md">
                     <span className="text-white  flex justify-center w-full font-medium text-sm flex-row">

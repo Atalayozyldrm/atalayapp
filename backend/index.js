@@ -78,11 +78,6 @@ app.use(
     },
     resave: true,
     saveUninitialized: false,
-    cookie: {
-      secure: true,
-      httpOnly: true,
-      sameSite: true,
-    },
     store: MongoDBStore({
       uri: "mongodb+srv://admin:19031903@atalayozy.swolt.mongodb.net/?retryWrites=true&w=majority",
       collection: "sessions",
@@ -97,7 +92,7 @@ app.use(csrf({ cookie: true }));
 app.get(
   "/",
   expressAsyncHandler(async (req, res, next) => {
-    const ip = await address.ip();
+    const ip = address.ip();
     const data = await geo.lookup(ip);
     const a = JSON.stringify(data);
     return res

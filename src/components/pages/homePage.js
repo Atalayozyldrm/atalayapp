@@ -49,7 +49,7 @@ export default function Homepage() {
           <NavbarButton show={popup} name="Entry" />
         </div>
         {show ? <AddClupPopup close={popup} toggle={popup} /> : null}
-        <div className="w-auto flex flex-row flex-wrap  code-Ox-m h-auto absolute left-48 m-1">
+        <div className="w-auto flex flex-row flex-wrap  justify-center code-Ox-m h-auto absolute left-48 m-1">
           <SkeletonTheme
             baseColor="#202020"
             highlightColor="#444"
