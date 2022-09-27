@@ -22,6 +22,7 @@ import EntryDetail from "./components/pages/EntryDetail.js";
 import ProfilDetail from "./components/pages/ProfilDetail.js";
 import { AddCommentProvider } from "./context/Comment";
 import LandigPage from "./pages/LandigPage";
+import GoogleAuthRedirect from "./components/pages/googleAuth";
 
 function App() {
   const { token } = userAuth();
@@ -45,6 +46,7 @@ function App() {
           )
         }
       />
+      <Route to="/login/google" element={<GoogleAuthRedirect />} />
       <Route
         path="/"
         excat

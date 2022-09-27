@@ -11,7 +11,6 @@ export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [token, setToken] = useState();
   const cookie = new Cookies();
-
   const navigate = useNavigate();
   const client = "/v";
 
@@ -111,6 +110,21 @@ export const AuthContextProvider = ({ children }) => {
 
     return true;
   };
+  const googleAuthToken = (token) => {
+    axios
+      .get(`${client}/user/google`)
+      .then((res) => {
+        cookie.set("acsess_token", res.data.data.token);
+        const data = Object.assign(res.data.data);
+        cookie.set("id", data._id);
+        setUser(data);
+        setToken(data.token);
+        return true;
+      })
+      .catch(() => {
+        return false;
+      });
+  };
   const logoutProccsess = async () => {
     const cookie = new Cookies();
 
@@ -134,6 +148,7 @@ export const AuthContextProvider = ({ children }) => {
         isLoggedIn,
         registerUser,
         logoutProccsess,
+        googleAuthToken,
       }}
     >
       {children}

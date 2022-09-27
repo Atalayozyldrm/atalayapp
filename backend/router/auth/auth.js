@@ -11,9 +11,8 @@ import asyncHandler from "express-async-handler";
 const router = express.Router();
 
 const authOP = auth.optional;
-const client = "https://atalay.netlify.app/login";
-const clienthome =
-  "https://atalayapp.herokuapp.com/api/auth/login/google/redirect/succsess";
+const client = "https://atalay.netlify.app/";
+const clienthome = "https://atalay.netlify.app/login/google";
 
 const clientFacebook =
   "https://atalayapp.herokuapp.com/api/auth/login/facebook/redirect/succsess";
@@ -66,6 +65,7 @@ router.get(
     }
   )
 );
+
 router.get(
   "/login/facebook/redirect/succsess",
   asyncHandler((req, res, next) => {
@@ -79,7 +79,7 @@ router.get(
       encode: String,
       httpOnly: false,
     });
-    res.redirect(client);
+    res.redirect(clientRedirect);
   })
 );
 router.get(
@@ -103,22 +103,7 @@ router.get(
     domain: "https://atalay.netlify.app",
   })
 );
-router.get(
-  "/login/google/redirect/succsess",
-  asyncHandler((req, res, next) => {
-    console.log(req.user);
-    const id = req.user.id;
-    res.cookie("acsess_token", req.user.token, {
-      encode: String,
-      domain: "https://atalay.netlify.app",
-    });
-    res.cookie("id", id, {
-      encode: String,
-      domain: "https://atalay.netlify.app",
-    });
-    res.redirect(client);
-  })
-);
+
 router.get("/login/google/logout", (req, res, next) => {
   req.logout((err) => console.log(err));
   res.redirect(client);
