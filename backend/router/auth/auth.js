@@ -103,7 +103,13 @@ router.get(
     domain: "https://atalay.netlify.app",
   })
 );
-
+router.get(
+  "/login/procsess",
+  asyncHandler((req, res, next) => {
+    res.cookie("acsess_token", req.user.token);
+    res.redirect(`${client}home`);
+  })
+);
 router.get("/login/google/logout", (req, res, next) => {
   req.logout((err) => console.log(err));
   res.redirect(client);

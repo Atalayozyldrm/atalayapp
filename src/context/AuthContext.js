@@ -112,7 +112,15 @@ export const AuthContextProvider = ({ children }) => {
   };
   const googleAuthToken = (token) => {
     axios
-      .get(`${client}/user/google`)
+      .get(`https://atalayapp.herokuapp.com/api/user/google`, {
+        header: {
+          Authorization: token,
+          mode: "same-origin",
+          redirect: "follow",
+          "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
       .then((res) => {
         cookie.set("acsess_token", res.data.data.token);
         const data = Object.assign(res.data.data);

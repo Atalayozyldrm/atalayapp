@@ -13,7 +13,8 @@ router.get(
   })
 );
 router.get("/google", (req, res, next) => {
-  res.status(200).json({ data: req.user });
+  const token = req.get("Authorization");
+  return res.status(200).json({ data: req.user });
 });
 router.post(
   "/content/edit",

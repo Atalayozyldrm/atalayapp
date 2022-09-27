@@ -6,9 +6,9 @@ export default function GoogleAuthRedirect() {
   const { googleAuthToken } = userAuth();
   const navigate = useNavigate();
 
-  useEffect(async () => {
-    (await googleAuthToken()) ? navigate("/home") : navigate("/login");
+  useEffect(() => {
+    googleAuthToken() ? navigate("/home") : navigate("/login");
   }, []);
 
-  return <div></div>;
+  return <div>GOOGLEE</div>;
 }
