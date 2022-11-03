@@ -12,7 +12,7 @@ const router = express.Router();
 
 const authOP = auth.optional;
 const client = "https://atalay.netlify.app/";
-const clienthome = "https://atalay.netlify.app/login/google";
+const clienthome = "https://atalayapp.herokuapp.com/api/auth/login/google";
 
 const clientFacebook =
   "https://atalayapp.herokuapp.com/api/auth/login/facebook/redirect/succsess";
@@ -79,7 +79,7 @@ router.get(
       encode: String,
       httpOnly: false,
     });
-    res.redirect(clientRedirect);
+    res.redirect(client);
   })
 );
 router.get(
@@ -104,8 +104,9 @@ router.get(
   })
 );
 router.get(
-  "/login/procsess",
+  "/login/google",
   asyncHandler((req, res, next) => {
+    res.cookie("id", req.user.id);
     res.cookie("acsess_token", req.user.token);
     res.redirect(`${client}home`);
   })

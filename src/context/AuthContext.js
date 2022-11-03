@@ -114,7 +114,6 @@ export const AuthContextProvider = ({ children }) => {
     axios
       .get(`https://atalayapp.herokuapp.com/api/user/google`, {
         header: {
-          Authorization: token,
           mode: "same-origin",
           redirect: "follow",
           "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
