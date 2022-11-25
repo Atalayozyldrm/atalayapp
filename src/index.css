@@ -107,6 +107,16 @@ code {
   transition: all 0.2 ease-in-out;
 }
 
+.melissa {
+  position: absolute;
+  left: 66px;
+}
+
+.melissa-askm {
+  position: absolute;
+  right: 66px;
+}
+
 .Navbar-home {
   width: 100vh;
   position: relative;
@@ -713,7 +723,7 @@ span {
   }
 
   .code-124 {
-    width: 100%;
+    width: 100vh;
     height: auto;
     padding: 0px;
     transition: all 0.3s cubic-bezier(1, 0, 0, 1);
@@ -812,7 +822,7 @@ span {
   }
 
   .code-text {
-    width: 50vh;
+    width: 250px;
   }
 
   .frindes {
@@ -890,6 +900,10 @@ span {
     top: 30px;
   }
 
+  .btn-amnakodugumbuttonu {
+    display: none;
+  }
+
   .atalay-Text {
     width: 200px !important;
     position: relative;
@@ -904,7 +918,7 @@ span {
   }
 
   .asa {
-    font-size: 0.7em;
+    font-size: 0.9em;
   }
 
   .mobile-Bt {

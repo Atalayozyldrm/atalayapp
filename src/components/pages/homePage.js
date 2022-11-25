@@ -24,7 +24,6 @@ export default function Homepage() {
         containerClassName=""
         containerStyle={{}}
         toastOptions={{
-          // Define default options
           className: "",
           duration: 5000,
           style: {
@@ -32,7 +31,6 @@ export default function Homepage() {
             color: "#fff",
           },
 
-          // Default options for specific types
           success: {
             duration: 3000,
             theme: {

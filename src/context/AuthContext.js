@@ -113,8 +113,10 @@ export const AuthContextProvider = ({ children }) => {
   const googleAuthToken = (token) => {
     axios
       .get(`https://atalayapp.herokuapp.com/api/user/google`, {
+        mode: "cors",
+        redirect: "follow",
+        withCredentials: true,
         header: {
-          mode: "same-origin",
           redirect: "follow",
           "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
           "Access-Control-Allow-Credentials": true,

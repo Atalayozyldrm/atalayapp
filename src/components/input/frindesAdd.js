@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { userAuth } from "../../context/AuthContext.js";
 export default function FrindesAdd() {
   const { user } = userAuth();
@@ -15,7 +16,7 @@ export default function FrindesAdd() {
         </div>
       </div>
       <div className="flex relative code-text text-name p-3 align-center r w-full">
-        {user.name}
+        <Link to="/profile">{user.name}</Link>
       </div>
     </>
   );

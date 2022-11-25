@@ -89,7 +89,17 @@ export default function ProfilDetail() {
           <div className="flex w-full flex-col relative">
             <div className="card-bg profile-a12C "></div>
             <div className="profile-image-card">
-              {!userData.image ? null : (
+              {!userData.image ? (
+                <img
+                  className="rounded-full"
+                  src={
+                    "https://cdn.discordapp.com/attachments/1045075809062359162/1045637613828182106/ezgif-6-d22d0cc3a715.gif"
+                  }
+                  width={100}
+                  height={100}
+                  alt="profile"
+                />
+              ) : (
                 <img
                   className="rounded-full"
                   src={userData.image}

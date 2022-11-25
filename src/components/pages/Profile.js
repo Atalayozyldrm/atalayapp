@@ -38,7 +38,17 @@ export default function Profile() {
             <ProfileEdit show={edit} />
             {show ? <EditProfile show={edit} toggle={edit} /> : null}
             <div className="profile-image-card">
-              {!user.profile_image ? null : (
+              {!user.profile_image ? (
+                <img
+                  className="rounded-full"
+                  src={
+                    "https://cdn.discordapp.com/attachments/1045075809062359162/1045637613828182106/ezgif-6-d22d0cc3a715.gif"
+                  }
+                  width={100}
+                  height={100}
+                  alt="profile"
+                />
+              ) : (
                 <img
                   className="rounded-full"
                   src={user.profile_image ? user.profile_image : null}
