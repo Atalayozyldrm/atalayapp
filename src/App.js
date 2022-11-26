@@ -60,9 +60,11 @@ function App() {
         path="/profile"
         element={
           <EditContext>
-            <UserProvider>
-              <Profile />
-            </UserProvider>
+            <AddClupProvider>
+              <UserProvider>
+                <Profile />
+              </UserProvider>
+            </AddClupProvider>
           </EditContext>
         }
         exact
@@ -71,9 +73,11 @@ function App() {
         path="/entry/:id"
         element={
           <EntryProvider>
-            <AddCommentProvider>
-              <EntryDetail />
-            </AddCommentProvider>
+            <AddClupProvider>
+              <AddCommentProvider>
+                <EntryDetail />
+              </AddCommentProvider>
+            </AddClupProvider>
           </EntryProvider>
         }
       />

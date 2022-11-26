@@ -1,6 +1,6 @@
 import React from "react";
 import { userAuth } from "../../context/AuthContext.js";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ProfileButton from "../button/ProfileButton.js";
 import { userClup } from "../../context/ClupContext.js";
 
@@ -69,9 +69,9 @@ export default function Navbar() {
         </a>
       </div>
       <div className="flex flex-col h-full darara  ml-4 mt-5">
-        <Link to="/profile">
+        <a href="/profile">
           <ProfileButton name="Profile" />
-        </Link>
+        </a>
       </div>
       <div className="ml-6 darara mb-4">
         <svg

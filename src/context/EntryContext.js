@@ -30,7 +30,7 @@ export const EntryProvider = ({ children }) => {
         const data = Object.entries(res.data.data);
         setPost(data);
       })
-      .catch((err) => LogoutProccsess());
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {

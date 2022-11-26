@@ -48,12 +48,12 @@ export const AuthContextProvider = ({ children }) => {
   const registerUser = async (email, password, name) => {
     await axios(`${client}/auth/register`, {
       method: "POST",
+      mode: "cors",
       withCredentials: true,
       headers: {
         "Content-Type": "application/json",
         mode: "same-origin",
         redirect: "follow",
-        Authorization: token,
         "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
         "Access-Control-Allow-Credentials": true,
       },
@@ -66,13 +66,8 @@ export const AuthContextProvider = ({ children }) => {
       },
     })
       .then((res) => {
-        axios.defaults.headers.common["Authorization"] = res.data.user.token;
-        cookie.set("acsess_token", res.data.user.token);
-        const data = Object.assign(res.data.user);
-        setUser(data);
-        cookie.set("id", data._id);
-        setToken(data.token);
-        console.log(res);
+        toast("Hesap oluşturuldu şimdi giriş yapman için yönlendiriyorum");
+        navigate(0);
       })
       .catch((err) => toast.warn(err.response.data.message));
   };
