@@ -55,17 +55,29 @@ function App() {
         }
       />
       <Route path="*" element={<Notfound />} />
-      <Route path="/profile/:id" element={<ProfilDetail />} excat />
+      <Route
+        path="/profile/:id"
+        element={
+          <ProtectedRoute>
+            <AddClupProvider>
+              <ProfilDetail />
+            </AddClupProvider>
+          </ProtectedRoute>
+        }
+        excat
+      />
       <Route
         path="/profile"
         element={
-          <EditContext>
-            <AddClupProvider>
-              <UserProvider>
-                <Profile />
-              </UserProvider>
-            </AddClupProvider>
-          </EditContext>
+          <ProtectedRoute>
+            <EditContext>
+              <AddClupProvider>
+                <UserProvider>
+                  <Profile />
+                </UserProvider>
+              </AddClupProvider>
+            </EditContext>
+          </ProtectedRoute>
         }
         exact
       />

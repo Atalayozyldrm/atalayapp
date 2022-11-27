@@ -58,7 +58,7 @@ export default function Forms(props) {
               </button>
               <p className="flex justify-center mt-4"> Veya </p>
               <div className="mr-3 p-1">
-                <a className="relative googl " href={`/v/auth/google`}>
+                <a className="relative googl" href={`/v/auth/google`}>
                   <button className=" w-80 flex googlebutton aligin-center justify-center border-black border-2 text-black flex-row bg-white items-center    rounded-md">
                     <img
                       src="https://developers.google.com/static/identity/images/g-logo.png"

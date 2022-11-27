@@ -44,6 +44,8 @@ router.post(
     registerUser.token = registerUser.generateJWT(user.email, id);
     const profileAuthor = await Profile.create({
       name: user.name,
+      image:
+        "https://cdn.discordapp.com/attachments/1045075809062359162/1045637613828182106/ezgif-6-d22d0cc3a715.gif",
       authorId: registerUser._id,
       token: registerUser.token,
     });
