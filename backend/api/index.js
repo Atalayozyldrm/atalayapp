@@ -1,9 +1,11 @@
 import express from "express";
-import router from "./router/router.js";
+import router from "../router/router.js";
 import passport from "passport";
-import "./config/passport.js";
-import connectDb from "./helpers/connectDb.js";
-import config from "./config/config.js";
+import ServerlessHttp from "serverless-http";
+import { VercelRequest, VercelResponse } from "@vercel/node";
+import "../config/passport.js";
+import connectDb from "../helpers/connectDb.js";
+import config from "../config/config.js";
 import { default as connectMongoDBSession } from "connect-mongodb-session";
 import cors from "cors";
 import csrf from "csurf";
@@ -27,12 +29,13 @@ const limiter = rateLimit({
   message: "Çok fazla istekte bulundun , biraz bekletelim seni 🤔",
 });
 
+app.set("trust proxy", true);
 connectDb();
 
 app.use(
   morgan(":method :url :status :res[content-length] - :response-time ms")
 );
-app.set("trust proxy", true);
+
 app.use(limiter);
 
 app.use(cookieParser());
@@ -98,13 +101,17 @@ app.get(
     return res
       .status(200)
       .send(
-        "<center style='font-size:36px;'>Evine piza yollayımi lan oççç</center>" +
+        "<center style='font-size:36px;'>ATA APİ SERVİSİNE HOŞT GELDİN  🚀🚀</center>" +
           a
       );
   })
 );
 
 app.use("/api", router);
+
+export default function (VercelRequest, VercelResponse) {
+  ServerlessHttp(app);
+}
 
 app.listen(process.env.PORT || 5500, () =>
   console.log("Started run server. 5500 port 🚀🚀🚀🚀🚀")

@@ -58,11 +58,9 @@ function App() {
       <Route
         path="/profile/:id"
         element={
-          <ProtectedRoute>
-            <AddClupProvider>
-              <ProfilDetail />
-            </AddClupProvider>
-          </ProtectedRoute>
+          <AddClupProvider>
+            <ProfilDetail />
+          </AddClupProvider>
         }
         excat
       />
