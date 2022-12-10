@@ -1,8 +1,6 @@
 import express from "express";
 import router from "./router/router.js";
 import passport from "passport";
-import ServerlessHttp from "serverless-http";
-import { VercelRequest, VercelResponse } from "@vercel/node";
 import "./config/passport.js";
 import connectDb from "./helpers/connectDb.js";
 import config from "./config/config.js";
@@ -108,10 +106,6 @@ app.get(
 );
 
 app.use("/api", router);
-
-export default function (VercelRequest, VercelResponse) {
-  ServerlessHttp(app);
-}
 
 app.listen(process.env.PORT || 5500, () =>
   console.log("Started run server. 5500 port 🚀🚀🚀🚀🚀")
