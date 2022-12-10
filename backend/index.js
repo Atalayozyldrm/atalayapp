@@ -1,11 +1,11 @@
 import express from "express";
-import router from "../router/router.js";
+import router from "./router/router.js";
 import passport from "passport";
 import ServerlessHttp from "serverless-http";
 import { VercelRequest, VercelResponse } from "@vercel/node";
-import "../config/passport.js";
-import connectDb from "../helpers/connectDb.js";
-import config from "../config/config.js";
+import "./config/passport.js";
+import connectDb from "./helpers/connectDb.js";
+import config from "./config/config.js";
 import { default as connectMongoDBSession } from "connect-mongodb-session";
 import cors from "cors";
 import csrf from "csurf";
