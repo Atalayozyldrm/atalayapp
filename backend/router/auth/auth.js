@@ -1,6 +1,5 @@
 import express from "express";
 import passport from "passport";
-import address from "address";
 import auth from "../../middleware/auth/auth.js";
 import User from "../../model/user.js";
 import bcrypt from "bcrypt";
@@ -11,15 +10,6 @@ import asyncHandler from "express-async-handler";
 const router = express.Router();
 
 const authOP = auth.optional;
-const client = "https://atalay.netlify.app/";
-const clienthome = "https://atalayapp.herokuapp.com/api/auth/login/google";
-
-const clientFacebook =
-  "https://atalayapp.herokuapp.com/api/auth/login/facebook/redirect/succsess";
-
-router.get("/login", (req, res, next) => {
-  res.send("nah 😊");
-});
 
 router.post(
   "/register",
@@ -44,79 +34,13 @@ router.post(
     registerUser.token = registerUser.generateJWT(user.email, id);
     const profileAuthor = await Profile.create({
       name: user.name,
-      image:
-        "https://cdn.discordapp.com/attachments/1045075809062359162/1045637613828182106/ezgif-6-d22d0cc3a715.gif",
+      image: "",
       authorId: registerUser._id,
       token: registerUser.token,
     });
     return registerUser.save().then(() => res.json({ user: registerUser }));
   })
 );
-
-router.get(
-  "/login/facebook",
-  passport.authenticate(
-    "facebook",
-    {
-      scope: ["profile", "email"],
-    },
-    {
-      failureRedirect: client,
-      successRedirect: clientFacebook,
-      failureMessage: true,
-    }
-  )
-);
-
-router.get(
-  "/login/facebook/redirect/succsess",
-  asyncHandler((req, res, next) => {
-    const id = req.user.id;
-    res.cookie("acsess_token", req.user.token, {
-      encode: String,
-      httpOnly: false,
-    });
-
-    res.cookie("id", id, {
-      encode: String,
-      httpOnly: false,
-    });
-    res.redirect(client);
-  })
-);
-router.get(
-  "/login/facebook/callback",
-  passport.authenticate("facebook", {
-    scope: ["profile", "email"],
-    successRedirect: clientFacebook,
-    failureRedirect: client,
-  })
-);
-router.get(
-  "/google",
-  passport.authenticate("google", { scope: ["profile", "email"] })
-);
-router.get(
-  "/login/google/callback",
-  passport.authenticate("google", {
-    scope: ["profile", "email"],
-    successRedirect: clienthome,
-    failureRedirect: client,
-    domain: "https://atalay.netlify.app",
-  })
-);
-router.get(
-  "/login/google",
-  asyncHandler((req, res, next) => {
-    res.cookie("id", req.user.id);
-    res.cookie("acsess_token", req.user.token);
-    res.redirect(`${client}home`);
-  })
-);
-router.get("/login/google/logout", (req, res, next) => {
-  req.logout((err) => console.log(err));
-  res.redirect(client);
-});
 
 router.post(
   "/login",

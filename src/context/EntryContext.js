@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import LogoutProccsess from "../middleware/ErrorRedirect.js";
 
 const Entry = React.createContext();
 
@@ -11,10 +10,8 @@ export const EntryProvider = ({ children }) => {
   const cookie = new Cookies();
   const token = cookie.get("acsess_token");
 
-  const client = "/v";
-
   const getAll = async () => {
-    const entry = await axios(`${client}/entry/entry`, {
+    const entry = await axios(`entry/entry`, {
       method: "GET",
       withCredentials: true,
 
@@ -22,7 +19,7 @@ export const EntryProvider = ({ children }) => {
         Authorization: token,
         mode: "same-origin",
         redirect: "follow",
-        "Access-Control-Allow-Origin": "https://atalay.netlify.app/",
+        "Access-Control-Allow-Origin": "",
         "Access-Control-Allow-Credentials": true,
       },
     })

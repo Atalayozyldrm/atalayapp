@@ -5,7 +5,7 @@ const connectDb = async () => {
     .connect(
       "mongodb+srv://admin:19031903@atalayozy.swolt.mongodb.net/?retryWrites=true&w=majority"
     )
-    .then((res) => console.log("Connect Db 🚀🚀🚀"));
+    .then((res) => console.log("piuv"));
 };
 
 export default connectDb;

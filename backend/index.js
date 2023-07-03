@@ -3,27 +3,23 @@ import router from "./router/router.js";
 import passport from "passport";
 import "./config/passport.js";
 import connectDb from "./helpers/connectDb.js";
-import config from "./config/config.js";
 import { default as connectMongoDBSession } from "connect-mongodb-session";
 import cors from "cors";
 import csrf from "csurf";
 import cookieParser from "cookie-parser";
-import address from "address";
-import geo from "geoip-lite";
 import morgan from "morgan";
 import session from "express-session";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
-import expressAsyncHandler from "express-async-handler";
 const app = express();
 
 const MongoDBStore = connectMongoDBSession(session);
 
 const limiter = rateLimit({
   windowMs: 60 * 60 * 60 * 10000,
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  max: 100,
+  standardHeaders: true,
+  legacyHeaders: false,
   message: "Çok fazla istekte bulundun , biraz bekletelim seni 🤔",
 });
 
@@ -42,7 +38,7 @@ app.use(helmet());
 app.use(helmet.frameguard({ action: "deny" }));
 app.use(
   cors({
-    origin: "https://atalay.netlify.app",
+    origin: "*",
     credentials: true,
     methods: "GET,POST,PUT,DELETE",
     optionsSuccessStatus: 200,
@@ -72,7 +68,7 @@ app.use((req, res, next) => {
 
 app.use(
   session({
-    secret: config.sessionSecret,
+    secret: "sen beni bu deli kadından kurtar tanrım",
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
       httpOnly: false,
@@ -88,25 +84,11 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.get("/", (req, res) => {
+  res.send("aramzda bir sürü şeytan ");
+});
 app.use(csrf({ cookie: true }));
-app.get(
-  "/",
-  expressAsyncHandler(async (req, res, next) => {
-    const ip = address.ip();
-    const data = await geo.lookup(ip);
-    const a = JSON.stringify(data);
-    return res
-      .status(200)
-      .send(
-        "<center style='font-size:36px;'>ATA APİ SERVİSİNE HOŞT GELDİN  🚀🚀</center>" +
-          a
-      );
-  })
-);
 
 app.use("/api", router);
 
-app.listen(process.env.PORT || 5500, () =>
-  console.log("Started run server. 5500 port 🚀🚀🚀🚀🚀")
-);
+app.listen(process.env.PORT || 8080, () => console.log("Run"));
